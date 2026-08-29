@@ -16,4 +16,5 @@
 - [x] 建立 repo `criminal-law-interpretation`，確認 PAT 寫入權限 — 2026-08-29
 - [x] 確認節點分類架構：`1-1`~`1-12`（總則）／`2-1`~`2-36`（分則）— 2026-08-29
 - [x] 確認要件分析架構改採三階段犯罪判斷（構成要件該當性→違法性→有責性）— 2026-08-29
-- [x] SKILL.md、README.md、TODO.md、LICENSE.md 草稿完成，待審閱推送 — 2026-08-29
+- [x] SKILL.md、README.md、TODO.md、LICENSE.md 草稿完成並推送 — 2026-08-29
+- [x] 確認講義資料夾與檔名一律使用英文：資料夾 `lectures/`，檔名格式「罪名英譯-條號.html」（如 `privacy-intrusion-315-1.html`），避免中文路徑網址亂碼 — 2026-08-29

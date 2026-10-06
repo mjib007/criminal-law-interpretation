@@ -2,6 +2,7 @@
 
 > 給接手的 Claude 本機對話（或使用者本人）閱讀。讀完照「接手步驟」做即可。
 > 最後更新：2026-10-06｜分支：`ccr-09ef2072-trjhrf`
+> 影片製作通用規格：[`VIDEO-SPEC.md`](VIDEO-SPEC.md)
 
 ---
 
@@ -9,10 +10,10 @@
 
 | 項目 | 狀態 |
 |---|---|
-| 影片 `videos/mistaken-self-defense.mp4` | ✅ 已完成（約 5 分 30 秒，1080p），但配音是**大陸腔**離線語音 |
+| 影片 `videos/mistaken-self-defense.mp4` | ✅ 已完成（約5分30秒，1080p），但配音是**大陸腔**離線語音 |
 | 旁白稿 `videos/mistaken-self-defense-script.md` | ✅ 完成 |
 | 影片產生程式 `tools/video/` | ✅ 已放進 repo，雲端測試可跑 |
-| 換成台灣配音 | ⏳ **待辦**：雲端環境擋住微軟語音（`speech.platform.bing.com` 回 403），改由本機執行 |
+| 換成台灣配音 | ⏳ **待辦**：雲端環境擋住微軟語音（`speech.platform.bing.com` 回403），改由本機執行 |
 | 使用者選定的聲音 | ❓ 尚未決定（A 曉臻／B 雲哲／C 曉雨） |
 
 試聽頁（用 Microsoft Edge 開）：https://claude.ai/artifact/Nh7HZGqtEiENF7bP2DXQ1N
@@ -89,9 +90,34 @@ git push origin ccr-09ef2072-trjhrf
 - 要做新主題影片：複製 `mistaken_self_defense.py` 改內容，執行時把模組名換掉即可。
 - 離線備用：`--voice melo:<sherpa-onnx vits-melo-tts-zh_en 模型資料夾>`（大陸口音，僅網路受限時用）。
 
-## 五、未決事項
+## 五、通用影片製作規格（已整合「停止過戶」影片的做法）
+
+完整規格見 **[`VIDEO-SPEC.md`](VIDEO-SPEC.md)**，之後做任何教學影片都照它。重點：
+
+| 項目 | 規格 |
+|---|---|
+| 畫面 | 1920×1080、30fps、深色背景＋淡格線、程式逐格繪製（3b1b風格） |
+| 語音 | edge-tts 台灣華語，預設 `zh-TW-HsiaoChenNeural`，語速、音量 `+0%`，一句一檔 |
+| 字幕 | 燒錄在畫面底部字幕帶（44px），另輸出 `out\<影片名>.srt` |
+| 時間 | 每段畫面長度由語音長度決定，不手動設定 |
+| 檔案 | `videos/<影片名>/script.md`（旁白稿）、`scenes.py`（動畫）、`out\`（產出） |
+| 程式 | `tools/video/vidkit.py`（引擎）、`tools/video/make.py`（執行） |
+| 範例 | `videos/example-stop-transfer/`，雲端實測可跑 |
+
+兩套程式的分工：
+
+| 程式 | 風格 | 用在 |
+|---|---|---|
+| `tools/video/make.py`＋`vidkit.py` | 3b1b式逐格動畫（**新標準**） | 之後所有新影片 |
+| `tools/video/build.py` | 投影片截圖＋旁白（舊做法） | 目前的誤想防衛影片；換台灣配音時沿用即可 |
+
+注意：takeover-timing 的原始程式沒有放在任何 repo，規格書中的色碼、字級、動畫秒數是本範本的設定，未能與原片逐一對照（規格書第〇節有標示）。手邊若有原片程式，請把不同的數值改進規格書與 `vidkit.py`。
+
+## 六、未決事項
 
 - [ ] 使用者選定台灣聲音（A／B／C）與語速
 - [ ] 重新產生影片並推送
 - [ ] 是否把影片加入 `index.html` 總覽頁、或另做成講義 HTML（尚未決定）
 - [ ] 是否建立 PR（使用者尚未要求）
+- [ ] 是否把誤想防衛影片改用新標準（3b1b式動畫）重做
+- [ ] 取得 takeover-timing 原始程式後，校正 `VIDEO-SPEC.md` 第二至五節數值

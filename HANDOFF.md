@@ -13,7 +13,7 @@
 | 影片 `videos/mistaken-self-defense.mp4` | ✅ 已完成（約5分30秒，1080p），但配音是**大陸腔**離線語音 |
 | 旁白稿 `videos/mistaken-self-defense-script.md` | ✅ 完成 |
 | 影片產生程式 `tools/video/` | ✅ 已放進 repo，雲端測試可跑 |
-| 換成台灣配音 | ⏳ **待辦**：雲端環境擋住微軟語音（`speech.platform.bing.com` 回403），改由本機執行 |
+| 換成台灣配音 | ⏳ **待辦**：雲端環境擋住微軟語音（`speech.platform.bing.com` 回403），改由使用者另開的對話處理，本對話不再追蹤 |
 | 使用者選定的聲音 | ❓ 尚未決定（A 曉臻／B 雲哲／C 曉雨） |
 
 試聽頁（用 Microsoft Edge 開）：https://claude.ai/artifact/Nh7HZGqtEiENF7bP2DXQ1N
@@ -115,8 +115,6 @@ git push origin ccr-09ef2072-trjhrf
 
 ## 六、未決事項
 
-- [ ] 使用者選定台灣聲音（A／B／C）與語速
-- [ ] 重新產生影片並推送
 - [ ] 是否把影片加入 `index.html` 總覽頁、或另做成講義 HTML（尚未決定）
 - [ ] 是否建立 PR（使用者尚未要求）
 - [ ] 是否把誤想防衛影片改用新標準（3b1b式動畫）重做

@@ -554,7 +554,7 @@ const LECTURES = [
     title: "一起殺人，罪名卻不一樣？共同正犯、教唆、幫助（共犯系列第1集，教學影片）",
     date: "2026-10-11",
     chapterKey: "1-4",
-    file: "https://youtu.be/ZDPu_xQNGsc"
+    file: "https://youtu.be/Z3IuW82dpZc"
   }
 ];
 
@@ -632,6 +632,9 @@ function renderCoverageMap(){
     `已覆蓋 ${coveredLeaves} / ${CHAPTERS.length} 章 · 共 ${LECTURES.length} 篇講義`;
 }
 
+/* 連結是 YouTube 影片的卡片，標題前自動加 🎬，讓讀者點之前就知道會開影片 */
+const isVideo = url => /^https?:\/\/(www\.)?(youtu\.be|youtube\.com)\//.test(url);
+
 function render(){
   const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
   const categorySelectEl = document.getElementById('categorySelect');
@@ -665,7 +668,7 @@ function render(){
       a.rel = 'noopener';
       a.innerHTML = `
         <div class="articles">${item.articles}</div>
-        <div class="title">${item.title}</div>
+        <div class="title">${isVideo(item.file) ? '🎬 ' : ''}${item.title}</div>
         <div class="meta">
           <span class="tag">${chapterMap[item.chapterKey] || item.chapterKey}</span>
         </div>

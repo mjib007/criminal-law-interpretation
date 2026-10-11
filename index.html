@@ -632,8 +632,19 @@ function renderCoverageMap(){
     `已覆蓋 ${coveredLeaves} / ${CHAPTERS.length} 章 · 共 ${LECTURES.length} 篇講義`;
 }
 
-/* 連結是 YouTube 影片的卡片，標題前自動加 🎬，讓讀者點之前就知道會開影片 */
+/* 卡片圖示：讓讀者點之前就知道會開什麼
+   🎬 連結是 YouTube 影片
+   📖 連結是本站講義網頁；網頁內嵌 YouTube 影片時再加 🎬（程式讀取網頁內容判斷） */
 const isVideo = url => /^https?:\/\/(www\.)?(youtu\.be|youtube\.com)\//.test(url);
+const embedCache = {};
+function markEmbeddedVideo(url, titleEl){
+  const apply = has => { if (has && !titleEl.dataset.video){ titleEl.dataset.video = "1"; titleEl.firstChild.textContent = "📖🎬 "; } };
+  if (url in embedCache){ apply(embedCache[url]); return; }
+  fetch(url).then(r => r.ok ? r.text() : "").then(html => {
+    embedCache[url] = /youtube(-nocookie)?\.com\/embed\//.test(html);
+    apply(embedCache[url]);
+  }).catch(() => { embedCache[url] = false; });
+}
 
 function render(){
   const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
@@ -668,7 +679,7 @@ function render(){
       a.rel = 'noopener';
       a.innerHTML = `
         <div class="articles">${item.articles}</div>
-        <div class="title">${isVideo(item.file) ? '🎬 ' : ''}${item.title}</div>
+        <div class="title"><span class="icon">${isVideo(item.file) ? '🎬 ' : '📖 '}</span>${item.title}</div>
         <div class="meta">
           <span class="tag">${chapterMap[item.chapterKey] || item.chapterKey}</span>
         </div>
@@ -676,6 +687,7 @@ function render(){
           <span class="date">${item.date}</span>
         </div>
       `;
+      if (!isVideo(item.file)) markEmbeddedVideo(item.file, a.querySelector('.title'));
       grid.appendChild(a);
     });
   }

@@ -76,10 +76,9 @@
   .key{font-weight:700; color:var(--keyc); background:linear-gradient(transparent 50%, var(--hl) 50%); padding:0 2px;}
   .law{border-left:6px solid var(--ab); background:#f3f8ff;}
   section h2::before{background:linear-gradient(var(--obst), var(--ab));}
-  .cover{background:linear-gradient(135deg,#16233b 0%,#24467a 100%); color:#fff; border-radius:14px; padding:36px 28px 28px; margin-top:28px; position:relative; overflow:hidden;}
-  .cover::after{content:""; position:absolute; left:0; right:0; bottom:0; height:8px; background:linear-gradient(90deg,var(--obst) 0 33.3%,var(--imp) 33.3% 66.6%,var(--ab) 66.6% 100%);}
-  .cover .eyebrow{background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.45); color:#fff;}
-  .cover .sub, .cover .meta{color:rgba(255,255,255,.92);}
+  .cover{background:var(--card); border:1px solid var(--border); border-left:10px solid var(--ab); border-radius:12px; padding:30px 28px 24px; margin-top:28px;}
+  .cover .eyebrow{background:#fff;}
+  .cover .tags{margin:4px 0 14px;} .cover .tags .tp{margin-right:6px; font-size:.95rem;}
   .tp{display:inline-block; font-weight:700; color:#fff; border-radius:6px; padding:1px 10px; white-space:nowrap;}
   .tp.obst{background:var(--obst);} .tp.imp{background:var(--imp);} .tp.ab{background:var(--ab);}
   .c-obst{color:var(--obst); font-weight:700;} .c-imp{color:var(--imp); font-weight:700;} .c-ab{color:var(--ab); font-weight:700;}
@@ -98,6 +97,7 @@
   <span class="eyebrow">刑法總則</span><span class="eyebrow">第26、27條</span><span class="eyebrow">含判斷流程圖與分類練習</span>
   <h1>都沒偷到，處罰一樣嗎？</h1>
   <p class="sub">不能未遂與中止犯</p>
+  <div class="tags"><span class="tp obst">障礙未遂</span><span class="tp imp">不能未遂</span><span class="tp ab">中止犯</span></div>
   <div class="meta"><span>條文：刑法第25、26、27條</span><span>判決：最高法院114台上1976、113台上2642、114台上5330、115台上4855；臺中地院107易3258</span><span>2026-10-14</span></div>
 </section>
 

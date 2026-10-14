@@ -76,7 +76,8 @@
   .key{font-weight:700; color:var(--keyc); background:linear-gradient(transparent 50%, var(--hl) 50%); padding:0 2px;}
   .law{border-left:6px solid var(--ab); background:#f3f8ff;}
   section h2::before{background:linear-gradient(var(--obst), var(--ab));}
-  .cover{background:linear-gradient(120deg,#1c7ed6 0%,#2b8a3e 55%,#e8590c 100%); color:#fff; border-radius:14px; padding:36px 28px 28px; margin-top:28px;}
+  .cover{background:linear-gradient(135deg,#16233b 0%,#24467a 100%); color:#fff; border-radius:14px; padding:36px 28px 28px; margin-top:28px; position:relative; overflow:hidden;}
+  .cover::after{content:""; position:absolute; left:0; right:0; bottom:0; height:8px; background:linear-gradient(90deg,var(--obst) 0 33.3%,var(--imp) 33.3% 66.6%,var(--ab) 66.6% 100%);}
   .cover .eyebrow{background:rgba(255,255,255,.18); border-color:rgba(255,255,255,.45); color:#fff;}
   .cover .sub, .cover .meta{color:rgba(255,255,255,.92);}
   .tp{display:inline-block; font-weight:700; color:#fff; border-radius:6px; padding:1px 10px; white-space:nowrap;}

@@ -1,131 +1,130 @@
 <!doctype html>
 <html lang="zh-Hant">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>一做一驗，三方接力｜教材製作動畫</title>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>一做一驗，三方接力｜人物動畫</title>
 <style>
-:root{color-scheme:dark;--bg:#111418;--fg:#eceff4;--muted:#a3acba;--grid:#20252c;--maker:#58c4dd;--checker:#83c167;--jackie:#f4d35e}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.65}main{max-width:1120px;margin:auto;padding:26px 24px 34px}header{display:flex;justify-content:space-between;align-items:center;gap:20px}h1{font-size:clamp(21px,3.2vw,32px);font-weight:600;letter-spacing:.06em;margin:0}header p{margin:4px 0 0;color:var(--muted);font-size:14px}.edition{font-size:13px;color:var(--muted);white-space:nowrap}#stage{margin:22px 0 0;background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:56px 56px;position:relative}svg{width:100%;display:block;overflow:visible}svg text{font-family:inherit;fill:var(--fg)}svg .muted{fill:var(--muted)}svg .digit{font-variant-numeric:tabular-nums}#caption{min-height:62px;text-align:center;font-size:clamp(16px,2vw,20px);margin:12px 0 16px;padding:0 12px}#caption span{display:block;color:var(--muted);font-size:13px;margin-top:3px}.controls{display:flex;align-items:center;gap:12px;flex-wrap:wrap}button,select{font:inherit;font-size:14px;line-height:1.4;background:transparent;color:var(--fg);border:1px solid #596371;border-radius:6px;padding:10px 15px;min-height:42px;cursor:pointer}button:hover{background:#222b34}button:focus-visible,select:focus-visible,input:focus-visible,summary:focus-visible{outline:3px solid var(--jackie);outline-offset:4px}#play{background:var(--fg);color:var(--bg);border-color:var(--fg);font-weight:600;min-width:95px}#clock{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}#seek{flex:1;min-width:100px;accent-color:var(--maker);cursor:pointer}#speed{padding:8px}.chapters{display:flex;gap:7px;flex-wrap:wrap;margin-top:14px}.chapters button{font-size:13px;padding:7px 12px;min-height:38px;border-color:transparent;color:var(--muted)}.chapters button[aria-current="step"]{color:var(--fg);border-bottom-color:var(--maker);border-radius:0}.notes{color:var(--muted);font-size:13px;margin:20px 0 0}details{margin-top:16px;font-size:14px;color:var(--muted);border-top:1px solid #343e49;padding-top:14px}summary{cursor:pointer;width:fit-content}details p{max-width:850px}a{color:var(--maker)}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;margin:14px 0;min-width:490px;font-variant-numeric:tabular-nums}th,td{text-align:right;padding:8px;border-bottom:1px solid #343e49}th:first-child,td:first-child{text-align:left}.role-line{color:var(--fg)}@media(max-width:600px){main{padding:18px 14px 26px}header{align-items:flex-start}.edition{display:none}#stage{margin-top:14px;background-size:40px 40px}#caption{min-height:85px;padding:0 3px;text-align:left;font-size:16px}.controls{gap:8px}button{padding:9px 12px}#clock{margin-left:auto}#seek{order:2;flex-basis:100%;min-height:30px}#speed{margin-left:auto}.chapters{gap:2px;margin-top:8px}.chapters button{padding:7px 9px;min-height:40px}.notes{font-size:12px}}
-@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto}}
-.controls{margin-top:18px}
-.overview-link{display:inline-block;color:var(--maker);text-decoration:none;font-size:14px;margin-bottom:16px;padding:5px 0}.overview-link:hover{text-decoration:underline}.overview-link:focus-visible{outline:3px solid var(--jackie);outline-offset:4px}
+:root{color-scheme:dark;--bg:#11191b;--fg:#eceff4;--muted:#a5b1b6;--maker:#58c4dd;--checker:#83c167;--teacher:#f4d35e;--line:#3b4c50}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font-family:"Noto Sans TC","Microsoft JhengHei",system-ui,sans-serif;line-height:1.65}main{max-width:1000px;margin:auto;padding:22px 24px 32px}a{color:var(--maker)}.back{display:inline-block;text-decoration:none;font-size:14px;padding:5px 0;margin-bottom:12px}header{display:flex;gap:16px;align-items:baseline;justify-content:space-between}h1{font-size:clamp(22px,3.5vw,32px);font-weight:600;letter-spacing:.04em;margin:0}header small{font-size:13px;color:var(--muted);white-space:nowrap}.intro{font-size:14px;color:var(--muted);margin:5px 0 18px}.controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}button,select{font:inherit;font-size:14px;color:var(--fg);background:transparent;border:1px solid #607277;border-radius:6px;padding:9px 13px;min-height:42px;cursor:pointer}button:hover{background:#263538}button:focus-visible,select:focus-visible,input:focus-visible,a:focus-visible,summary:focus-visible{outline:3px solid var(--teacher);outline-offset:4px}#play{background:var(--fg);color:var(--bg);font-weight:600;min-width:96px}#seek{flex:1;min-width:100px;accent-color:var(--maker);cursor:pointer}#clock{color:var(--muted);font-size:13px;font-variant-numeric:tabular-nums}.speed-label{font-size:13px;color:var(--muted)}#stage{margin-top:17px;position:relative;background-image:radial-gradient(#60727718 1px,transparent 1px);background-size:26px 26px}#diagram{display:block;width:100%;overflow:visible}svg text{font-family:inherit}.step-line{display:flex;align-items:baseline;gap:10px;min-height:30px;margin-top:10px}#phase{font-size:13px;white-space:nowrap;color:var(--teacher)}#action{font-size:18px;font-weight:500}#detail{font-size:14px;color:var(--muted);min-height:47px;margin:4px 0 14px}.chapters{display:flex;gap:4px;flex-wrap:wrap}.chapters button{border-color:transparent;font-size:13px;min-height:38px;padding:7px 10px;color:var(--muted)}.chapters [aria-current="step"]{border-bottom-color:var(--teacher);color:var(--fg);border-radius:0}.note{color:var(--muted);font-size:13px;margin-top:18px}details{font-size:14px;color:var(--muted);margin-top:15px;padding-top:12px;border-top:1px solid var(--line)}summary{cursor:pointer;width:fit-content}.table-wrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:470px;margin:12px 0;font-variant-numeric:tabular-nums}td,th{padding:7px 10px;border-bottom:1px solid var(--line);text-align:right}td:first-child,th:first-child{text-align:left}.explanation{color:var(--fg)}@media(max-width:600px){main{padding:16px 14px 28px}header small{display:none}.intro{font-size:13px;margin-bottom:14px}.controls{gap:8px}#seek{order:2;flex-basis:100%;min-height:28px}#clock{margin-left:auto}#stage{margin-top:7px}.step-line{align-items:flex-start}#action{font-size:16px}#detail{min-height:66px;font-size:13px}.chapters button{padding:7px 8px}.note{font-size:12px}}
+.controls{position:sticky;top:0;z-index:3;background:var(--bg);padding:8px 0}#stage{scroll-margin-top:76px}@media(max-width:600px){#stage{scroll-margin-top:106px}}
+@media(max-width:600px){.controls{display:grid;grid-template-columns:auto auto 1fr auto;gap:8px}.controls .speed-label{display:none}#play{min-width:82px;font-size:13px;padding:8px}#restart{font-size:13px;padding:8px}#clock{font-size:12px;margin-left:0;text-align:right;white-space:nowrap}#speed{font-size:12px;padding:6px;width:52px}#seek{grid-column:1/-1;grid-row:2;width:100%;margin:0}}
 </style>
 </head>
-<body>
-<main>
-<a class="overview-link" href="../index.html">← 回教材總覽</a>
-<header><div><h1>一做一驗，三方接力</h1><p>主做 AI × 驗證 AI × Jackie</p></div><span class="edition">教材製作動畫 · v1.0</span></header>
-<div class="controls" aria-label="動畫播放控制"><button id="play" type="button">播放動畫</button><button id="restart" type="button" aria-label="從頭重播">重播</button><span id="clock" aria-live="off">0:00 / 1:12</span><input id="seek" type="range" min="0" max="72" step="0.1" value="0" aria-label="動畫進度，秒"><label for="speed" class="notes" style="margin:0">速度</label><select id="speed" aria-label="播放速度"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>
-<div id="stage"><svg id="diagram" role="img" aria-labelledby="svg-title svg-desc"><title id="svg-title">三方協作與估計工時動畫</title><desc id="svg-desc">主做AI查證與製作，驗證AI獨立查核，Jackie確認腳本、驗收並決定公開。估計工時分別325、80、33分鐘。</desc></svg></div>
-<p id="caption" aria-live="polite"></p>
-<nav class="chapters" aria-label="選擇動畫段落"><button type="button" data-time="0">三方分工</button><button type="button" data-time="7">① 規劃</button><button type="button" data-time="21">② 製作</button><button type="button" data-time="33">③ 驗證</button><button type="button" data-time="48">④ 發布</button><button type="button" data-time="60">時間占比</button></nav>
-<p class="notes">一個主題＝影片＋互動講義。以下是既有流程圖的估計工時；AI 時間含配音、渲染等待。三方工時加總不等於日曆經過時間。</p>
-<details><summary>查看工時、工作內容與來源</summary><div class="table-wrap"><table><caption>每階段估計投入（分鐘）</caption><thead><tr><th>階段</th><th>主做 AI</th><th>驗證 AI</th><th>Jackie</th><th>小計</th></tr></thead><tbody id="data-rows"></tbody><tfoot><tr id="total-row"></tr></tfoot></table></div><p class="role-line">主做 AI：查證、腳本、配音、動畫、互動講義、修正與網站整合。<br>驗證 AI：獨立重查、成品測試、複查修正、上架巡檢；回報問題，由主做者改。<br>Jackie：選題與教學取捨、確認腳本、看片聽唸法、試玩、抽查判決、上傳並決定公開。</p><p>Claude 與 Codex 的角色依主題輪替，並非永久固定。三個主要關卡是確認腳本、驗收成品、上傳 YouTube；是否公開仍由 Jackie 決定。</p><p>來源：本課程的教材製作流程與工時估計（2026-10-16）。325／80／33 分鐘是估計，並非從尚未完整的實際工時表推得；後續可依實測校正。</p></details>
-<p class="notes">建立／更新：2026-10-16 · v1.0｜錢世傑教材製作流程說明，歡迎指正。</p>
+<body><main>
+<a class="back" href="https://mjib007.github.io/criminal-law-interpretation/">← 回教材總覽</a>
+<header><h1>一做一驗，三方接力</h1><small>人物動畫 v2.0 · 2026-10-16</small></header>
+<p class="intro">稿件交過去，意見送回來，修正後再交到你手上。</p>
+<div class="controls" aria-label="動畫播放控制"><button id="play" type="button">播放動畫</button><button id="restart" type="button" aria-label="從頭重播">重播</button><span id="clock">0:00 / 1:12</span><input id="seek" type="range" min="0" max="72" step="0.1" value="0" aria-label="動畫進度，秒"><label class="speed-label" for="speed">速度</label><select id="speed" aria-label="播放速度"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>
+<div id="stage"><svg id="diagram" role="img" aria-labelledby="art-title art-desc"></svg></div>
+<div aria-live="polite"><div class="step-line"><span id="phase"></span><span id="action"></span></div><p id="detail"></p></div>
+<nav class="chapters" aria-label="選擇動畫段落"><button type="button" data-time="0">三位角色</button><button type="button" data-time="6">規劃確認</button><button type="button" data-time="14">製作教材</button><button type="button" data-time="25">交稿查核</button><button type="button" data-time="33">退回修正</button><button type="button" data-time="43">交你確認</button><button type="button" data-time="45">發布接力</button><button type="button" data-time="60">時間占比</button></nav>
+<p class="note">以 Codex 主做、Claude Code 驗證示範，角色可依主題互換。工時為估計值，包含配音與渲染等待；三方投入加總不等於日曆經過時間。</p>
+<details><summary>工作內容、工時與來源</summary><p class="explanation">主做 AI 做查證、腳本、影片與講義，並依回饋修正。驗證 AI 獨立查核與複查，回報問題，由主做者修改。你負責教學取捨、確認腳本、看片聽唸法、試玩與抽查，並上傳影片、決定公開。</p><div class="table-wrap"><table><caption>一個主題：影片＋互動講義；估計分鐘</caption><thead><tr><th>階段</th><th>主做 AI</th><th>驗證 AI</th><th>Jackie</th><th>小計</th></tr></thead><tbody id="time-table"></tbody><tfoot><tr id="total-row"></tr></tfoot></table></div><p>時間來自本課程《工作流程圖》與《工作流程》（2026-10-16），目前仍為估計，將依實際紀錄校正。動畫的播放長度用於說明交接順序，不代表每個步驟的實際耗時比例。</p><p>視覺依 Jackie 提供的黑板圖：上方老師、下方兩個 AI、往返箭頭與人物旁的工作時間。建立／更新：2026-10-16 · v2.0，歡迎指正。</p></details>
 </main>
 <script>
 (()=>{'use strict';
-const NS='http://www.w3.org/2000/svg', svg=document.getElementById('diagram');
-const C={maker:'#58c4dd',checker:'#83c167',jackie:'#f4d35e',fg:'#eceff4',muted:'#a3acba',line:'#485463'};
-const roles=[{name:'主做 AI',sub:'查證・製作・修正',c:C.maker},{name:'驗證 AI',sub:'獨立查核・複查',c:C.checker},{name:'Jackie',sub:'取捨・驗收・公開',c:C.jackie}];
-const phases=[
- {name:'規劃',start:7,end:21,mins:[80,20,10],tasks:['提案選題 → 查證 → 腳本設計','獨立重查重要條文與判決','選題、取捨見解、確認腳本'],segments:[{r:0,a:.04,b:.43,n:80,label:'主做 AI：先把來源與腳本做出來。'},{r:1,a:.43,b:.67,n:20,label:'驗證 AI：回官方原文，獨立重查。'},{r:2,a:.71,b:.97,n:10,label:'關卡①　Jackie 決定教學取捨，確認腳本。'}]},
- {name:'製作',start:21,end:33,mins:[195,0,0],tasks:['配音15分 ＋ 動畫120分 ＋ 講義60分','本階段不重複製作，下一輪查核','本階段無預估投入'],segments:[{r:0,a:.04,b:.97,n:195,label:'主做 AI：把腳本變成影片與互動講義。'}]},
- {name:'驗證',start:33,end:48,mins:[20,50,12],tasks:['依回饋修正成品','成品交叉查核40分 ＋ 修後複查10分','看片聽唸法、試玩、抽查判決'],segments:[{r:1,a:.03,b:.34,n:40,label:'驗證 AI：先查內容、來源、手機操作與規範。'},{r:2,a:.35,b:.56,n:12,label:'關卡②　Jackie 看影片、聽唸法、試玩與抽查。'},{r:0,a:.57,b:.77,n:20,label:'主做 AI：依回饋修正；驗證者回報、不代改。'},{r:1,a:.78,b:.97,n:10,label:'驗證 AI：再看一次修正處，形成複查迴圈。'}]},
- {name:'發布',start:48,end:60,mins:[30,10,11],tasks:['嵌影片、總覽與網站15分 ＋ 收尾15分','上架後巡檢','上傳10分 ＋ 決定公開1分'],segments:[{r:2,a:.02,b:.26,n:10,label:'關卡③　Jackie 上傳 YouTube，先設不公開。'},{r:0,a:.27,b:.48,n:15,label:'主做 AI：取得網址後嵌入影片、整合總覽。'},{r:1,a:.49,b:.66,n:10,label:'驗證 AI：用正式網址再查一次。'},{r:2,a:.7,b:.79,n:1,label:'最後是否公開，由 Jackie 決定。'},{r:0,a:.81,b:.98,n:15,label:'主做 AI：補交接紀錄，將回饋寫入規則。'}]}
+const $=s=>document.getElementById(s),svg=$('diagram'),NS='http://www.w3.org/2000/svg';
+const colors=['#58c4dd','#83c167','#f4d35e'],fg='#eceff4',muted='#a5b1b6',line='#607277';
+const phaseMinutes=[[80,20,10],[195,0,0],[20,50,12],[30,10,11]],totals=[0,1,2].map(i=>phaseMinutes.reduce((s,p)=>s+p[i],0)),total=totals.reduce((a,b)=>a+b,0);
+const names=['Codex','Claude Code','Jackie'],roleNames=['主做 AI','驗證 AI','教學取捨與公開'];
+const E=[
+ {a:6,b:8,r:2,n:0,path:'assign',tag:'選題',phase:'1 / 4　規劃',title:'你先交辦：這次要教什麼？',detail:'先決定主題與分工。這一集用 Codex 主做、Claude Code 驗證示範。'},
+ {a:8,b:10,r:0,n:80,path:'work0',tag:'腳本',phase:'1 / 4　規劃',title:'主做 AI 查來源，寫出腳本',detail:'選題10分＋條文、判決與歷審查證40分＋腳本及講義設計30分。'},
+ {a:10,b:12,r:1,n:20,path:'send',tag:'初稿',phase:'1 / 4　規劃',title:'① 交稿：另一位 AI 獨立重查',detail:'驗證 AI 重新核對重要來源，不能把主做者的自檢當作獨立驗證。'},
+ {a:12,b:14,r:2,n:10,path:'approve',tag:'腳本',phase:'關卡①',title:'③ 交到你手上：確認腳本',detail:'由你決定案例、見解取捨、教學長度與互動設計，確認後才進入製作。'},
+ {a:14,b:17,r:0,n:15,path:'work0',tag:'配音',phase:'2 / 4　製作',title:'主做 AI：先配音',detail:'估計15分，先取得實際語音時間，再安排畫面。'},
+ {a:17,b:21,r:0,n:120,path:'work0',tag:'動畫',phase:'2 / 4　製作',title:'主做 AI：讓畫面跟著內容動',detail:'動畫、字幕與輸出估計120分，包含機器渲染等待。'},
+ {a:21,b:25,r:0,n:60,path:'work0',tag:'講義',phase:'2 / 4　製作',title:'主做 AI：完成互動講義',detail:'估計60分。這個階段不讓兩個 AI 重複製作同一份成品。'},
+ {a:25,b:29,r:1,n:40,path:'send',tag:'成品',phase:'3 / 4　驗證',title:'① 把成品交給驗證 AI',detail:'獨立檢查法律內容、來源歸屬、影片與手機操作，估計40分。'},
+ {a:29,b:33,r:2,n:12,path:'reviewToYou',tag:'試看',phase:'關卡②',title:'你看片、聽唸法，也親手試玩',detail:'成品閱讀與互動試玩、抽查一則判決的歷審，合計估計12分。'},
+ {a:33,b:36,r:1,n:0,path:'feedback',tag:'意見',phase:'3 / 4　驗證',title:'② 意見送回來：這裡需要修',detail:'驗證者把問題指出來，不直接改主做者的檔案。箭頭回到主做 AI。'},
+ {a:36,b:40,r:0,n:20,path:'work0',tag:'修正',phase:'3 / 4　驗證',title:'主做 AI 依回饋修正',detail:'修正估計20分，讓內容、畫面與操作都對得起教學目的。'},
+ {a:40,b:43,r:1,n:10,path:'send',tag:'修正版',phase:'3 / 4　驗證',title:'① 修正版再交過去，複查一輪',detail:'驗證 AI 確認修正處，估計10分。回饋形成一個真正的往返迴圈。'},
+ {a:43,b:45,r:2,n:0,path:'approve',tag:'修正版',phase:'修正後確認',title:'③ 修正與複查結果，交回你確認',detail:'這次往返沒有另加估計分鐘；你的成品驗收12分已在前面計入。'},
+ {a:45,b:48,r:2,n:10,path:'yourWork',tag:'上傳',phase:'關卡③',title:'你上傳 YouTube，先設不公開',detail:'上傳與填寫資料估計10分，再把影片網址交給主做 AI。'},
+ {a:48,b:52,r:0,n:15,path:'assign',tag:'網址',phase:'4 / 4　發布',title:'網址送下來，主做 AI 整合網站',detail:'嵌入影片、更新總覽並推送網站，估計15分。'},
+ {a:52,b:55,r:1,n:10,path:'send',tag:'網站',phase:'4 / 4　發布',title:'① 上線後，驗證 AI 再巡一次',detail:'用正式網址檢查影片、連結與手機版，估計10分。'},
+ {a:55,b:57,r:2,n:1,path:'reviewToYou',tag:'公開？',phase:'最後決定',title:'是否改成公開，最後仍由你決定',detail:'公開設定估計1分。稿件做完，不等於自動獲得公開授權。'},
+ {a:57,b:60,r:0,n:15,path:'work0',tag:'交接',phase:'4 / 4　收尾',title:'主做 AI 補交接，把回饋寫進規則',detail:'交接紀錄、清單與錯誤規則估計15分，下一次接著改善。'}
 ];
-const totals=roles.map((_,i)=>phases.reduce((s,p)=>s+p.mins[i],0)), total=totals.reduce((a,b)=>a+b,0), duration=72;
-if(total!==438||totals.join(',')!=='325,80,33')throw Error('工時來源加總不一致');
-const pct=totals.map(n=>n/total*100);
-document.getElementById('data-rows').innerHTML=phases.map(p=>'<tr><th scope="row">'+p.name+'</th>'+p.mins.map(n=>'<td>'+n+'</td>').join('')+'<td>'+p.mins.reduce((a,b)=>a+b,0)+'</td></tr>').join('');
-document.getElementById('total-row').innerHTML='<th scope="row">合計</th>'+totals.map(n=>'<td>'+n+'</td>').join('')+'<td>'+total+'</td>';
-function el(tag,attrs={},text){let n=document.createElementNS(NS,tag);for(let[k,v]of Object.entries(attrs))n.setAttribute(k,String(v));if(text!==undefined)n.textContent=text;svg.appendChild(n);return n;}
-function set(n,a){for(let[k,v]of Object.entries(a))n.setAttribute(k,String(v));}
-function text(x,y,s,size=16,anchor='start',color=C.fg){let n=el('text',{x,y,'font-size':size,'text-anchor':anchor},s);n.style.fill=color;return n;}
-function alpha(n,a){n.style.opacity=String(Math.max(0,Math.min(1,a)));}
-const clamp=(x)=>Math.max(0,Math.min(1,x)), smooth=x=>{x=clamp(x);return x*x*(3-2*x);}, mix=(a,b,t)=>a+(b-a)*t;
-let W=900,H=560,compact=false,L=172,TW=650,ys=[190,320,450],nodes=[],axis=[],captionKey='',lastFrame=0,playing=false,time=0,speed=1,raf=0;
-let heading,kicker,axisTitle,connector,packet,stackTitle,stackSub,stackNote,railTotals=[],finalLabels=[],roleSubs=[];
-function wrap(n,s,width,size){n.textContent='';const max=Math.max(5,Math.floor(width/(size*.9))), words=Array.from(s);let lines=[];while(words.length)lines.push(words.splice(0,max).join(''));lines.slice(0,3).forEach((line,i)=>{let t=document.createElementNS(NS,'tspan');t.setAttribute('x',n.getAttribute('x'));t.setAttribute('dy',i?'1.35em':'0');t.textContent=line;n.appendChild(t);});}
+if(totals.join(',')!=='325,80,33'||total!==438)throw Error('估計工時加總不一致');
+$('time-table').innerHTML=phaseMinutes.map((p,i)=>'<tr><th scope="row">'+['規劃','製作','驗證','發布'][i]+'</th>'+p.map(n=>'<td>'+n+'</td>').join('')+'<td>'+p.reduce((a,b)=>a+b,0)+'</td></tr>').join('');$('total-row').innerHTML='<th scope="row">合計</th>'+totals.map(n=>'<td>'+n+'</td>').join('')+'<td>'+total+'</td>';
+const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=clamp(x);return x*x*(3-2*x);};
+function node(tag,a={},s,parent=svg){let n=document.createElementNS(NS,tag);for(let[k,v]of Object.entries(a))n.setAttribute(k,String(v));if(s!==undefined)n.textContent=s;parent.appendChild(n);return n;}
+function attr(n,a){for(let[k,v]of Object.entries(a))n.setAttribute(k,String(v));}
+function txt(x,y,s,size=15,color=fg,anchor='middle',parent=svg){return node('text',{x,y,'font-size':size,fill:color,'text-anchor':anchor},s,parent);}
+function show(n,a){n.style.opacity=String(clamp(a));n.setAttribute('aria-hidden',a<.02?'true':'false');}
+function point(path,u){return path.getPointAtLength(path.getTotalLength()*clamp(u));}
+let W=900,H=520,small=false,people=[],routes={},packet,packetLabel,packetStamp,trace,phaseLabel,summaryTitle,summaryNote,summaryBar,summarySegments=[],summaryShares=[],guideLabels=[],introNote,lastCaption='',lastTs=0,t=0,playing=false,speed=1,raf=0;
+function person(x,y,i){
+ let g=node('g',{'data-person':i}),c=colors[i],r=small?18:22;
+ let halo=node('circle',{cx:x,cy:y,r:r+9,fill:'none',stroke:c,'stroke-width':1.3,'stroke-dasharray':'3 8','stroke-opacity':.6},undefined,g);
+ let head=node('circle',{cx:x,cy:y,r,fill:'#11191b',stroke:fg,'stroke-width':2.2},undefined,g);
+ node('circle',{cx:x-6,cy:y-2,r:1.5,fill:fg},undefined,g);node('circle',{cx:x+6,cy:y-2,r:1.5,fill:fg},undefined,g);
+ node('path',{d:`M ${x-5} ${y+7} Q ${x} ${y+11} ${x+5} ${y+7}`,fill:'none',stroke:fg,'stroke-width':1.3,'stroke-linecap':'round'},undefined,g);
+ let body=node('path',{d:`M ${x} ${y+r+3} L ${x-1} ${y+56}`,stroke:fg,'stroke-width':2.4,'stroke-linecap':'round',fill:'none'},undefined,g);
+ let arms=node('path',{d:'',stroke:fg,'stroke-width':2.2,'stroke-linecap':'round',fill:'none'},undefined,g);
+ const leg=i===2?72:83;node('path',{d:`M ${x-1} ${y+56} L ${x-23} ${y+leg-1} M ${x-1} ${y+56} L ${x+24} ${y+leg}`,stroke:fg,'stroke-width':2.3,'stroke-linecap':'round',fill:'none'},undefined,g);
+ let name=txt(x,i===2?30:242,names[i],small?(i===1?16:17):21,c),role=txt(x,i===2?52:264,roleNames[i],small?13:15,muted),count=txt(x,i===2?74:286,'累積 0 分',small?13:15,c);count.setAttribute('class','count');
+ return{x,y,g,halo,head,body,arms,name,role,count};
+}
 function build(){
- W=Math.max(292,document.getElementById('stage').clientWidth);compact=W<620;H=compact?470:540;L=compact?102:176;TW=W-L-(compact?22:42);ys=compact?[167,267,367]:[180,300,420];
- svg.setAttribute('viewBox','0 0 '+W+' '+H);svg.setAttribute('height',H);svg.replaceChildren();
- let title=el('title',{id:'svg-title'},'三方分工與估計工時動畫'),desc=el('desc',{id:'svg-desc'},'主做AI325分鐘，驗證AI80分鐘，Jackie33分鐘。三方角色依主題輪替。');
- kicker=text(22,29,'一做一驗｜角色依主題輪替',13,'start',C.muted);
- heading=text(22,compact?61:67,'',compact?23:30);
- axisTitle=text(W-24,91,'累積投入（估計分鐘）',12,'end',C.muted);
- axis=[];for(let n of [0,100,200,325]){if(compact&&n===200)continue;let xx=L+TW*n/325;axis.push(el('line',{x1:xx,y1:118,x2:xx,y2:H-40,stroke:C.line,'stroke-opacity':.27}));axis.push(text(xx,112,String(n),12,n===325?'end':n===0?'start':'middle',C.muted));}
- connector=el('path',{fill:'none',stroke:C.muted,'stroke-width':1.4,'stroke-dasharray':'3 7'});
- nodes=[];railTotals=[];roleSubs=[];
- roles.forEach((r,i)=>{
-  let name=text(22,ys[i]-3,r.name,compact?16:19);name.style.fill=r.c;
-  let sub=text(22,ys[i]+23,compact?'':r.sub,12,'start',C.muted);roleSubs.push(sub);
-  let task=text(L,ys[i]-36,'',compact?13:15);
-  let rail=el('rect',{x:L,y:ys[i]+8,width:TW,height:16,rx:2,fill:C.line,'fill-opacity':.25});
-  let bar=el('rect',{x:L,y:ys[i]+8,width:0,height:16,rx:2,fill:r.c});
-  let number=text(L,ys[i]+45,'0 分',compact?16:18);number.classList.add('digit');
-  let delta=text(W-24,ys[i]+45,'',12,'end',C.muted);
-  nodes.push({name,sub,task,rail,bar,number,delta});
+ $('stage').style.scrollMarginTop=(document.querySelector('.controls').getBoundingClientRect().height+12)+'px';
+ W=Math.max(292,$('stage').clientWidth);small=W<620;H=small?510:530;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('height',H);svg.replaceChildren();
+ node('title',{id:'art-title'},'三個人物接力製作教材');node('desc',{id:'art-desc'},'上方Jackie，下方左側Codex主做、右側Claude Code驗證。稿件向右，意見向左，修正後沿弧線交回Jackie。估計工時325、80、33分鐘。');
+ let defs=node('defs');let marker=node('marker',{id:'arrow-tip',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'},undefined,defs);node('path',{d:'M 1 1 L 8 5 L 1 9',fill:'none',stroke:'context-stroke','stroke-width':1.5,'stroke-linecap':'round','stroke-linejoin':'round'},undefined,marker);
+ const lx=W*(small?.30:.27),rx=W*(small?.68:.73),jx=W/2,jy=122,ay=320;
+ const paths={
+  send:`M ${lx+26} 414 C ${W*.44} 448 ${W*.56} 448 ${rx-26} 414`,
+  feedback:`M ${rx-26} 461 C ${W*.56} 484 ${W*.44} 484 ${lx+26} 461`,
+  approve:`M ${lx-40} 380 C 24 365 24 329 24 302 L 24 218 C 24 170 ${jx-80} 150 ${jx-42} 176`,
+  assign:`M ${jx-42} 176 C ${jx-80} 150 24 170 24 218 L 24 302 C 24 329 24 365 ${lx-40} 380`,
+  reviewToYou:`M ${rx+40} 380 C ${W-24} 365 ${W-24} 329 ${W-24} 302 L ${W-24} 218 C ${W-24} 170 ${jx+80} 150 ${jx+42} 176`,
+  work0:`M ${lx+52} 357 C ${lx+60} 357 ${lx+60} 375 ${lx+52} 375 C ${lx+44} 375 ${lx+44} 357 ${lx+52} 357`,
+  yourWork:`M ${jx+54} 159 C ${jx+62} 159 ${jx+62} 177 ${jx+54} 177 C ${jx+46} 177 ${jx+46} 159 ${jx+54} 159`
+ };
+ routes={};for(let[k,d]of Object.entries(paths))routes[k]=node('path',{d,fill:'none',stroke:line,'stroke-width':1.4,'stroke-linecap':'round','marker-end':'url(#arrow-tip)',opacity:0});
+ trace=node('path',{d:'',fill:'none',stroke:fg,'stroke-width':2.4,'stroke-linecap':'round','marker-end':'url(#arrow-tip)'});
+ guideLabels=[txt(W/2,380,'① 交稿',13,muted),txt(W/2,428,'② 回報',13,muted)];
+ people=[person(lx,ay,0),person(rx,ay,1),person(jx,jy,2)];
+ phaseLabel=txt(W/2,small?214:218,'',small?13:14,colors[2]);
+ packet=node('g',{'data-packet':'document'});node('rect',{x:-19,y:-24,width:38,height:48,rx:3,fill:'#172528',stroke:fg,'stroke-width':1.7},undefined,packet);node('path',{d:'M -11 -14 L 7 -14 M -11 -7 L 11 -7 M -11 0 L 9 0',fill:'none',stroke:muted,'stroke-width':1.3},undefined,packet);packetLabel=txt(0,16,'初稿',10,fg,'middle',packet);packetStamp=node('circle',{cx:13,cy:-18,r:6,fill:colors[0],stroke:'#11191b','stroke-width':2},undefined,packet);
+ introNote=txt(W/2,H-8,'稿件 → 查核 → 修正 → 交你確認',small?12:14,muted);
+ summaryTitle=txt(W/2,214,'',small?16:22,fg);
+ summaryNote=txt(W/2,H-5,`估計投入合計 ${total} 分鐘，約 ${(total/60).toFixed(1)} 小時`,small?13:16,muted);
+ summaryBar=node('g');summarySegments=[];let x=20,tw=W-40;for(let i=0;i<3;i++){let ww=tw*totals[i]/total;summarySegments.push(node('rect',{x,y:451,width:ww,height:16,fill:colors[i]},undefined,summaryBar));x+=ww;}
+ summaryShares=[];
+ render(t);
+}
+function state(time){let amounts=[0,0,0],event=null;for(let e of E){if(time>=e.b)amounts[e.r]+=e.n;else if(time>=e.a){amounts[e.r]+=e.n*ease((time-e.a)/(e.b-e.a));event=e;}}return{amounts,event};}
+function render(time){
+ const{amounts,event}=state(time),isIntro=time<6,isEnd=time>=60,endAlpha=ease((time-60)/1.4),introAlpha=1;let current=event?event.r:-1;
+ for(let[k,path]of Object.entries(routes))show(path,isIntro?(['send','feedback','approve'].includes(k)?.28:0):isEnd?(['send','feedback','approve'].includes(k)?.24:0):(event.path===k?.35:(['send','feedback'].includes(k)?.28:0)));
+ guideLabels.forEach((n,i)=>show(n,isIntro?.5:isEnd?0:((event.path===(i?'feedback':'send'))?.8:0)));
+ show(trace,!isIntro&&!isEnd?1:0);show(packet,!isIntro&&!isEnd?1:0);
+ if(event){let u=clamp((time-event.a)/(event.b-event.a)),path=routes[event.path],len=path.getTotalLength(),q=point(path,ease(u));attr(trace,{d:path.getAttribute('d'),stroke:colors[event.r],'stroke-dasharray':len,'stroke-dashoffset':len*(1-ease(u))});attr(packet,{transform:`translate(${q.x},${q.y}) rotate(${Math.sin(u*Math.PI)*-7})`});packetLabel.textContent=event.tag;attr(packetStamp,{fill:colors[event.r]});}
+ people.forEach((p,i)=>{
+  show(p.g,introAlpha);show(p.name,introAlpha);show(p.role,introAlpha);show(p.count,introAlpha);p.count.textContent=isEnd?totals[i]+' 分 · '+(totals[i]/total*100).toFixed(1)+'%':'累積 '+Math.round(amounts[i])+' 分';
+  let active=current===i&&!isEnd,gesture=active?Math.sin(clamp((time-event.a)/(event.b-event.a))*Math.PI):0;
+  attr(p.halo,{'stroke-opacity':active?.7:.1,'stroke-dashoffset':active?-time*12:0});attr(p.head,{stroke:active?colors[i]:fg});
+  let leftY=p.y+49-(i===1?gesture*19:0),rightY=p.y+49-(i!==1?gesture*19:0);
+  attr(p.arms,{d:`M ${p.x} ${p.y+30} L ${p.x-28} ${leftY} M ${p.x} ${p.y+30} L ${p.x+28} ${rightY}`});
  });
- packet=el('circle',{r:5,fill:C.fg});
- stackTitle=text(W/2,156,'一個主題，三種投入',compact?21:28,'middle');
- stackSub=text(W/2,190,'',compact?14:18,'middle',C.muted);
- finalLabels=[];
- roles.forEach((r,i)=>{let x=(W-40)*(i+.5)/3+20;let path=el('path',{fill:'none',stroke:r.c,'stroke-width':1.2,'stroke-opacity':.6});let role=text(x,326,r.name,compact?14:18,'middle');let value=text(x,361,totals[i]+' 分',compact?20:26,'middle');let share=text(x,390,pct[i].toFixed(1)+'%',compact?15:18,'middle',C.muted);value.classList.add('digit');finalLabels.push({path,role,value,share,x});});
- stackNote=text(W/2,451,'投入合計 '+total+' 分鐘 ≈ '+(total/60).toFixed(1)+' 小時',compact?16:23,'middle');
- render(time);
+ show(summaryTitle,endAlpha);show(summaryBar,endAlpha);show(summaryNote,endAlpha);summaryShares.forEach(n=>show(n,endAlpha));show(introNote,isIntro?introAlpha:0);
+ phaseLabel.textContent=isIntro?'你定方向，兩個 AI 接力':isEnd?'工作量有分配，教學取捨由你把關':event.phase;show(phaseLabel,isEnd?0:1);
+ let key=isIntro?'intro':isEnd?'end':event.a;
+ if(key!==lastCaption){$('phase').textContent=isIntro?'先認識三位角色':isEnd?'一起完成':event.phase;$('action').textContent=isIntro?'上方是你，下方是兩個 AI':isEnd?'主做325分・驗證80分・你33分':event.title;$('detail').textContent=isIntro?'看稿件怎麼交出去、意見怎麼送回來，最後由你確認。三種顏色從人物一路跟到稿件。':isEnd?'估計占比74.2%／18.3%／7.5%。AI負責製作與查核；你把住教學取捨、驗收和公開。':event.detail;lastCaption=key;}
+ $('seek').value=String(time);$('seek').setAttribute('aria-valuetext',clock(time)+'，'+(isIntro?'三位角色':isEnd?'時間占比':event.title));$('clock').textContent=clock(time)+' / 1:12';
+ let buttons=[...document.querySelectorAll('[data-time]')];buttons.forEach((b,i)=>{let a=Number(b.dataset.time),end=i+1<buttons.length?Number(buttons[i+1].dataset.time):73;if(time>=a&&time<end)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
 }
-function phaseState(t){
- let cumulative=[0,0,0], p=null, index=-1, u=0, active=null;
- phases.forEach((ph,j)=>{if(t>=ph.end)ph.mins.forEach((n,i)=>cumulative[i]+=n);else if(t>=ph.start){p=ph;index=j;u=(t-ph.start)/(ph.end-ph.start);for(let e of ph.segments){let f=smooth((u-e.a)/(e.b-e.a));cumulative[e.r]+=e.n*f;if(u>=e.a&&u<=e.b)active=e;}}});
- return{cumulative,p,index,u,active};
-}
-function render(t){
- const {cumulative,p,index,u,active}=phaseState(t), intro=t<7, morph=smooth((t-60)/3.2), finished=t>=60;
- heading.textContent=intro?'先做出來，再獨立查核':finished?'三方投入，最後由你決定':(index+1)+' / 4　'+p.name;
- heading.style.opacity=String(1-morph);kicker.style.opacity=String(1-morph);axisTitle.style.opacity=String(1-morph);
- axis.forEach(n=>alpha(n,1-morph));
- let curRole=active?active.r:-1;
- // 同一組長條：先累積投入，再連續移成一條438分鐘的分配帶。
- let stackX=compact?22:42, stackW=W-stackX*2, prefix=0;
- nodes.forEach((n,i)=>{
-  const val=intro?0:cumulative[i], fromWidth=TW*val/325, toWidth=stackW*totals[i]/total, toX=stackX+stackW*prefix/total;
-  set(n.bar,{x:mix(L,toX,morph),y:mix(ys[i]+8,236,morph),width:mix(fromWidth,toWidth,morph),height:mix(16,32,morph)});prefix+=totals[i];
-  n.name.style.opacity=String(1-morph);n.sub.style.opacity=String(1-morph);n.task.style.opacity=String(1-morph);n.rail.style.opacity=String((intro?.4:1)*(1-morph));n.number.style.opacity=String(1-morph);n.delta.style.opacity=String(1-morph);
-  n.number.textContent=Math.round(val)+' 分';n.number.style.fill=curRole===i?roles[i].c:C.fg;
-  let msg=intro?['做來源、腳本、影片與講義','獨立重查，回報問題','確認腳本、驗收、決定公開'][i]:(p?p.tasks[i]:'');
-  wrap(n.task,msg,TW,compact?13:15);n.delta.textContent=p?'本階段 '+p.mins[i]+' 分':'';
- });
- // 光點只指當前交接；不是工時長度或犯罪機率之類的數量。
- let px=compact?82:145, py=ys[0]+14;
- if(active)py=ys[active.r]+14;else if(p){let previous=p.segments.filter(e=>u>e.b).at(-1),next=p.segments.find(e=>u<e.a);if(previous&&next)py=mix(ys[previous.r]+14,ys[next.r]+14,smooth((u-previous.b)/(next.a-previous.b)));else if(next)py=ys[next.r]+14;}
- set(connector,{d:'M '+px+' '+(ys[0]+14)+' L '+px+' '+(ys[2]+14)});alpha(connector,(intro?.3:.7)*(1-morph));
- set(packet,{cx:px,cy:py,fill:curRole<0?C.fg:roles[curRole].c});alpha(packet,intro?smooth(t/1.2)*(1-morph):(1-morph));
- [stackTitle,stackSub,stackNote].forEach(n=>alpha(n,morph));stackSub.textContent='影片 ＋ 互動講義｜估計值，待實測校正';
- prefix=0;finalLabels.forEach((f,i)=>{let sx=stackX+stackW*(prefix+totals[i]/2)/total;prefix+=totals[i];set(f.path,{d:'M '+sx+' 276 L '+sx+' 291 L '+f.x+' 310'});for(let n of Object.values(f))if(n&&n.nodeType)alpha(n,morph);});
- let main='',sub='',key='';
- if(intro){main='主做把內容做出來，驗證另查一輪；你把住教學與公開。';sub='按播放觀看三方交接，也可點下方段落。';key='intro';}
- else if(finished){main='你的投入約 '+pct[2].toFixed(1)+'%，但教學取捨與公開仍由你決定。';sub='438 分鐘是三方投入加總，不是完成前必須等待的時間。';key='final';}
- else{let next=p.segments.find(e=>u<e.a);main=active?active.label:next?next.label:'本階段完成，接著交給下一輪。';sub='本階段估計：主做 '+p.mins[0]+' 分／驗證 '+p.mins[1]+' 分／Jackie '+p.mins[2]+' 分';key=index+'-'+main;}
- if(key!==captionKey){document.getElementById('caption').replaceChildren(document.createTextNode(main));let s=document.createElement('span');s.textContent=sub;document.getElementById('caption').append(s);captionKey=key;}
- document.getElementById('seek').value=String(t);document.getElementById('seek').setAttribute('aria-valuetext',clock(t)+'，'+(intro?'三方分工':finished?'時間占比':p.name));
- document.getElementById('clock').textContent=clock(t)+' / 1:12';
- document.querySelectorAll('[data-time]').forEach(b=>{const target=Number(b.dataset.time),next=[7,21,33,48,60,73].find(n=>n>target);if(t>=target&&t<next)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
-}
-function clock(t){let n=Math.floor(t);return Math.floor(n/60)+':'+String(n%60).padStart(2,'0');}
-function stop(){playing=false;cancelAnimationFrame(raf);document.getElementById('play').textContent=time>=duration?'再播一次':'繼續播放';}
-function tick(ts){if(!playing)return;if(lastFrame)time=Math.min(duration,time+(ts-lastFrame)/1000*speed);lastFrame=ts;render(time);if(time>=duration){stop();return;}raf=requestAnimationFrame(tick);}
-function play(){if(time>=duration)time=0;playing=true;lastFrame=0;document.getElementById('play').textContent='暫停';raf=requestAnimationFrame(tick);}
-document.getElementById('play').addEventListener('click',()=>playing?stop():play());
-document.getElementById('restart').addEventListener('click',()=>{stop();time=0;render(time);play();});
-document.getElementById('seek').addEventListener('input',e=>{time=Number(e.target.value);lastFrame=0;render(time);if(time>=duration)stop();});
-document.getElementById('speed').addEventListener('change',e=>{speed=Number(e.target.value);lastFrame=0;});
-document.querySelectorAll('[data-time]').forEach(b=>b.addEventListener('click',()=>{time=Number(b.dataset.time);lastFrame=0;render(time);if(!playing)document.getElementById('play').textContent='播放這一段';}));
-document.addEventListener('visibilitychange',()=>{lastFrame=0;if(document.hidden&&playing)stop();});
-new ResizeObserver(build).observe(document.getElementById('stage'));
-build();
+function clock(n){n=Math.floor(n);return Math.floor(n/60)+':'+String(n%60).padStart(2,'0');}
+function stop(){playing=false;cancelAnimationFrame(raf);$('play').textContent=t>=72?'再播一次':'繼續播放';}
+function frame(ts){if(!playing)return;if(lastTs)t=Math.min(72,t+(ts-lastTs)/1000*speed);lastTs=ts;render(t);if(t>=72){stop();return;}raf=requestAnimationFrame(frame);}
+function alignView(){$('stage').style.scrollMarginTop=(document.querySelector('.controls').getBoundingClientRect().height+12)+'px';$('stage').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
+function play(){if(t>=72)t=0;lastTs=0;playing=true;$('play').textContent='暫停';alignView();raf=requestAnimationFrame(frame);}
+$('play').addEventListener('click',()=>playing?stop():play());$('restart').addEventListener('click',()=>{stop();t=0;render(t);play();});
+$('seek').addEventListener('input',e=>{t=Number(e.target.value);lastTs=0;render(t);if(t>=72)stop();});$('speed').addEventListener('change',e=>{speed=Number(e.target.value);lastTs=0;});
+document.querySelectorAll('[data-time]').forEach(b=>b.addEventListener('click',()=>{t=Number(b.dataset.time);lastTs=0;render(t);if(!playing)$('play').textContent='播放這一段';alignView();}));
+document.addEventListener('visibilitychange',()=>{lastTs=0;if(document.hidden&&playing)stop();});new ResizeObserver(build).observe($('stage'));build();
 })();
 </script>
-</body>
-</html>
+</body></html>

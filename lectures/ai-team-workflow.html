@@ -11,43 +11,48 @@
 </head>
 <body><main>
 <a class="back" href="https://mjib007.github.io/criminal-law-interpretation/">← 回教材總覽</a>
-<header><h1>一做一驗，三方接力</h1><small>人物動畫 v2.0 · 2026-10-16</small></header>
+<header><h1>一做一驗，三方接力</h1><small>人物動畫 v2.1 · 2026-10-17（加旁白、改實際工時）</small></header>
 <p class="intro">稿件交過去，意見送回來，修正後再交到你手上。</p>
-<div class="controls" aria-label="動畫播放控制"><button id="play" type="button">播放動畫</button><button id="restart" type="button" aria-label="從頭重播">重播</button><span id="clock">0:00 / 1:12</span><input id="seek" type="range" min="0" max="72" step="0.1" value="0" aria-label="動畫進度，秒"><label class="speed-label" for="speed">速度</label><select id="speed" aria-label="播放速度"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select></div>
+<div class="controls" aria-label="動畫播放控制"><button id="play" type="button">播放動畫</button><button id="restart" type="button" aria-label="從頭重播">重播</button><span id="clock">0:00 / 1:12</span><input id="seek" type="range" min="0" max="72" step="0.1" value="0" aria-label="動畫進度，秒"><label class="speed-label" for="speed">速度</label><select id="speed" aria-label="播放速度"><option value="1">1×</option><option value="1.5">1.5×</option><option value="2">2×</option></select><button id="narr" type="button" aria-pressed="true">🔊 旁白：開</button><audio id="voice" src="../assets/ai-team-workflow-narration.mp3" preload="auto"></audio></div>
 <div id="stage"><svg id="diagram" role="img" aria-labelledby="art-title art-desc"></svg></div>
 <div aria-live="polite"><div class="step-line"><span id="phase"></span><span id="action"></span></div><p id="detail"></p></div>
 <nav class="chapters" aria-label="選擇動畫段落"><button type="button" data-time="0">三位角色</button><button type="button" data-time="6">規劃確認</button><button type="button" data-time="14">製作教材</button><button type="button" data-time="25">交稿查核</button><button type="button" data-time="33">退回修正</button><button type="button" data-time="43">交你確認</button><button type="button" data-time="45">發布接力</button><button type="button" data-time="60">時間占比</button></nav>
-<p class="note">以 Codex 主做、Claude Code 驗證示範，角色可依主題互換。工時為估計值，包含配音與渲染等待；三方投入加總不等於日曆經過時間。</p>
-<details><summary>工作內容、工時與來源</summary><p class="explanation">主做 AI 做查證、腳本、影片與講義，並依回饋修正。驗證 AI 獨立查核與複查，回報問題，由主做者修改。你負責教學取捨、確認腳本、看片聽唸法、試玩與抽查，並上傳影片、決定公開。</p><div class="table-wrap"><table><caption>一個主題：影片＋互動講義；估計分鐘</caption><thead><tr><th>階段</th><th>主做 AI</th><th>驗證 AI</th><th>Jackie</th><th>小計</th></tr></thead><tbody id="time-table"></tbody><tfoot><tr id="total-row"></tr></tfoot></table></div><p>時間來自本課程《工作流程圖》與《工作流程》（2026-10-16），目前仍為估計，將依實際紀錄校正。動畫的播放長度用於說明交接順序，不代表每個步驟的實際耗時比例。</p><p>視覺依 Jackie 提供的黑板圖：上方老師、下方兩個 AI、往返箭頭與人物旁的工作時間。建立／更新：2026-10-16 · v2.0，歡迎指正。</p></details>
+<p class="note">角色依主題互換（緊急避難：影片由 Claude Code 主做、講義由 Codex 主做，互相驗證）。工時為緊急避難一集到目前的實際紀錄，包含配音與輸出等待；驗收10分為估計，影片驗證、修正與發布尚未完成。</p>
+<details><summary>工作內容、工時與來源</summary><p class="explanation">主做 AI 做查證、腳本、影片與講義，並依回饋修正。驗證 AI 獨立查核與複查，回報問題，由主做者修改。你負責教學取捨、確認腳本、看片聽唸法、試玩與抽查，並上傳影片、決定公開。</p><div class="table-wrap"><table><caption>緊急避難一集：影片＋互動講義；實際分鐘（至2026-10-17）</caption><thead><tr><th>階段</th><th>主做 AI</th><th>驗證 AI</th><th>Jackie</th><th>小計</th></tr></thead><tbody id="time-table"></tbody><tfoot><tr id="total-row"></tr></tfoot></table></div><p>時間來自《工時紀錄》緊急避難一集（2026-10-16～17）。Jackie 驗收10分為估計；影片驗證、修正與發布完成後再更新。動畫的播放長度用於說明交接順序，不代表每個步驟的實際耗時比例。</p><p>視覺依 Jackie 提供的黑板圖：上方老師、下方兩個 AI、往返箭頭與人物旁的工作時間。建立：2026-10-16；更新：2026-10-17 · v2.1（加入旁白、改為實際工時），歡迎指正。</p></details>
 </main>
 <script>
 (()=>{'use strict';
 const $=s=>document.getElementById(s),svg=$('diagram'),NS='http://www.w3.org/2000/svg';
 const colors=['#58c4dd','#83c167','#f4d35e'],fg='#eceff4',muted='#a5b1b6',line='#607277';
-const phaseMinutes=[[80,20,10],[195,0,0],[20,50,12],[30,10,11]],totals=[0,1,2].map(i=>phaseMinutes.reduce((s,p)=>s+p[i],0)),total=totals.reduce((a,b)=>a+b,0);
-const names=['Codex','Claude Code','Jackie'],roleNames=['主做 AI','驗證 AI','教學取捨與公開'];
+const phaseMinutes=[[7,0,4],[53,0,0],[0,2,10],[0,0,3]],totals=[0,1,2].map(i=>phaseMinutes.reduce((s,p)=>s+p[i],0)),total=totals.reduce((a,b)=>a+b,0);
+const names=['主做 AI','驗證 AI','Jackie'],roleNames=['Claude 或 Codex','另一位 AI','教學取捨與公開'];
 const E=[
- {a:6,b:8,r:2,n:0,path:'assign',tag:'選題',phase:'1 / 4　規劃',title:'你先交辦：這次要教什麼？',detail:'先決定主題與分工。這一集用 Codex 主做、Claude Code 驗證示範。'},
- {a:8,b:10,r:0,n:80,path:'work0',tag:'腳本',phase:'1 / 4　規劃',title:'主做 AI 查來源，寫出腳本',detail:'選題10分＋條文、判決與歷審查證40分＋腳本及講義設計30分。'},
- {a:10,b:12,r:1,n:20,path:'send',tag:'初稿',phase:'1 / 4　規劃',title:'① 交稿：另一位 AI 獨立重查',detail:'驗證 AI 重新核對重要來源，不能把主做者的自檢當作獨立驗證。'},
- {a:12,b:14,r:2,n:10,path:'approve',tag:'腳本',phase:'關卡①',title:'③ 交到你手上：確認腳本',detail:'由你決定案例、見解取捨、教學長度與互動設計，確認後才進入製作。'},
- {a:14,b:17,r:0,n:15,path:'work0',tag:'配音',phase:'2 / 4　製作',title:'主做 AI：先配音',detail:'估計15分，先取得實際語音時間，再安排畫面。'},
- {a:17,b:21,r:0,n:120,path:'work0',tag:'動畫',phase:'2 / 4　製作',title:'主做 AI：讓畫面跟著內容動',detail:'動畫、字幕與輸出估計120分，包含機器渲染等待。'},
- {a:21,b:25,r:0,n:60,path:'work0',tag:'講義',phase:'2 / 4　製作',title:'主做 AI：完成互動講義',detail:'估計60分。這個階段不讓兩個 AI 重複製作同一份成品。'},
- {a:25,b:29,r:1,n:40,path:'send',tag:'成品',phase:'3 / 4　驗證',title:'① 把成品交給驗證 AI',detail:'獨立檢查法律內容、來源歸屬、影片與手機操作，估計40分。'},
- {a:29,b:33,r:2,n:12,path:'reviewToYou',tag:'試看',phase:'關卡②',title:'你看片、聽唸法，也親手試玩',detail:'成品閱讀與互動試玩、抽查一則判決的歷審，合計估計12分。'},
- {a:33,b:36,r:1,n:0,path:'feedback',tag:'意見',phase:'3 / 4　驗證',title:'② 意見送回來：這裡需要修',detail:'驗證者把問題指出來，不直接改主做者的檔案。箭頭回到主做 AI。'},
- {a:36,b:40,r:0,n:20,path:'work0',tag:'修正',phase:'3 / 4　驗證',title:'主做 AI 依回饋修正',detail:'修正估計20分，讓內容、畫面與操作都對得起教學目的。'},
- {a:40,b:43,r:1,n:10,path:'send',tag:'修正版',phase:'3 / 4　驗證',title:'① 修正版再交過去，複查一輪',detail:'驗證 AI 確認修正處，估計10分。回饋形成一個真正的往返迴圈。'},
- {a:43,b:45,r:2,n:0,path:'approve',tag:'修正版',phase:'修正後確認',title:'③ 修正與複查結果，交回你確認',detail:'這次往返沒有另加估計分鐘；你的成品驗收12分已在前面計入。'},
- {a:45,b:48,r:2,n:10,path:'yourWork',tag:'上傳',phase:'關卡③',title:'你上傳 YouTube，先設不公開',detail:'上傳與填寫資料估計10分，再把影片網址交給主做 AI。'},
- {a:48,b:52,r:0,n:15,path:'assign',tag:'網址',phase:'4 / 4　發布',title:'網址送下來，主做 AI 整合網站',detail:'嵌入影片、更新總覽並推送網站，估計15分。'},
- {a:52,b:55,r:1,n:10,path:'send',tag:'網站',phase:'4 / 4　發布',title:'① 上線後，驗證 AI 再巡一次',detail:'用正式網址檢查影片、連結與手機版，估計10分。'},
- {a:55,b:57,r:2,n:1,path:'reviewToYou',tag:'公開？',phase:'最後決定',title:'是否改成公開，最後仍由你決定',detail:'公開設定估計1分。稿件做完，不等於自動獲得公開授權。'},
- {a:57,b:60,r:0,n:15,path:'work0',tag:'交接',phase:'4 / 4　收尾',title:'主做 AI 補交接，把回饋寫進規則',detail:'交接紀錄、清單與錯誤規則估計15分，下一次接著改善。'}
+ {a:6,b:8,r:2,n:0,path:'assign',tag:'選題',phase:'1 / 4　規劃',title:'你先交辦：這次要教什麼？',detail:'先決定主題，也決定誰主做、誰驗證。'},
+ {a:8,b:10,r:0,n:7,path:'work0',tag:'腳本',phase:'1 / 4　規劃',title:'主做 AI 查來源，寫出腳本',detail:'緊急避難：選題2分＋條文、判決與歷審查證4分＋腳本初稿1分，實際7分。'},
+ {a:10,b:12,r:1,n:0,path:'send',tag:'初稿',phase:'1 / 4　規劃',title:'① 交稿：另一位 AI 獨立重查',detail:'主做者自己的檢查，不能當作獨立驗證。這一集的腳本重查尚未記錄時間。'},
+ {a:12,b:14,r:2,n:4,path:'approve',tag:'腳本',phase:'關卡①',title:'③ 交到你手上：確認腳本',detail:'案例、見解取捨、長度與互動設計由你決定。實際4分。'},
+ {a:14,b:17,r:0,n:3,path:'work0',tag:'配音',phase:'2 / 4　製作',title:'主做 AI：先配音',detail:'實際3分，其中約2分是語音合成。'},
+ {a:17,b:21,r:0,n:33,path:'work0',tag:'動畫',phase:'2 / 4　製作',title:'主做 AI：讓畫面跟著內容動',detail:'動畫與檢查16分＋電腦輸出15分＋上傳資料2分，實際33分。'},
+ {a:21,b:25,r:0,n:17,path:'work0',tag:'講義',phase:'2 / 4　製作',title:'主做 AI：完成互動講義',detail:'實際約17分。兩個 AI 不重複製作同一份成品。'},
+ {a:25,b:29,r:1,n:2,path:'send',tag:'成品',phase:'3 / 4　驗證',title:'① 把成品交給驗證 AI',detail:'獨立檢查法律內容、來源、影片與手機操作。講義驗證實際2分；影片驗證進行中。'},
+ {a:29,b:33,r:2,n:10,path:'reviewToYou',tag:'試看',phase:'關卡②',title:'你看片、聽唸法，也親手試玩',detail:'閱讀、試玩並抽查一則判決的歷審，先估計約10分。'},
+ {a:33,b:36,r:1,n:0,path:'feedback',tag:'意見',phase:'3 / 4　驗證',title:'② 意見送回來：這裡需要修',detail:'例如這一集抓到：影片把「出發時有未飲酒的人」說成「車上有人可開」。驗證者只回報，不改主做者的檔案。'},
+ {a:36,b:40,r:0,n:0,path:'work0',tag:'修正',phase:'3 / 4　驗證',title:'主做 AI 依回饋修正',detail:'這一集的修正進行中，時間尚未記錄。'},
+ {a:40,b:43,r:1,n:0,path:'send',tag:'修正版',phase:'3 / 4　驗證',title:'① 修正版再交過去，複查一輪',detail:'驗證 AI 確認修正處，回饋形成真正的往返迴圈。'},
+ {a:43,b:45,r:2,n:0,path:'approve',tag:'修正版',phase:'修正後確認',title:'③ 修正與複查結果，交回你確認',detail:'你的驗收時間已在前面計入。'},
+ {a:45,b:48,r:2,n:3,path:'yourWork',tag:'上傳',phase:'關卡③',title:'你上傳 YouTube，先設不公開',detail:'實際3分，再把影片網址交給主做 AI。'},
+ {a:48,b:52,r:0,n:0,path:'assign',tag:'網址',phase:'4 / 4　發布',title:'網址送下來，主做 AI 整合網站',detail:'嵌入影片、更新總覽並推送網站；這一集尚未發布。'},
+ {a:52,b:55,r:1,n:0,path:'send',tag:'網站',phase:'4 / 4　發布',title:'① 上線後，驗證 AI 再巡一次',detail:'用正式網址檢查影片、連結與手機版。'},
+ {a:55,b:57,r:2,n:0,path:'reviewToYou',tag:'公開？',phase:'最後決定',title:'是否改成公開，最後仍由你決定',detail:'稿件做完，不等於自動獲得公開授權。'},
+ {a:57,b:60,r:0,n:0,path:'work0',tag:'交接',phase:'4 / 4　收尾',title:'主做 AI 補交接，把回饋寫進規則',detail:'交接紀錄與錯誤規則，讓下一次接著改善。'}
 ];
-if(totals.join(',')!=='325,80,33'||total!==438)throw Error('估計工時加總不一致');
+if(totals.join(',')!=='60,2,17'||total!==79)throw Error('實際工時加總不一致');
 $('time-table').innerHTML=phaseMinutes.map((p,i)=>'<tr><th scope="row">'+['規劃','製作','驗證','發布'][i]+'</th>'+p.map(n=>'<td>'+n+'</td>').join('')+'<td>'+p.reduce((a,b)=>a+b,0)+'</td></tr>').join('');$('total-row').innerHTML='<th scope="row">合計</th>'+totals.map(n=>'<td>'+n+'</td>').join('')+'<td>'+total+'</td>';
+const MAP=[[0.0, 12.024, 0, 6], [12.374, 20.078, 6, 8], [20.428, 30.892, 8, 10], [31.242, 39.018, 10, 12], [39.368, 50.216, 12, 14], [50.566, 56.926, 14, 17], [57.276, 66.708, 17, 21], [67.058, 74.114, 21, 25], [74.464, 87.304, 25, 29], [87.654, 96.534, 29, 33], [96.884, 106.796, 33, 36], [107.146, 112.858, 36, 40], [113.208, 118.44, 40, 43], [118.79, 122.702, 43, 45], [123.052, 128.788, 45, 48], [129.138, 135.882, 48, 52], [136.232, 141.248, 52, 55], [141.598, 145.366, 55, 57], [145.716, 152.94, 57, 60], [153.29, 171.626, 60, 72]],AUD=171.63;
+const voice=$('voice');let narr=true;
+function a2t(x){for(const[s0,s1,a,b]of MAP){if(x>=s0-.01&&x<=s1+.36)return x>=s1?b:a+(x-s0)/(s1-s0)*(b-a);}return x<=0?0:72;}
+function t2a(t){if(t>=72)return MAP[MAP.length-1][1];for(const[s0,s1,a,b]of MAP){if(t>=a&&t<b)return s0+(t-a)/(b-a)*(s1-s0);}return 0;}
+function narrBtn(){$('narr').textContent=narr?'🔊 旁白：開':'🔇 旁白：關';$('narr').setAttribute('aria-pressed',String(narr));}
 const clamp=x=>Math.max(0,Math.min(1,x)),ease=x=>{x=clamp(x);return x*x*(3-2*x);};
 function node(tag,a={},s,parent=svg){let n=document.createElementNS(NS,tag);for(let[k,v]of Object.entries(a))n.setAttribute(k,String(v));if(s!==undefined)n.textContent=s;parent.appendChild(n);return n;}
 function attr(n,a){for(let[k,v]of Object.entries(a))n.setAttribute(k,String(v));}
@@ -70,7 +75,7 @@ function person(x,y,i){
 function build(){
  $('stage').style.scrollMarginTop=(document.querySelector('.controls').getBoundingClientRect().height+12)+'px';
  W=Math.max(292,$('stage').clientWidth);small=W<620;H=small?510:530;svg.setAttribute('viewBox',`0 0 ${W} ${H}`);svg.setAttribute('height',H);svg.replaceChildren();
- node('title',{id:'art-title'},'三個人物接力製作教材');node('desc',{id:'art-desc'},'上方Jackie，下方左側Codex主做、右側Claude Code驗證。稿件向右，意見向左，修正後沿弧線交回Jackie。估計工時325、80、33分鐘。');
+ node('title',{id:'art-title'},'三個人物接力製作教材');node('desc',{id:'art-desc'},'上方Jackie，下方左側主做AI、右側驗證AI。稿件向右，意見向左，修正後沿弧線交回Jackie。緊急避難一集實際工時60、2、17分鐘。');
  let defs=node('defs');let marker=node('marker',{id:'arrow-tip',viewBox:'0 0 10 10',refX:8,refY:5,markerWidth:6,markerHeight:6,orient:'auto-start-reverse'},undefined,defs);node('path',{d:'M 1 1 L 8 5 L 1 9',fill:'none',stroke:'context-stroke','stroke-width':1.5,'stroke-linecap':'round','stroke-linejoin':'round'},undefined,marker);
  const lx=W*(small?.30:.27),rx=W*(small?.68:.73),jx=W/2,jy=122,ay=320;
  const paths={
@@ -90,7 +95,7 @@ function build(){
  packet=node('g',{'data-packet':'document'});node('rect',{x:-19,y:-24,width:38,height:48,rx:3,fill:'#172528',stroke:fg,'stroke-width':1.7},undefined,packet);node('path',{d:'M -11 -14 L 7 -14 M -11 -7 L 11 -7 M -11 0 L 9 0',fill:'none',stroke:muted,'stroke-width':1.3},undefined,packet);packetLabel=txt(0,16,'初稿',10,fg,'middle',packet);packetStamp=node('circle',{cx:13,cy:-18,r:6,fill:colors[0],stroke:'#11191b','stroke-width':2},undefined,packet);
  introNote=txt(W/2,H-8,'稿件 → 查核 → 修正 → 交你確認',small?12:14,muted);
  summaryTitle=txt(W/2,214,'',small?16:22,fg);
- summaryNote=txt(W/2,H-5,`估計投入合計 ${total} 分鐘，約 ${(total/60).toFixed(1)} 小時`,small?13:16,muted);
+ summaryNote=txt(W/2,H-5,`實際投入合計 ${total} 分鐘，約 ${(total/60).toFixed(1)} 小時`,small?13:16,muted);
  summaryBar=node('g');summarySegments=[];let x=20,tw=W-40;for(let i=0;i<3;i++){let ww=tw*totals[i]/total;summarySegments.push(node('rect',{x,y:451,width:ww,height:16,fill:colors[i]},undefined,summaryBar));x+=ww;}
  summaryShares=[];
  render(t);
@@ -112,18 +117,19 @@ function render(time){
  show(summaryTitle,endAlpha);show(summaryBar,endAlpha);show(summaryNote,endAlpha);summaryShares.forEach(n=>show(n,endAlpha));show(introNote,isIntro?introAlpha:0);
  phaseLabel.textContent=isIntro?'你定方向，兩個 AI 接力':isEnd?'工作量有分配，教學取捨由你把關':event.phase;show(phaseLabel,isEnd?0:1);
  let key=isIntro?'intro':isEnd?'end':event.a;
- if(key!==lastCaption){$('phase').textContent=isIntro?'先認識三位角色':isEnd?'一起完成':event.phase;$('action').textContent=isIntro?'上方是你，下方是兩個 AI':isEnd?'主做325分・驗證80分・你33分':event.title;$('detail').textContent=isIntro?'看稿件怎麼交出去、意見怎麼送回來，最後由你確認。三種顏色從人物一路跟到稿件。':isEnd?'估計占比74.2%／18.3%／7.5%。AI負責製作與查核；你把住教學取捨、驗收和公開。':event.detail;lastCaption=key;}
- $('seek').value=String(time);$('seek').setAttribute('aria-valuetext',clock(time)+'，'+(isIntro?'三位角色':isEnd?'時間占比':event.title));$('clock').textContent=clock(time)+' / 1:12';
+ if(key!==lastCaption){$('phase').textContent=isIntro?'先認識三位角色':isEnd?'一起完成':event.phase;$('action').textContent=isIntro?'上方是你，下方是兩個 AI':isEnd?'主做60分・驗證2分・你17分':event.title;$('detail').textContent=isIntro?'看稿件怎麼交出去、意見怎麼送回來，最後由你確認。三種顏色從人物一路跟到稿件。':isEnd?'緊急避難一集到目前的實際紀錄：75.9%／2.5%／21.5%（驗收10分為估計；修正與發布尚未完成）。你把住教學取捨、驗收和公開。':event.detail;lastCaption=key;}
+ $('seek').value=String(time);$('seek').setAttribute('aria-valuetext',clock(time)+'，'+(isIntro?'三位角色':isEnd?'時間占比':event.title));$('clock').textContent=narr?clock(t2a(time))+' / '+clock(AUD):clock(time)+' / 1:12';
  let buttons=[...document.querySelectorAll('[data-time]')];buttons.forEach((b,i)=>{let a=Number(b.dataset.time),end=i+1<buttons.length?Number(buttons[i+1].dataset.time):73;if(time>=a&&time<end)b.setAttribute('aria-current','step');else b.removeAttribute('aria-current');});
 }
 function clock(n){n=Math.floor(n);return Math.floor(n/60)+':'+String(n%60).padStart(2,'0');}
-function stop(){playing=false;cancelAnimationFrame(raf);$('play').textContent=t>=72?'再播一次':'繼續播放';}
-function frame(ts){if(!playing)return;if(lastTs)t=Math.min(72,t+(ts-lastTs)/1000*speed);lastTs=ts;render(t);if(t>=72){stop();return;}raf=requestAnimationFrame(frame);}
+function stop(){playing=false;cancelAnimationFrame(raf);voice.pause();$('play').textContent=t>=72?'再播一次':'繼續播放';}
+function frame(ts){if(!playing)return;if(narr){t=voice.ended?72:Math.min(72,a2t(voice.currentTime));}else if(lastTs)t=Math.min(72,t+(ts-lastTs)/1000*speed);lastTs=ts;render(t);if(t>=72){stop();return;}raf=requestAnimationFrame(frame);}
 function alignView(){$('stage').style.scrollMarginTop=(document.querySelector('.controls').getBoundingClientRect().height+12)+'px';$('stage').scrollIntoView({block:'start',behavior:matchMedia('(prefers-reduced-motion: reduce)').matches?'auto':'smooth'});}
-function play(){if(t>=72)t=0;lastTs=0;playing=true;$('play').textContent='暫停';alignView();raf=requestAnimationFrame(frame);}
+function play(){if(t>=72)t=0;lastTs=0;playing=true;$('play').textContent='暫停';alignView();if(narr){voice.currentTime=t2a(t);voice.playbackRate=speed;voice.play().catch(()=>{narr=false;narrBtn();});}raf=requestAnimationFrame(frame);}
 $('play').addEventListener('click',()=>playing?stop():play());$('restart').addEventListener('click',()=>{stop();t=0;render(t);play();});
-$('seek').addEventListener('input',e=>{t=Number(e.target.value);lastTs=0;render(t);if(t>=72)stop();});$('speed').addEventListener('change',e=>{speed=Number(e.target.value);lastTs=0;});
-document.querySelectorAll('[data-time]').forEach(b=>b.addEventListener('click',()=>{t=Number(b.dataset.time);lastTs=0;render(t);if(!playing)$('play').textContent='播放這一段';alignView();}));
+$('seek').addEventListener('input',e=>{t=Number(e.target.value);lastTs=0;if(narr)voice.currentTime=t2a(t);render(t);if(t>=72)stop();});$('speed').addEventListener('change',e=>{speed=Number(e.target.value);voice.playbackRate=speed;lastTs=0;});
+$('narr').addEventListener('click',()=>{narr=!narr;narrBtn();lastTs=0;if(playing){if(narr){voice.currentTime=t2a(t);voice.playbackRate=speed;voice.play().catch(()=>{});}else voice.pause();}render(t);});
+document.querySelectorAll('[data-time]').forEach(b=>b.addEventListener('click',()=>{t=Number(b.dataset.time);lastTs=0;if(narr)voice.currentTime=t2a(t);render(t);if(!playing)$('play').textContent='播放這一段';alignView();}));
 document.addEventListener('visibilitychange',()=>{lastTs=0;if(document.hidden&&playing)stop();});new ResizeObserver(build).observe($('stage'));build();
 })();
 </script>

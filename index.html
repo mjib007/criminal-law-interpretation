@@ -388,6 +388,8 @@
 .book-feature{max-width:1000px;margin:24px auto 8px;padding:0 24px}.book-feature-inner{display:grid;grid-template-columns:180px minmax(0,1fr);gap:32px;align-items:center;background:var(--paper-panel);border:1px solid var(--line);border-left:7px solid var(--seal);border-radius:16px;padding:24px 30px;box-shadow:0 8px 28px #16233b0b}.book-cover-link{display:block}.book-feature img{display:block;width:100%;height:auto;border-radius:5px}.book-label{color:var(--seal);font-size:.8rem;letter-spacing:.12em;font-weight:700}.book-feature h2{font-family:'Noto Serif TC',serif;font-size:1.75rem;line-height:1.5;margin:9px 0;color:var(--ink)}.book-edition{display:inline-block;font-family:'Noto Sans TC',sans-serif;font-size:.85rem;padding:4px 10px;border-radius:20px;background:#f9e9eb;color:var(--seal);vertical-align:middle;margin-left:10px;white-space:nowrap}.book-feature p{color:var(--ink-70);line-height:1.85;margin:8px 0 16px}.book-button{display:inline-block;padding:11px 22px;background:var(--seal);color:#fff!important;border-radius:8px;text-decoration:none;font-weight:700}.book-button:hover{background:#7f2230}.book-feature a:focus-visible{outline:3px solid var(--brass);outline-offset:4px}@media(max-width:600px){.book-feature{padding:0 16px;margin-top:18px}.book-feature-inner{grid-template-columns:100px minmax(0,1fr);gap:16px;padding:20px 16px}.book-feature h2{font-size:1.3rem}.book-edition{margin:4px 0 0;font-size:.78rem}.book-feature p{font-size:.88rem}.book-button{font-size:.88rem;padding:10px 14px}}@media(max-width:360px){.book-feature-inner{grid-template-columns:80px minmax(0,1fr);gap:12px}.book-feature h2{font-size:1.15rem}}
 .workflow-video{max-width:1000px;margin:24px auto 8px;padding:0 24px}.workflow-video-inner{background:var(--paper-panel);border:1px solid var(--line);border-left:7px solid var(--brass);border-radius:16px;padding:22px 26px;box-shadow:0 8px 28px #16233b0b}.workflow-video h2{font-family:'Noto Serif TC',serif;font-size:1.45rem;line-height:1.5;margin:0 0 4px;color:var(--ink)}.workflow-video p{margin:0 0 14px;color:var(--ink-70);font-size:.92rem}.workflow-video video{display:block;width:100%;height:auto;border-radius:10px;background:#111418}@media(max-width:600px){.workflow-video{padding:0 16px;margin-top:18px}.workflow-video-inner{padding:16px 14px}.workflow-video h2{font-size:1.15rem}}
 .workflow-entry{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin-top:20px;padding:14px 18px;border:1px solid var(--brass);border-left:5px solid var(--brass);border-radius:8px;background:var(--paper-panel);color:var(--indigo);text-decoration:none;max-width:760px}.workflow-entry strong{font-size:.95rem}.workflow-entry span{font-size:.8rem;color:var(--ink-70)}.workflow-entry:hover{background:#fff8e7}.workflow-entry:focus-visible{outline:3px solid var(--brass);outline-offset:4px}@media(max-width:600px){.workflow-entry{align-items:flex-start;padding:12px 14px}.workflow-entry strong{font-size:.9rem}.workflow-entry span{display:block;font-size:.78rem}}
+.tab-bar{max-width:1000px;margin:18px auto 0;padding:0 24px;display:flex;gap:.6rem;border-bottom:1px solid var(--line)}.tab-btn{background:none;border:none;border-bottom:3px solid transparent;padding:.8rem 1rem;font-family:"Noto Sans TC",sans-serif;font-size:.95rem;font-weight:700;color:var(--ink-45);cursor:pointer}.tab-btn.active{color:var(--indigo);border-bottom-color:var(--indigo)}.tab-btn:hover{color:var(--indigo)}.tab-btn:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
+.vibe-panel{max-width:1000px;margin:24px auto 8px;padding:0 24px}.vibe-intro{background:var(--paper-panel);border:1px solid var(--line);border-left:7px solid var(--indigo);border-radius:16px;padding:22px 26px;margin-bottom:22px}.vibe-intro h2{margin:0 0 8px;font-size:1.3rem;color:var(--indigo)}.vibe-intro p{margin:6px 0;line-height:1.8}.vibe-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}.vibe-card{display:block;background:var(--paper-panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;color:var(--indigo);text-decoration:none}.vibe-card:hover{background:#fff8e7}.vibe-card small{display:block;color:var(--ink-45);font-size:.8rem;margin-bottom:4px}.vibe-card strong{display:block;font-size:1.02rem;line-height:1.6}.vibe-card span{display:block;margin-top:6px;font-size:.85rem;color:var(--ink-70);line-height:1.7}
 </style>
 </head>
 <body>
@@ -406,9 +408,15 @@
     （非商用．使用請於明顯處標明出處）
   </p>
   <a class="workflow-entry" href="lectures/ai-team-workflow.html"><strong>▶ 一做一驗，三方接力</strong><span>72秒人物動畫｜交稿、退回意見、修正後交你確認 →</span></a>
-  <a class="workflow-entry" href="lectures/vibe-coding.html"><strong>▶ 法律人的Vibe Coding：用說的寫程式</strong><span>3分49秒影片＋課堂練習｜上訴期間計算器、Google Colab →</span></a>
   <div class="seal-mark">總覽</div>
 </div>
+
+<div class="tab-bar" role="tablist" aria-label="教材分頁">
+  <button class="tab-btn active" id="tabBtnLaw" role="tab" aria-selected="true" aria-controls="tabLaw" onclick="switchTab('law')">📚 刑法教材</button>
+  <button class="tab-btn" id="tabBtnVibe" role="tab" aria-selected="false" aria-controls="tabVibe" onclick="switchTab('vibe')">💻 Vibe Coding</button>
+</div>
+
+<div id="tabLaw" role="tabpanel" aria-labelledby="tabBtnLaw">
 
 <section class="workflow-video" aria-labelledby="wf-title"><div class="workflow-video-inner"><h2 id="wf-title">一做一驗：這些教材怎麼做出來的？</h2><p>2分30秒｜三個角色、四個階段、三道人工關卡，以及緊急避難一集的實際工時。</p><video controls preload="metadata" playsinline poster="assets/workflow-video-poster.jpg" src="assets/workflow-video.mp4">您的瀏覽器不支援影片播放。</video></div></section>
 
@@ -434,6 +442,22 @@
   <div class="cards" id="cardGrid"></div>
   <div class="empty" id="emptyState" style="display:none;">沒有符合條件的講義</div>
 </main>
+</div>
+
+<div id="tabVibe" role="tabpanel" aria-labelledby="tabBtnVibe" hidden>
+<section class="vibe-panel">
+  <div class="vibe-intro">
+    <h2>Vibe Coding：用說的寫程式</h2>
+    <p>用一般的話告訴AI你要什麼，AI寫程式，你看結果，不對就再說一次。法律人寫需求像寫條文，驗收像改擬答，很適合用這種方式做自己的小工具。</p>
+    <p>這個分頁放課堂用的Vibe Coding教材，之後新增的也會放在這裡。</p>
+  </div>
+  <div class="vibe-list">
+    <a class="vibe-card" href="lectures/vibe-coding.html"><small>互動講義＋影片｜2026-10-22</small><strong>不會寫程式也能做法律小工具？法律人的Vibe Coding</strong><span>上訴期間計算器：第一版1/4、補一句需求後4/4。勾選要件、比較兩版、先猜再看答案。</span></a>
+    <a class="vibe-card" href="https://youtu.be/cQVfkCBrwek" target="_blank" rel="noopener"><small>教學影片｜3分49秒</small><strong>學姊與學弟的對話：說、看、驗、再說</strong><span>從星期五晚上收到判決開始，示範vibe coding的節奏與三條底線。</span></a>
+    <a class="vibe-card" href="lectures/vibe-coding.html#colab"><small>Google Colab｜3個範例</small><strong>換你動手：複製程式就能執行</strong><span>範例一 選出最大的數字、範例二 上訴期間計算器、範例三 法定遲延利息計算器。</span></a>
+  </div>
+</section>
+</div>
 
 <footer>criminal-law-interpretation · 刑法．學習歷程紀錄 · CC BY-NC 4.0</footer>
 
@@ -752,6 +776,17 @@ document.getElementById('searchInput').addEventListener('input', () => {
 });
 document.getElementById('categorySelect').addEventListener('change', render);
 render();
+
+function switchTab(tab){
+  const vibe = tab === 'vibe';
+  document.getElementById('tabLaw').hidden = vibe;
+  document.getElementById('tabVibe').hidden = !vibe;
+  [['tabBtnLaw', !vibe], ['tabBtnVibe', vibe]].forEach(([id, on]) => {
+    const b = document.getElementById(id); b.classList.toggle('active', on); b.setAttribute('aria-selected', on);
+  });
+  history.replaceState(null, '', vibe ? '#vibe' : location.pathname + location.search);
+}
+if (location.hash === '#vibe') switchTab('vibe');
 </script>
 
 </body>

@@ -97,7 +97,8 @@ def ask_date(prompt, default):
         if not text:
             return default
         try:
-            return date.fromisoformat(text.replace("/", "-"))
+            y, m, d = text.replace("/", "-").split("-")
+            return date(int(y), int(m), int(d))
         except ValueError:
             print("  看不懂這個日期，請用這種寫法：2026-03-02")
 

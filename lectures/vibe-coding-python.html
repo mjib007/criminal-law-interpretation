@@ -1,0 +1,382 @@
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>安裝 Python、開啟 Jupyter、產生 .py 檔｜法律人的 Vibe Coding</title><style>
+:root{--ink:#203039;--green:#185c50;--line:#dbe2dc;--sub:#596970}*{box-sizing:border-box}html{scroll-behavior:auto;scroll-padding-top:24px}body{margin:0;background:#f4f3ed;color:var(--ink);font:17px/1.85 system-ui,"Microsoft JhengHei",sans-serif}a{color:var(--green);text-underline-offset:3px;overflow-wrap:anywhere}.wrap{max-width:980px;margin:auto;padding:0 26px}.hero{background:#143d36;color:#f4f5eb;padding:58px 0 42px}.eyebrow{color:#ace1cd;font-size:13px;letter-spacing:.12em}.hero h1{font-size:clamp(34px,6vw,60px);line-height:1.2;margin:22px 0}.hero p{max-width:720px;color:#d6e7dc}.pill{display:inline-block;border:1px solid #6a9183;border-radius:30px;font-size:13px;margin:0 7px 8px 0;padding:3px 12px}.downloads{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}.downloads a{background:#e2eeb5;color:#244033;text-decoration:none;padding:10px 16px;border-radius:6px;font-size:15px;font-weight:700}.downloads a.secondary{background:transparent;border:1px solid #8aab9a;color:white}.flow{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:26px 0}.flow a{background:white;border:1px solid var(--line);border-radius:8px;padding:15px;font-size:14px;text-decoration:none}.flow strong{display:block;font-size:19px;color:var(--ink)}.flow small{color:var(--sub)}.lesson{background:white;padding:30px;border:1px solid var(--line);border-radius:12px;margin:24px 0}h1{line-height:1.35;font-size:31px}h2{font-size:27px;line-height:1.4;border-top:1px solid var(--line);padding-top:30px;margin-top:38px;color:#164c42}h3{font-size:20px;line-height:1.5;margin-top:25px}p{margin:13px 0}li{margin:7px 0}blockquote{margin:20px 0;padding:1px 18px;border-left:4px solid #b77739;background:#fcf3e8}blockquote p{font-size:15px}code{font: .9em/1.7 Consolas,"Cascadia Code",monospace;overflow-wrap:anywhere}pre{margin:0;padding:19px;max-width:100%;overflow:auto;background:#182a32;color:#e7f3ee;font:14px/1.7 Consolas,monospace;border-radius:0 0 7px 7px}pre code{white-space:pre;overflow-wrap:normal}.codewrap,.nbcell{margin:18px 0;border-radius:7px;overflow:hidden;min-width:0;background:#182a32}.codehead,.cellhead{display:flex;gap:10px;align-items:center;justify-content:space-between;background:#294048;color:#d4e8dd;font-size:12px;padding:8px 12px}.codehead span,.cellhead span{overflow-wrap:anywhere}.copy{flex-shrink:0;background:#436259;border:1px solid #7b9c8c;border-radius:4px;color:white;font:inherit;padding:4px 12px;min-height:34px;cursor:pointer}.table-scroll{overflow:auto;max-width:100%}table{border-collapse:collapse;width:100%;font-size:15px;text-align:left}th,td{padding:10px 12px;vertical-align:top;border-bottom:1px solid var(--line)}th{background:#edf3ef}ul,ol{padding-left:25px}.checklist{background:#e8eee4;border-radius:12px;padding:25px;margin-bottom:25px}.checklist h2{border:0;margin:0;padding:0}.checklist label{display:flex;align-items:flex-start;gap:12px;border-top:1px solid #ccd7ca;padding:12px 0;font-size:15px}.checklist input{width:20px;height:20px;flex-shrink:0;margin-top:5px;accent-color:var(--green)}.meter{display:flex;gap:15px;align-items:center;font-size:14px;margin:18px 0}.meter progress{max-width:40%;accent-color:var(--green)}.reset{font:inherit;font-size:14px;background:white;border:1px solid #a0b5a7;border-radius:5px;padding:5px 12px;cursor:pointer}button:focus-visible,a:focus-visible,input:focus-visible,pre:focus-visible{outline:3px solid #d38c2e;outline-offset:3px}footer{font-size:14px;color:var(--sub);padding:5px 0 45px}.status{font-size:13px;min-height:1.5em} @media(max-width:650px){.wrap{padding:0 15px}.hero{padding:36px 0 28px}body{font-size:16px}.flow{grid-template-columns:repeat(2,minmax(0,1fr))}.lesson{padding:20px 16px}h1{font-size:26px}h2{font-size:24px}pre{padding:14px;font-size:13px}.checklist{padding:20px 16px}th,td{padding:8px}}@media print{body{background:white;font-size:11pt}.hero{background:white;color:black;padding:5px 0}.hero p{color:black}.hero h1{font-size:28pt}.downloads,.flow,.copy,.checklist,.status{display:none}.wrap{max-width:none;padding:0}.lesson{border:0;padding:0}h2{font-size:19pt}pre{background:#eee;color:black;white-space:pre-wrap;font-size:9pt}pre code{white-space:pre-wrap}.codehead,.cellhead{background:#ddd;color:black}.table-scroll{overflow:visible}a{color:black}}
+.hero{background:#fff;color:#243347;border-bottom:1px solid #d6dde3}.hero .wrap{border-left:8px solid #37658f;padding-left:26px}.hero p{color:#586577}.eyebrow{color:#37658f}.pill{border-color:#b2c8d8;color:#315f87}.downloads a{background:#315f87;color:#fff}.downloads a.secondary{color:#315f87;border-color:#8ba5ba;background:#edf4f9}.course-bridge{padding:24px 28px;margin:26px 0;border:1px solid #d6dde3;border-left:6px solid #37658f;border-radius:12px;background:#fff}.course-bridge h2{border:0;margin:8px 0 14px;padding:0;font-size:25px}.course-back,.course-meta{font-size:14px}.course-meta{color:#586577}.course-back a{display:inline-block;margin-bottom:5px}.course-footer{padding:18px 0 5px;border-top:1px solid #d6dde3}.course-footer a{display:inline-block;margin:0 12px 8px 0}@media(max-width:650px){.course-bridge{padding:19px 17px}.course-bridge h2{font-size:22px}.hero .wrap{margin:0 15px;padding:0 16px}.course-back a{margin-right:12px}}</style></head><body><header class="hero"><div class="wrap"><div class="eyebrow">LAW × VIBE CODING / LOCAL PYTHON</div><h1>安裝 Python、開啟 Jupyter，<br>存出自己的 .py 檔。</h1><p>上一課先在 Colab 試做；這一課把程式放到自己的電腦。跟著做出「案件工時紀錄器」，最後用一個 .py 檔獨立執行。</p><span class="pill">法律系・零基礎</span><span class="pill">Windows 本機</span><span class="pill">60 分鐘＋課前安裝</span><span class="pill">免 API 金鑰</span><div class="downloads"><a href="../assets/vibe-coding/python-worklog/notebook-to-python.ipynb" download>下載學生 Notebook</a><a href="../assets/vibe-coding/python-worklog/worklog.py" class="secondary" download>完整 Python 範例</a><a href="../assets/vibe-coding/python-worklog/python-starter.zip" class="secondary" download>下載完整練習包</a></div></div></header><main class="wrap"><section class="course-bridge" aria-label="這一課怎麼學"><p class="course-back"><a href="../index.html#vibe">← 回到 Vibe Coding 總覽</a>　<a href="vibe-coding.html#colab">先看：Colab 三個暖身範例</a></p><h2>這一課只要完成一件事：交出一個能執行的 .py 檔。</h2><p>現在看到的是<strong>網頁講義</strong>，照著閱讀即可。進入 Jupyter 後，才開啟下載的 <strong>Notebook 練習檔</strong>；完成練習會得到 <strong>worklog.py 成品</strong>。</p><ol><li><strong>第一次來：</strong>先看「建立環境」，依步驟開出 Jupyter。</li><li><strong>已經有 Jupyter：</strong>下載完整練習包、解壓縮，再開啟 notebook-to-python.ipynb。</li><li><strong>最後驗收：</strong>另外開啟 Anaconda Prompt，執行 python worklog.py，確認 75 分鐘；改資料後確認 95 分鐘。</li></ol><p class="course-meta">v1.0｜2026-10-23｜作者：錢世傑</p></section><nav class="flow" aria-label="操作流程"><a href="#part-1"><small>① Anaconda Prompt</small><strong>建立環境</strong></a><a href="#part-2"><small>② Jupyter Notebook</small><strong>分格練習</strong></a><a href="#part-7"><small>③ Notebook 寫檔</small><strong>產生 .py</strong></a><a href="#part-17"><small>④ 回到 Prompt</small><strong>獨立執行</strong></a></nav><article class="lesson"><div class="prose"><h1>從 Notebook 到第一個 Python 程式檔</h1>
+<p><strong>法律人的 Vibe Coding 本機實作課｜Windows 本機｜60 分鐘＋課前安裝</strong></p>
+<p>本課用虛構「案件工時紀錄器」，練習環境、檔案與驗證。這是新編入門範例，不是小龍蝦完整程式的移植。不需 API 金鑰，也不呼叫網路服務。</p>
+<pre><code class="language-text">安裝 Anaconda → 建立 law-vibe 環境 → 開啟 Jupyter
+→ 執行小格子 → 用 AI 寫規格 → 產生 worklog.py
+→ 試跑與驗證 → 終端機獨立執行 → 提交兩種檔案
+</code></pre>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>名稱</th>
+  <th>白話理解</th>
+  <th>本課的用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Python</td>
+  <td>執行指令的引擎</td>
+  <td>讓程式真正執行</td>
+</tr>
+<tr>
+  <td>Jupyter Notebook</td>
+  <td>分格操作的工作筆記</td>
+  <td>邊說明、邊試做</td>
+</tr>
+<tr>
+  <td>.ipynb</td>
+  <td>含說明、程式格與輸出的檔案</td>
+  <td>保留學習過程</td>
+</tr>
+<tr>
+  <td>.py</td>
+  <td>純 Python 程式文字</td>
+  <td>可獨立交付與執行</td>
+</tr>
+</tbody>
+</table></div>
+<blockquote>
+<p>產生 .py 不等於已做成 .exe。執行仍需要 Python 與程式用到的套件。本機 Notebook 與 Colab 的檔案位置不同，本課以 Windows 本機為準。</p>
+</blockquote>
+</div>
+<div class="prose"><h2 id="part-1">01｜建立 Python 與 Jupyter 環境</h2>
+<p><strong>這格在做什麼</strong>：準備本機工作空間。以下指令在 <strong>Windows 的 Anaconda Prompt</strong> 執行，不要貼到 Notebook。</p>
+<ol>
+<li>從 <a href="https://www.anaconda.com/download">Anaconda 官方下載</a> 選適合電腦架構的 Windows 安裝程式。選個人使用 <strong>Just Me</strong>；保留不加入 PATH 的預設選項。</li>
+<li>已有 Anaconda 或 Miniconda：在開始選單開啟 <strong>Anaconda Prompt</strong>，輸入 <code>conda --version</code>，能顯示版本即可沿用，不重複安裝。</li>
+<li>在 Anaconda Prompt 逐行貼上以下兩行。詢問是否繼續安裝時，讀取畫面後輸入 <code>y</code>；若有服務條款提示，依學校及個人適用條件處理。</li>
+</ol>
+<pre><code class="language-bat">conda create -n law-vibe python=3.12 notebook ipykernel
+conda activate law-vibe
+</code></pre>
+<p>第一行建立課程環境，第二行切換進去。成功時提示列前方應顯示 <code>(law-vibe)</code>。<strong>Python 3.12 是本課統一版本，不是宣稱最新版。</strong></p>
+<h3>建立資料夾並啟動</h3>
+<p>繼續在同一個 Anaconda Prompt 逐行貼上。<code>%USERPROFILE%</code> 代表你自己的 Windows 使用者資料夾。</p>
+<pre><code class="language-bat">if not exist &quot;%USERPROFILE%\law_vibe&quot; mkdir &quot;%USERPROFILE%\law_vibe&quot;
+cd /d &quot;%USERPROFILE%\law_vibe&quot;
+python -m notebook
+</code></pre>
+<p>瀏覽器開出 Jupyter 即成功；若沒自動開啟，把 Prompt 顯示的完整本機網址貼進瀏覽器。啟動它的 Prompt 視窗先留著，本機登入網址不要公開。</p>
+<blockquote>
+<p>這些是 <strong>Anaconda Prompt（cmd）</strong> 指令，不能直接貼進 PowerShell、Notebook 或 Python 的 <code>&gt;&gt;&gt;</code>。安裝下載請課前完成，時間依設備與網路而異；Mac 同學需另用對應指令。</p>
+</blockquote>
+</div>
+<div class="prose"><h2 id="part-2">02｜開啟 Notebook，確認自己在哪裡</h2>
+<p><strong>這格在做什麼</strong>：檢查目前的 Python 與資料夾。</p>
+<ol>
+<li>將本教材的 <code>.ipynb</code> 和範例 <code>worklog.py</code> 複製到使用者資料夾下的 <code>law_vibe</code>。</li>
+<li>在 Jupyter 點開本教材。若從空白開始，選 <strong>New → Notebook → Python 3</strong>，另存為 <code>my_first_program.ipynb</code>；介面名稱依版本可能略有差異。</li>
+<li>點 <strong>Code 格</strong>，貼上以下程式，按 <strong>Shift + Enter</strong>。</li>
+</ol>
+<p>預期：版本為 3.12.x；Python 位置包含 <code>law-vibe</code>；目前資料夾最後是 <code>law_vibe</code>。若不符，先回到 Prompt 啟用正確環境、切到工作資料夾重新開 Jupyter，不要照抄老師的完整路徑。</p>
+</div>
+<div class="nbcell"><div class="cellhead"><span>Notebook · Code 格 · Shift + Enter</span></div><pre tabindex="0"><code>import sys
+from pathlib import Path
+
+print(&quot;Python 版本：&quot;, sys.version.split()[0])
+print(&quot;Python 位置：&quot;, sys.executable)
+print(&quot;目前資料夾：&quot;, Path.cwd())</code></pre></div>
+<div class="prose"><h3>執行第一句話</h3>
+<p><strong>這格在做什麼</strong>：確認 Code 格能執行。預期看到一行文字；換成自己的名字，再執行一次。Markdown 格用來寫說明，Code 格才會執行 Python。</p>
+</div>
+<div class="nbcell"><div class="cellhead"><span>Notebook · Code 格 · Shift + Enter</span></div><pre tabindex="0"><code>print(&quot;我的第一個法律工作小工具&quot;)</code></pre></div>
+<div class="prose"><h2 id="part-6">03｜先定答案，再請 AI 幫忙</h2>
+<p><strong>這格在做什麼</strong>：把需求交給 AI。先手算：會議 45 分鐘＋整理資料 30 分鐘＝<strong>75 分鐘，也就是 1 小時 15 分鐘</strong>。</p>
+<p>把以下提示詞貼到你使用的 AI 對話。這段是需求，不是要貼進 Code 格的 Python。</p>
+<pre><code class="language-text">我要做一個給法律系學生練習的「案件工時紀錄器」。
+請先用白話重述需求，再提供完整的 worklog.py 程式。
+需求：
+1. 使用虛構活動：會議 45 分鐘、整理資料 30 分鐘。
+2. 印出每項活動，最後印出總分鐘與幾小時幾分鐘。
+3. 分鐘只能是非負整數；文字、小數、負數與布林值都要拒絕，錯誤用繁體中文。
+4. 空清單的總分鐘是 0。
+5. 只用 Python 標準函式庫；不要網路、API、金鑰或外部套件。
+6. 可用 python worklog.py 執行，不依賴 Notebook 的變數。
+7. 提供 total_minutes(minutes) 與 main()，使用 if __name__ == &quot;__main__&quot;:。
+8. 程式檔內不要包含 %%writefile、%run、!pip 或 Markdown 外框。
+驗收：45 + 30 = 75 分鐘，也就是 1 小時 15 分鐘。
+請另外說明：哪一行可修改活動資料、各函式做什麼，以及如何測試。
+</code></pre>
+<p>你的工作是定需求、提供已知答案、驗收結果。AI 的工作是提供程式與解釋。先請它指出可修改資料的位置，再用測試確認，不能只相信「已完成」。以下提供固定範例，讓全班先走通流程。</p>
+</div>
+<div class="prose"><h2 id="part-7">04｜產生 worklog.py</h2>
+<p><strong>這格在做什麼</strong>：把以下完整內容寫成檔案。<strong>這一步只存檔，不會計算工時。</strong></p>
+<p>操作位置：<strong>Notebook 的新 Code 格</strong>。<code>%%writefile worklog.py</code> 必須在第一行，它是 IPython 指令，不會被寫進產生的 <code>.py</code>。</p>
+<p>預期看到 <code>Writing worklog.py</code> 或 <code>Overwriting worklog.py</code>。</p>
+<blockquote>
+<p>再執行會覆寫目前資料夾的同名檔，要保留舊版請先另存。AI 答案外側的三個反引號不要貼進 Code 格。本課後續格子只依賴磁碟上的 worklog.py，不依賴前一格的 Python 變數；沒檔案時會提示先產生。</p>
+</blockquote>
+</div>
+<div class="nbcell"><div class="cellhead"><span>Notebook · Code 格 · Shift + Enter</span></div><pre tabindex="0"><code>%%writefile worklog.py
+&quot;&quot;&quot;案件工時紀錄器：虛構教學資料，單位為整數分鐘。&quot;&quot;&quot;
+
+
+def total_minutes(minutes):
+    &quot;&quot;&quot;加總非負整數分鐘；空清單回傳 0。&quot;&quot;&quot;
+    total = 0
+    for value in minutes:
+        if isinstance(value, bool) or not isinstance(value, int):
+            raise TypeError(&quot;分鐘必須是整數，不能是文字或小數。&quot;)
+        if value &lt; 0:
+            raise ValueError(&quot;分鐘不能是負數。&quot;)
+        total += value
+    return total
+
+
+def main():
+    # 學生可修改這一行的活動名稱及分鐘。
+    records = [(&quot;會議&quot;, 45), (&quot;整理資料&quot;, 30)]
+    total = total_minutes([minutes for activity, minutes in records])
+    for activity, minutes in records:
+        print(f&quot;{activity}：{minutes} 分鐘&quot;)
+    hours, remaining = divmod(total, 60)
+    print(f&quot;總計：{total} 分鐘（{hours} 小時 {remaining} 分鐘）&quot;)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</code></pre></div>
+<div class="prose"><h3>找到真正的檔案</h3>
+<p><strong>這格在做什麼</strong>：印出 <code>.py</code> 的完整位置。預期檔案存在，也能在檔案總管找到它。開啟「顯示副檔名」，確認不是 <code>worklog.py.txt</code>。</p>
+<p>不要把 <code>.ipynb</code> 直接改副檔名成 <code>.py</code>：兩者內容格式不同。</p>
+</div>
+<div class="nbcell"><div class="cellhead"><span>Notebook · Code 格 · Shift + Enter</span></div><pre tabindex="0"><code>from pathlib import Path
+
+script = Path(&quot;worklog.py&quot;)
+if script.is_file():
+    print(&quot;找到檔案：&quot;, script.resolve())
+    print(&quot;檔案大小：&quot;, script.stat().st_size, &quot;bytes&quot;)
+else:
+    print(&quot;尚未找到 worklog.py，請先執行『產生檔案』那一格。&quot;)</code></pre></div>
+<div class="prose"><h2 id="part-11">05｜先在 Notebook 試跑</h2>
+<p><strong>這格在做什麼</strong>：用 <code>%run worklog.py</code> 執行剛存出的檔案。下面補上找不到檔案的提示；已有檔案者，也可在新 Code 格單獨輸入 <code>%run worklog.py</code>。</p>
+<p>預期：</p>
+<pre><code class="language-text">會議：45 分鐘
+整理資料：30 分鐘
+總計：75 分鐘（1 小時 15 分鐘）
+</code></pre>
+<p>試跑前需有 worklog.py：先執行第 04 步，或使用教材附的範例檔。</p>
+</div>
+<div class="nbcell"><div class="cellhead"><span>Notebook · Code 格 · Shift + Enter</span></div><pre tabindex="0"><code>from pathlib import Path
+
+if Path(&quot;worklog.py&quot;).is_file():
+    get_ipython().run_line_magic(&quot;run&quot;, &quot;worklog.py&quot;)
+else:
+    print(&quot;請先執行『產生檔案』那一格。&quot;)</code></pre></div>
+<div class="prose"><h3>教師驗證：讓另一個 Python 執行</h3>
+<p><strong>這格在做什麼</strong>：用相同 Python 開啟新行程，確認不依賴 Notebook 記住的變數。預期同樣出現 75 分鐘，結束代碼 0。這段輔助碼不用學生背誦。</p>
+</div>
+<div class="nbcell"><div class="cellhead"><span>Notebook · Code 格 · Shift + Enter</span></div><pre tabindex="0"><code>import subprocess
+import sys
+from pathlib import Path
+
+script = Path(&quot;worklog.py&quot;).resolve()
+if not script.is_file():
+    print(&quot;請先執行『產生檔案』那一格。&quot;)
+else:
+    result = subprocess.run(
+        [sys.executable, &quot;-X&quot;, &quot;utf8&quot;, str(script)],
+        capture_output=True, text=True, encoding=&quot;utf-8&quot;, timeout=10
+    )
+    print(result.stdout, end=&quot;&quot;)
+    if result.stderr:
+        print(result.stderr)
+    print(&quot;結束代碼：&quot;, result.returncode, &quot;（0 代表成功）&quot;)
+    if result.returncode != 0:
+        raise RuntimeError(&quot;執行失敗，請保留錯誤訊息。&quot;)</code></pre></div>
+<div class="prose"><h3>驗證正確與錯誤輸入</h3>
+<p><strong>這格在做什麼</strong>：自行載入 <code>.py</code> 裡的函式，檢查 8 組已知答案。預期看到「通過 8 組檢查」。這格不需要先跑其他格子的 import 或函式定義，只需已存在 worklog.py。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>測試資料</th>
+  <th>預期</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>45、30</td>
+  <td>75</td>
+</tr>
+<tr>
+  <td>空清單</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>0</td>
+  <td>0</td>
+</tr>
+<tr>
+  <td>45、30、20</td>
+  <td>95</td>
+</tr>
+<tr>
+  <td>-1</td>
+  <td>拒絕負數</td>
+</tr>
+<tr>
+  <td>文字 &quot;30&quot;</td>
+  <td>拒絕文字</td>
+</tr>
+<tr>
+  <td>1.5</td>
+  <td>拒絕小數</td>
+</tr>
+<tr>
+  <td>True</td>
+  <td>拒絕布林值</td>
+</tr>
+</tbody>
+</table></div>
+</div>
+<div class="nbcell"><div class="cellhead"><span>Notebook · Code 格 · Shift + Enter</span></div><pre tabindex="0"><code>import importlib.util
+from pathlib import Path
+
+script = Path(&quot;worklog.py&quot;).resolve()
+if not script.is_file():
+    print(&quot;請先執行『產生檔案』那一格。&quot;)
+else:
+    spec = importlib.util.spec_from_file_location(&quot;lesson_worklog&quot;, script)
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    for values, expected in [([45, 30], 75), ([], 0), ([0], 0), ([45, 30, 20], 95)]:
+        assert module.total_minutes(values) == expected
+    for values, error in [([-1], ValueError), ([&quot;30&quot;], TypeError), ([1.5], TypeError), ([True], TypeError)]:
+        try:
+            module.total_minutes(values)
+        except error:
+            pass
+        else:
+            raise AssertionError(f&quot;這組資料應該被拒絕：{values!r}&quot;)
+    print(&quot;通過 8 組檢查：4 組正確資料，以及 4 組不合法輸入。&quot;)</code></pre></div>
+<div class="prose"><h2 id="part-17">06｜離開 Notebook，獨立執行</h2>
+<p><strong>這格在做什麼</strong>：用真正的程式檔完成交付。從開始選單 <strong>另開一個 Anaconda Prompt</strong>，逐行貼上：</p>
+<pre><code class="language-bat">conda activate law-vibe
+cd /d &quot;%USERPROFILE%\law_vibe&quot;
+python worklog.py
+</code></pre>
+<p>應看到完全相同的 75 分鐘。這就是本課交付終點：不透過 Notebook 的格子，也能跑這個檔案。</p>
+<h3>修改一次，確認不是舊結果</h3>
+<p>回到第 04 步產生檔案的 Code 格，將原本 <code>records</code> 那一行改成：</p>
+<pre><code class="language-python">    records = [(&quot;會議&quot;, 45), (&quot;整理資料&quot;, 30), (&quot;準備簡報&quot;, 20)]
+</code></pre>
+<p>保留原本的縮排，<strong>重跑存檔格</strong>，再到 Prompt 執行 <code>python worklog.py</code>。手算結果應是 <strong>95 分鐘（1 小時 35 分鐘）</strong>。</p>
+<blockquote>
+<p>只修改格子，卻沒執行存檔格，磁碟上的檔案仍是舊版。不要將新 records 加到程式最下方，要修改 main() 裡原有那一行。</p>
+</blockquote>
+<h3>提交與收工</h3>
+<ol>
+<li>你修改並儲存的 <code>.ipynb</code>：保留需求、說明與輸出。</li>
+<li>實際產生的 <code>worklog.py</code>：已加入第三項活動。</li>
+<li>終端機顯示 95 分鐘的截圖，以及一句「我如何確認 AI 的答案」。</li>
+</ol>
+<p>最後可選 <strong>Restart Kernel and Run All Cells</strong>（重啟並全部執行），確認不是靠舊變數才能執行。這也會依第 04 步的目前內容重新寫檔，先確認已同步修改。</p>
+<p>儲存 Notebook。要關閉本機 Jupyter，回到啟動它的 Prompt 按 Ctrl+C，若詢問是否關閉則依畫面確認。</p>
+<p>本課「工時」只是虛構活動的分鐘加總，不處理收費、加班或法律期間規則。</p>
+</div>
+<div class="prose"><h2 id="part-18">卡住時先確認畫面</h2>
+<p><strong>這格在做什麼</strong>：依錯誤找回操作位置，避免混貼指令。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>狀況</th>
+  <th>先做什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>conda 不是命令</td>
+  <td>從開始選單開 Anaconda Prompt，檢查安裝是否完成；不任意修改系統 PATH</td>
+</tr>
+<tr>
+  <td>law-vibe 已存在</td>
+  <td>用 conda env list 查看，再 conda activate law-vibe</td>
+</tr>
+<tr>
+  <td>缺 Notebook 套件</td>
+  <td>在 Prompt 執行 conda install -n law-vibe python=3.12 notebook ipykernel</td>
+</tr>
+<tr>
+  <td>找不到 py</td>
+  <td>重跑存檔格；用完整檔案位置確認，在 Prompt 用 dir worklog.py 檢查</td>
+</tr>
+<tr>
+  <td>仍出現 75，沒有 95</td>
+  <td>確認修改 main() 中 records、執行存檔格、終端機在同一資料夾</td>
+</tr>
+<tr>
+  <td>出現 Python 的 &gt;&gt;&gt;</td>
+  <td>輸入 exit() 回 Prompt；再用 python worklog.py</td>
+</tr>
+<tr>
+  <td>SyntaxError</td>
+  <td>確認不是貼了 Prompt 指令、Markdown 外框或中文全形引號</td>
+</tr>
+<tr>
+  <td>IndentationError</td>
+  <td>保留原程式的空白縮排，不要把 main() 裡的內容移到最左邊</td>
+</tr>
+<tr>
+  <td>雙擊 py 一閃而過</td>
+  <td>改在 Anaconda Prompt 用 python worklog.py 執行</td>
+</tr>
+</tbody>
+</table></div>
+<p><strong>進階匯出</strong>：整份 Notebook 可用 <code>jupyter nbconvert --to script 檔名.ipynb</code>（需安裝 nbconvert）。匯出可能包含 IPython 指令和教學輔助碼，仍須整理、獨立試跑；本課用 writefile 明確存出乾淨程式。</p>
+<p><strong>接回小龍蝦</strong>：下一課先加 input() 問答，再儲存文字檔、讀取紀錄，最後才接 AI API；一次增加一個可驗證功能。</p>
+</div>
+<div class="prose"><h2 id="part-19">課堂時間與官方參考</h2>
+<p><strong>這格在做什麼</strong>：供老師安排節奏與核對操作。課前完成安裝、建立環境及啟動 Jupyter；另留環境協助時段。</p>
+<div class="table-scroll"><table>
+<thead>
+<tr>
+  <th>課內時間</th>
+  <th>學生做什麼</th>
+  <th>教師確認什麼</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>0–10 分</td>
+  <td>診斷、第一格</td>
+  <td>Python 與資料夾正確</td>
+</tr>
+<tr>
+  <td>10–20 分</td>
+  <td>手算、給 AI 需求</td>
+  <td>有驗收標準</td>
+</tr>
+<tr>
+  <td>20–35 分</td>
+  <td>產生 py、找到檔案</td>
+  <td>分清存檔與執行</td>
+</tr>
+<tr>
+  <td>35–50 分</td>
+  <td>終端機跑、增加活動</td>
+  <td>75 變 95，可重現</td>
+</tr>
+<tr>
+  <td>50–60 分</td>
+  <td>驗證、解釋與提交</td>
+  <td>交出檔案及證據</td>
+</tr>
+</tbody>
+</table></div>
+<p>以下官方文件支持環境、執行與匯出操作。提示詞、範例與課堂時間是本教材的教學設計。查閱日期：2026-10-23。</p>
+<ul>
+<li><a href="https://www.anaconda.com/download">Anaconda 官方下載</a></li>
+<li><a href="https://docs.conda.io/projects/conda/en/stable/user-guide/install/windows.html">conda：Windows 安裝</a></li>
+<li><a href="https://docs.conda.io/projects/conda/en/stable/user-guide/tasks/manage-environments.html">conda：建立與啟用環境</a></li>
+<li><a href="https://jupyter.org/install">Jupyter：安裝與啟動</a></li>
+<li><a href="https://ipython.readthedocs.io/en/stable/interactive/magics.html">IPython：writefile 與 run</a></li>
+<li><a href="https://docs.python.org/3/tutorial/interpreter.html">Python：執行程式檔</a></li>
+<li><a href="https://nbconvert.readthedocs.io/en/latest/usage.html">nbconvert：匯出格式</a></li>
+</ul>
+</div></article><section class="checklist"><h2>離開教室前，確認六件事</h2><div class="meter"><progress max="6" value="0" id="progress" aria-label="課程完成進度"></progress><span id="progress-text" aria-live="polite">完成 0 / 6</span></div><label><input type="checkbox" data-check="0"><span>我能從 Anaconda Prompt 開啟 Jupyter。</span></label><label><input type="checkbox" data-check="1"><span>我能指出 Python 位置及目前資料夾。</span></label><label><input type="checkbox" data-check="2"><span>我已手算答案，並給 AI 明確需求。</span></label><label><input type="checkbox" data-check="3"><span>我找到真正產生的 worklog.py。</span></label><label><input type="checkbox" data-check="4"><span>我已在終端機執行，並將 75 改為 95 分鐘。</span></label><label><input type="checkbox" data-check="5"><span>我已準備 Notebook、py 與驗證截圖。</span></label><button class="reset" id="reset" type="button">清除本頁勾選</button><p class="status" id="status" aria-live="polite"></p></section></main><footer class="wrap"><div class="course-footer"><a href="../index.html#vibe">回到 Vibe Coding 總覽 →</a><a href="vibe-coding.html">回顧：說、看、驗、再說 →</a></div>作者：錢世傑｜<a href="mailto:mjib007@gmail.com">歡迎指正</a>｜<a href="https://github.com/mjib007/criminal-law-interpretation/blob/main/LICENSE.md">CC BY-NC 4.0</a><br>法律人的 Vibe Coding｜本機實作課・環境建立與程式交付<br>本頁勾選僅儲存在這個瀏覽器，不會送出作業。HTML 講義自身不執行 Python。</footer><script>
+for(const pre of document.querySelectorAll('pre')){let wrapper=pre.parentElement;if(!wrapper.classList.contains('nbcell')){wrapper=document.createElement('div');wrapper.className='codewrap';pre.before(wrapper);wrapper.append(pre);const head=document.createElement('div');head.className='codehead';const span=document.createElement('span');const cls=pre.querySelector('code')?.className||'';span.textContent=cls.includes('bat')?'Anaconda Prompt · 逐行貼上':cls.includes('python')?'Python 程式片段':'文字／預期輸出 · 請閱讀上方操作說明';head.append(span);wrapper.prepend(head)}const head=wrapper.firstElementChild;const b=document.createElement('button');b.type='button';b.className='copy';b.textContent='複製';b.setAttribute('aria-label','複製此段內容');head.append(b);b.addEventListener('click',async()=>{const text=pre.querySelector('code').textContent;try{if(navigator.clipboard&&window.isSecureContext){await navigator.clipboard.writeText(text)}else{const field=document.createElement('textarea');field.value=text;field.style.position='fixed';field.style.left='-9999px';document.body.append(field);field.select();const ok=document.execCommand('copy');field.remove();if(!ok)throw new Error('copy')}b.textContent='已複製';setTimeout(()=>b.textContent='複製',1800)}catch{b.textContent='請手動複製'}})}
+const boxes=[...document.querySelectorAll('[data-check]')], key='law-vibe-env-20261023';try{const saved=JSON.parse(localStorage.getItem(key)||'[]');boxes.forEach((x,i)=>x.checked=saved[i]===true)}catch{}function update(){const n=boxes.filter(x=>x.checked).length;document.getElementById('progress').value=n;document.getElementById('progress-text').textContent=`完成 ${n} / 6`;try{localStorage.setItem(key,JSON.stringify(boxes.map(x=>x.checked)))}catch{}}boxes.forEach(x=>x.addEventListener('change',update));document.getElementById('reset').addEventListener('click',()=>{boxes.forEach(x=>x.checked=false);update();document.getElementById('status').textContent='已清除這個瀏覽器的勾選紀錄。'});update();
+</script></body></html>

@@ -390,6 +390,8 @@
 .workflow-entry{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 16px;margin-top:20px;padding:14px 18px;border:1px solid var(--brass);border-left:5px solid var(--brass);border-radius:8px;background:var(--paper-panel);color:var(--indigo);text-decoration:none;max-width:760px}.workflow-entry strong{font-size:.95rem}.workflow-entry span{font-size:.8rem;color:var(--ink-70)}.workflow-entry:hover{background:#fff8e7}.workflow-entry:focus-visible{outline:3px solid var(--brass);outline-offset:4px}@media(max-width:600px){.workflow-entry{align-items:flex-start;padding:12px 14px}.workflow-entry strong{font-size:.9rem}.workflow-entry span{display:block;font-size:.78rem}}
 .tab-bar{max-width:1000px;margin:18px auto 0;padding:0 24px;display:flex;gap:.6rem;border-bottom:1px solid var(--line)}.tab-btn{background:none;border:none;border-bottom:3px solid transparent;padding:.8rem 1rem;font-family:"Noto Sans TC",sans-serif;font-size:.95rem;font-weight:700;color:var(--ink-45);cursor:pointer}.tab-btn.active{color:var(--indigo);border-bottom-color:var(--indigo)}.tab-btn:hover{color:var(--indigo)}.tab-btn:focus-visible{outline:3px solid var(--brass);outline-offset:2px}
 .vibe-panel{max-width:1000px;margin:24px auto 8px;padding:0 24px}.vibe-intro{background:var(--paper-panel);border:1px solid var(--line);border-left:7px solid var(--indigo);border-radius:16px;padding:22px 26px;margin-bottom:22px}.vibe-intro h2{margin:0 0 8px;font-size:1.3rem;color:var(--indigo)}.vibe-intro p{margin:6px 0;line-height:1.8}.vibe-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}.vibe-card{display:block;background:var(--paper-panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;color:var(--indigo);text-decoration:none}.vibe-card:hover{background:#fff8e7}.vibe-card small{display:block;color:var(--ink-45);font-size:.8rem;margin-bottom:4px}.vibe-card strong{display:block;font-size:1.02rem;line-height:1.6}.vibe-card span{display:block;margin-top:6px;font-size:.85rem;color:var(--ink-70);line-height:1.7}
+
+.vibe-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 22px}.vibe-route a{min-width:0;display:block;padding:18px;background:var(--paper-panel);border:1px solid var(--line);border-top:4px solid var(--indigo);border-radius:10px;color:var(--indigo);text-decoration:none}.vibe-route small{display:block;font-size:.8rem;color:var(--ink-45)}.vibe-route strong{display:block;margin:6px 0;font-size:1rem;line-height:1.6}.vibe-route span{display:block;font-size:.85rem;line-height:1.7;color:var(--ink-70)}.vibe-route a:hover{background:#fff8e7}.vibe-route a:focus-visible,.vibe-card:focus-visible{outline:3px solid var(--brass);outline-offset:4px}.vibe-new{border-left:5px solid var(--brass)}@media(max-width:650px){.vibe-route{grid-template-columns:1fr}.vibe-panel{padding:0 16px}.vibe-intro{padding:20px 18px}.vibe-list{grid-template-columns:minmax(0,1fr)}}
 </style>
 </head>
 <body>
@@ -449,9 +451,16 @@
   <div class="vibe-intro">
     <h2>Vibe Coding：用說的寫程式</h2>
     <p>用一般的話告訴AI你要什麼，AI寫程式，你看結果，不對就再說一次。法律人寫需求像寫條文，驗收像改擬答，很適合用這種方式做自己的小工具。</p>
-    <p>這個分頁放課堂用的Vibe Coding教材，之後新增的也會放在這裡。</p>
+    <p>建議依序學：先看懂怎麼下需求，再到 Colab 試做，最後在自己的電腦建立 Python／Jupyter 環境，把成果存成 .py 檔。</p>
   </div>
+  <nav class="vibe-route" aria-label="Vibe Coding 學習路線">
+    <a href="lectures/vibe-coding.html"><small>01　先看懂</small><strong>把需求說清楚</strong><span>看影片、寫需求，用已知答案驗收 AI。</span></a>
+    <a href="lectures/vibe-coding.html#colab"><small>02　先試做</small><strong>在 Colab 跑第一段程式</strong><span>先在瀏覽器試做三個範例，熟悉執行與修改。</span></a>
+    <a href="lectures/vibe-coding-python.html"><small>03　存成自己的工具</small><strong>安裝 Python → Jupyter → .py</strong><span>跟著本機實作課，完成能獨立執行的工時紀錄器。</span></a>
+  </nav>
   <div class="vibe-list">
+    <a class="vibe-card vibe-new" href="lectures/vibe-coding-python.html"><small>本機實作課＋Notebook下載｜2026-10-23</small><strong>安裝 Python、開啟 Jupyter、產生 .py 檔</strong><span>一步一步建立環境，用案件工時紀錄器練習：先存檔、再執行，75 分鐘改成 95 分鐘。附完整練習包與範例程式。</span></a>
+
     <a class="vibe-card" href="lectures/vibe-coding.html"><small>互動講義＋影片｜2026-10-22</small><strong>不會寫程式也能做法律小工具？法律人的Vibe Coding</strong><span>上訴期間計算器：第一版1/4、補一句需求後4/4。勾選要件、比較兩版、先猜再看答案。</span></a>
     <a class="vibe-card" href="https://youtu.be/cQVfkCBrwek" target="_blank" rel="noopener"><small>教學影片｜3分49秒</small><strong>學姊與學弟的對話：說、看、驗、再說</strong><span>從星期五晚上收到判決開始，示範vibe coding的節奏與三條底線。</span></a>
     <a class="vibe-card" href="lectures/vibe-coding.html#colab"><small>Google Colab｜3個範例</small><strong>換你動手：複製程式就能執行</strong><span>範例一 選出最大的數字、範例二 上訴期間計算器、範例三 法定遲延利息計算器。</span></a>

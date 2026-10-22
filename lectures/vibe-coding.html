@@ -16,7 +16,7 @@ ol.steps{padding-left:22px}ol.steps li{margin:6px 0}.next-links a{display:block;
 </style></head><body>
 <nav aria-label="講義章節"><div class="links"><a href="#video">影片</a><a href="#what">是什麼</a><a href="#spec">寫需求</a><a href="#calc">計算器</a><a href="#test">驗收練習</a><a href="#colab">換你動手</a></div></nav>
 <main>
-<header class="hero"><div class="eyebrow">法律人的AI工具・課堂練習</div><h1>用說的寫程式：<br>法律人的Vibe Coding</h1><p>不會寫程式也沒關係。把需求說清楚、用案例驗收，就能請AI做出處理法律問題的小工具。</p><div class="tags"><span class="tag">寫需求＝寫條文</span><span class="tag">驗收＝改擬答</span><span class="tag">Google Colab實作</span></div><p class="meta">v1.0｜2026-10-22｜作者：錢世傑</p><a href="../index.html#vibe">← 回到Vibe Coding分頁</a></header>
+<header class="hero"><div class="eyebrow">法律人的AI工具・課堂練習</div><h1>用說的寫程式：<br>法律人的Vibe Coding</h1><p>不會寫程式也沒關係。把需求說清楚、用案例驗收，就能請AI做出處理法律問題的小工具。</p><div class="tags"><span class="tag">寫需求＝寫條文</span><span class="tag">驗收＝改擬答</span><span class="tag">Google Colab實作</span></div><p class="meta">v1.1｜建立2026-10-22・更新2026-10-23｜作者：錢世傑</p><a href="../index.html#vibe">← 回到Vibe Coding分頁</a></header>
 
 <section id="video"><h2>01　先看影片（3分49秒）</h2><div class="video" id="yt"><iframe src="https://www.youtube.com/embed/cQVfkCBrwek" title="不會寫程式也能做法律小工具？法律人的Vibe Coding" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div><p><a href="https://youtu.be/cQVfkCBrwek" target="_blank" rel="noopener">在YouTube觀看 →</a></p><p class="small">影片中的學姊與學弟為虛構角色；案例日期為教學假設。</p></section>
 
@@ -258,7 +258,7 @@ calc_button.on_click(on_calc_clicked)
 display(widgets.VBox([title, principal_input, start_input, end_input, rate_input, calc_button, output]))
 </textarea><div class="notice"><strong>先自己算一題再按：</strong>本金100,000元，起算日2026-01-01，計算日2026-12-31，共365天，利息應是5,000元。<br>法律依據：金錢債務遲延，債權人得請求依法定利率計算之遲延利息（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=233">民法第233條第1項</a>）；利率未約定、亦無法律可據者，週年利率5%（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=203">民法第203條</a>）。<br>程式把起算日和計算日兩天都算進去。判決常寫「自起訴狀繕本送達翌日起至清償日止」，起算日就要選那個「翌日」。</div><p class="small">試試看：請AI加上「閏年用366天」或「分段利率」，再用你手算過的案例驗收。</p></div>
 <details class="card"><summary>延伸：三個可以丟給AI的題目（直接複製給ChatGPT、Gemini或Claude）</summary><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入告訴人知悉犯人的日期與提出告訴的日期，判斷告訴乃論之罪是否已超過六個月告訴期間（刑事訴訟法第237條第1項）。請附上三個測試案例。</div><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入一串判決字號，例如「114年度台上字第1852號」，把年度、字別、號數拆成表格，並依年度排序。</div><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入有期徒刑的最高度與最低度，依刑法第66條、第67條，計算減輕到二分之一時的最高度與最低度，用「年、月」表示。請附上三個測試案例。</div><p class="small">AI寫的程式不一定對：先想好幾個你知道答案的案例，再用它們驗收。</p></details>
-<div class="next-links"><a href="../index.html#vibe">回到Vibe Coding分頁 →</a></div></section>
+<div class="next-links card"><h3>接著做：把程式放到自己的電腦</h3><p>在 Colab 跑過範例後，下一步學會安裝 Python、開啟 Jupyter，將程式存成可以獨立執行的 .py 檔。</p><a href="vibe-coding-python.html">前往本機實作課：安裝 Python → Jupyter → .py →</a><a href="../index.html#vibe">回到Vibe Coding分頁 →</a></div></section>
 
 <footer>作者：錢世傑<br>中正大學高階法律碩士在職專班、中原大學法律系、輔仁大學法律系、高雄空中大學法律系、中央大學資管系，講授AI、AI Agent等課程。<p><a href="mailto:mjib007@gmail.com">mjib007@gmail.com</a>｜<a href="https://www.facebook.com/mjib007">Facebook</a></p><p>教學用整理；案例為假設情境，不構成個案法律意見。</p></footer></main>
 <script>

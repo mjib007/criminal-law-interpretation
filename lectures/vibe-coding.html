@@ -28,7 +28,42 @@ ol.steps{padding-left:22px}ol.steps li{margin:6px 0}.next-links a{display:block;
 
 <section id="test"><h2>05　驗收練習：先猜，再看答案</h2><p>像改擬答一樣，自己先算出期限，再對照。每題的送達日都是假設。</p><div class="card" id="quiz"></div><p id="quizScore" class="muted">尚未作答。</p></section>
 
-<section id="colab"><h2>06　換你動手：在Google Colab執行</h2><ol class="steps"><li>按下方「複製程式」，或下載檔案「colab_法律小程式練習.py」打開後全選複製。</li><li>打開 <a href="https://colab.research.google.com" target="_blank" rel="noopener">colab.research.google.com</a>，按「新增筆記本」（需要Google帳號）。</li><li>把程式貼到第一個程式格，按左邊的播放鍵（或Shift＋Enter）。</li><li>看結果：練習一第一版1/4、第二版4/4；練習二是刑法第18條年齡；練習三是三個可以丟給AI的題目。</li></ol><div class="buttons"><button id="copyBtn">複製程式</button><a id="dl" download="colab_法律小程式練習.py">下載程式檔</a></div><p id="copyMsg" class="small"></p><textarea id="code" readonly aria-label="Colab練習程式"># ============================================================
+<section id="colab"><h2>06　換你動手：在Google Colab執行</h2><ol class="steps"><li>打開 <a href="https://colab.research.google.com" target="_blank" rel="noopener">colab.research.google.com</a>，按「新增筆記本」（需要Google帳號）。</li><li>按範例下方的「複製程式」，貼到一個程式格，按左邊的播放鍵（或Shift＋Enter）。</li><li>每個範例各用一個程式格：做完範例一，按「＋程式碼」新增一格，再貼範例二。</li></ol>
+<div class="card"><h3>範例一：選出最大的數字（暖身）</h3><p>程式隨機出三個數字，你按下最大的那一個，程式會告訴你對不對。每按一次播放鍵，就換一組新數字。</p><div class="buttons"><button id="copyBtn0">複製程式</button><a id="dl0" download="colab_範例一_選最大數字.py">下載程式檔</a></div><p id="copyMsg0" class="small"></p><textarea id="code0" readonly aria-label="範例一程式" style="height:260px">import random
+import ipywidgets as widgets
+from IPython.display import display, clear_output
+
+# 1. 隨機產生三個不同的正整數
+numbers = random.sample(range(1, 100), 3)
+correct_answer = max(numbers)
+
+# 建立顯示文字與輸出區域
+question_label = widgets.HTML(value=f"&lt;h3&gt;請在下方數字中，選擇出&lt;b&gt;最大&lt;/b&gt;的一個：&lt;/h3&gt;")
+output = widgets.Output()
+
+# 2. 建立三個按鈕，並將數字分配給按鈕
+buttons = [widgets.Button(description=str(num), layout=widgets.Layout(width='100px', margin='10px')) for num in numbers]
+
+# 3. 定義按鈕點擊後的判斷邏輯
+def on_button_clicked(b):
+    with output:
+        clear_output() # 清除上一次的結果
+        chosen_num = int(b.description)
+
+        if chosen_num == correct_answer:
+            print(f"🎉 正確！答案就是 {correct_answer}。")
+        else:
+            print(f"❌ 答錯囉！你選了 {chosen_num}。正確答案其實是 {correct_answer}。")
+
+# 為每個按鈕綁定點擊事件
+for button in buttons:
+    button.on_click(on_button_clicked)
+
+# 4. 顯示畫面組合
+button_box = widgets.HBox(buttons)
+display(question_label, button_box, output)
+</textarea><p class="small">試試看：請AI把它改成「選最小的數字」，或改成五個數字。改完再自己按幾次，驗收它對不對。</p></div>
+<div class="card"><h3>範例二：法律小程式練習</h3><p>練習一是影片裡的上訴期間計算器（第一版1/4、第二版4/4）；練習二是刑法第18條年齡；練習三是三個可以丟給AI的題目。程式會請你輸入日期，直接按Enter就用範例日期。</p><div class="buttons"><button id="copyBtn">複製程式</button><a id="dl" download="colab_法律小程式練習.py">下載程式檔</a></div><p id="copyMsg" class="small"></p><textarea id="code" readonly aria-label="範例二程式"># ============================================================
 # 法律人的 Vibe Coding｜課堂練習（Google Colab）
 #
 # 使用方法：
@@ -203,7 +238,7 @@ PROMPTS = """
 print("========== 練習三：換你對 AI 說 ==========")
 print(PROMPTS)
 print("AI 寫出來的程式不一定對：用你自己知道答案的案例驗收它！")
-</textarea>
+</textarea></div>
 <details class="card"><summary>練習三的題目（直接複製給ChatGPT、Gemini或Claude）</summary><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入告訴人知悉犯人的日期與提出告訴的日期，判斷告訴乃論之罪是否已超過六個月告訴期間（刑事訴訟法第237條第1項）。請附上三個測試案例。</div><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入一串判決字號，例如「114年度台上字第1852號」，把年度、字別、號數拆成表格，並依年度排序。</div><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入有期徒刑的最高度與最低度，依刑法第66條、第67條，計算減輕到二分之一時的最高度與最低度，用「年、月」表示。請附上三個測試案例。</div><p class="small">AI寫的程式不一定對：先想好幾個你知道答案的案例，再用它們驗收。</p></details>
 <div class="next-links"><a href="../index.html">回到刑法教材總覽 →</a></div></section>
 
@@ -217,7 +252,7 @@ const show=x=>(x.getUTCMonth()+1)+'/'+x.getUTCDate();
 const showL=x=>x.getUTCFullYear()+'年'+(x.getUTCMonth()+1)+'月'+x.getUTCDate()+'日（星期'+W[x.getUTCDay()]+'）';
 const HOL=['2026-04-20'];// 假設的休息日（測試用）
 const isRest=(x,hol)=>x.getUTCDay()===0||x.getUTCDay()===6||(hol&&HOL.includes(x.toISOString().slice(0,10)));
-function deadline(served,o){let start=o.skipFirst?served:add(served,-1);let last=add(start,o.days?20:10);if(o.roll){while(isRest(last,o.hol))last=add(last,1)}return last}
+function deadline(served,o){let start=o.skipFirst?served:add(served,-1);let last=add(start,o.days?20:10);if(o.roll){while(isRest(last,true))last=add(last,1)}return last}
 const TESTS=[['平日到期','2026-03-03','2026-03-23'],['週日到期','2026-03-02','2026-03-23'],['週六到期','2026-03-01','2026-03-23'],['休息日（假設）','2026-03-30','2026-04-21']];
 // 03 寫需求
 const REQ=[['days','期間','上訴期間20日','刑訴§349'],['skipFirst','起算','送達當天不算','民法§120Ⅱ'],['last','末日','以第20日為期限','刑訴§65'],['roll','例外','末日遇週六、週日或休息日，順延到下一個上班日','民法§122']];
@@ -225,7 +260,7 @@ const st={days:true,skipFirst:true,last:true,roll:false};
 REQ.forEach(([k,t,txt,src])=>{const l=document.createElement('label');l.innerHTML='<input type="checkbox"> <strong>'+t+'</strong><small>'+txt+'｜'+src+'</small>';const c=l.querySelector('input');c.checked=st[k];c.onchange=()=>{st[k]=c.checked;renderSpec()};$('req').append(l)});
 function renderSpec(){[...$('req').children].forEach((l,i)=>l.classList.toggle('on',st[REQ[i][0]]));
  const parts=['請幫我做一個刑事上訴期間計算器。'];REQ.forEach(([k,t,txt])=>{if(st[k])parts.push(txt+'。')});$('promptOut').textContent='你對AI說：'+parts.join('');
- const o={days:st.days,skipFirst:st.skipFirst,roll:st.roll,hol:true};let n=0;
+ const o={days:st.days,skipFirst:st.skipFirst,roll:st.roll};let n=0;
  $('specTable').innerHTML=TESTS.map(([name,s,a])=>{const got=deadline(D(s),o),ok=show(got)===show(D(a));n+=ok;return '<tr><td>'+name+'</td><td>'+show(D(s))+'</td><td>'+show(D(a))+'</td><td class="'+(ok?'ok':'bad')+'">'+(ok?'✓ ':'✗ ')+show(got)+'</td></tr>'}).join('');
  let hint=n===4?'4題全對：需求說清楚了。':(!st.days?'沒說期間多長，AI只好自己猜（這裡假設它猜10天）。':!st.skipFirst?'沒說送達當天不算，AI把送達日算進去，少了一天。':!st.roll?'少了例外：期限落在週末時就會錯。':'');
  $('specScore').innerHTML='<strong>驗收結果：'+n+'/4</strong>　'+hint}
@@ -239,12 +274,12 @@ let mondays=['2026-03-02','2026-05-04','2026-06-01','2026-11-02'],mi=0;
 $('today').onclick=()=>{mi=(mi+1)%mondays.length;$('served').value=mondays[mi];renderCalc()};
 renderCalc();
 // 05 驗收練習
-const QZ=[['2026-04-07'],['2026-04-13'],['2026-05-09'],['2026-06-28']].map(([s])=>{const sd=D(s),ans=deadline(sd,{days:true,skipFirst:true,roll:true}),raw=add(sd,20);const opts=[...new Set([show(add(raw,-1)),show(raw),show(ans),show(add(ans,1))])].sort((x,y)=>{const f=z=>{const[m,d]=z.split('/').map(Number);return m*100+d};return f(x)-f(y)});return{s:sd,ans:show(ans),raw,opts}});
+const QZ=[['2026-04-07'],['2026-04-13'],['2026-05-11'],['2026-06-29']].map(([s])=>{const sd=D(s),ans=deadline(sd,{days:true,skipFirst:true,roll:true}),raw=add(sd,20);const opts=[...new Set([show(add(raw,-1)),show(raw),show(ans),show(add(ans,1))])].sort((x,y)=>{const f=z=>{const[m,d]=z.split('/').map(Number);return m*100+d};return f(x)-f(y)});return{s:sd,ans:show(ans),raw,opts}});
 const qa=Array(QZ.length).fill(null);
 QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='q';d.innerHTML='<strong>第'+(i+1)+'題</strong>　假設'+showL(q.s)+'送達判決，上訴期限是哪一天？<div class="opts"></div><div class="fb"></div>';
  q.opts.forEach(o=>{const b=document.createElement('button');b.textContent=o;b.onclick=()=>{qa[i]=o;[...d.querySelectorAll('.opts button')].forEach(x=>x.setAttribute('aria-pressed',x===b));const ok=o===q.ans;d.querySelector('.fb').innerHTML=(ok?'<span class="ok">正確。</span>':'<span class="bad">再算一次。</span>')+'第20日是'+showL(q.raw)+(show(q.raw)===q.ans?'，是上班日，不必順延。':'，順延到'+q.ans+'。');const n=qa.filter((x,j)=>x===QZ[j].ans).length,done=qa.filter(x=>x!==null).length;$('quizScore').textContent='已作答'+done+'／'+QZ.length+'題，答對'+n+'題。'};d.querySelector('.opts').append(b)});$('quiz').append(d)});
 // 06 複製、下載
-const code=$('code').value;
-$('dl').href=URL.createObjectURL(new Blob([code],{type:'text/x-python'}));
-$('copyBtn').onclick=async()=>{try{await navigator.clipboard.writeText(code);$('copyMsg').textContent='已複製，到Colab貼上即可。'}catch(e){$('code').select();$('copyMsg').textContent='請按Ctrl＋C複製已選取的程式。'}};
+[['code0','dl0','copyBtn0','copyMsg0'],['code','dl','copyBtn','copyMsg']].forEach(([c,d,b,m])=>{const code=$(c).value;
+ $(d).href=URL.createObjectURL(new Blob([code],{type:'text/x-python'}));
+ $(b).onclick=async()=>{try{await navigator.clipboard.writeText(code);$(m).textContent='已複製，到Colab貼上即可。'}catch(e){$(c).select();$(m).textContent='請按Ctrl＋C複製已選取的程式。'}}});
 </script></body></html>

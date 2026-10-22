@@ -68,9 +68,10 @@ display(question_label, button_box, output)
 #
 # 使用方法：
 #   1. 打開 https://colab.research.google.com ，按「新增筆記本」。
-#   2. 把這個檔案的全部內容複製，貼到第一個程式格。
+#   2. 把這個檔案的全部內容複製，貼到一個程式格。
 #   3. 按左邊的播放鍵（或 Shift+Enter）執行。
-#   4. 照畫面提示輸入日期，例如 2026-03-02。
+#   4. 出現輸入框時，輸入日期（例如 2026-03-02）再按 Enter；
+#      什麼都不打、直接按 Enter，就用範例日期。
 #
 # 練習一：刑事上訴期間計算器
 # 練習二：刑法第18條，行為時幾歲？
@@ -85,12 +86,24 @@ WEEKDAY = ["一", "二", "三", "四", "五", "六", "日"]
 
 
 def show(d):
-    return f"{d.year}年{d.month}月{d.day}日（星期{WEEKDAY[d.weekday()]}）"
+    """把日期寫成「3月23日（一）」"""
+    return f"{d.month}月{d.day}日（{WEEKDAY[d.weekday()]}）"
 
 
 def ask_date(prompt, default):
-    text = input(f"{prompt}（例如 {default.isoformat()}，直接按 Enter 用範例）：").strip()
-    return date.fromisoformat(text) if text else default
+    """請使用者輸入日期；直接按 Enter 用範例；打錯就再問一次"""
+    while True:
+        text = input(f"{prompt}（直接按 Enter 用範例 {default.isoformat()}）：").strip()
+        if not text:
+            return default
+        try:
+            return date.fromisoformat(text.replace("/", "-"))
+        except ValueError:
+            print("  看不懂這個日期，請用這種寫法：2026-03-02")
+
+
+def mark(ok):
+    return "✓ 對" if ok else "✗ 錯"
 
 
 # ============================================================
@@ -126,33 +139,48 @@ def deadline_v2(served):
     return last
 
 
-# 驗收：用已經知道答案的案例一個一個試（像改擬答）
+# 驗收用的案例：答案是我們自己先算好的
 TESTS_1 = [
     # (送達日, 正確期限, 說明)
-    (date(2026, 3, 3), date(2026, 3, 23), "平日到期"),
-    (date(2026, 3, 2), date(2026, 3, 23), "週日到期，順延到週一"),
-    (date(2026, 3, 1), date(2026, 3, 23), "週六到期，順延到週一"),
-    (date(2026, 3, 30), date(2026, 4, 21), "假設的休息日接在週末後"),
+    (date(2026, 3, 3), date(2026, 3, 23), "第20天是平日"),
+    (date(2026, 3, 2), date(2026, 3, 23), "第20天是週日"),
+    (date(2026, 3, 1), date(2026, 3, 23), "第20天是週六"),
+    (date(2026, 3, 30), date(2026, 4, 21), "第20天是週日，隔天又是假設的休息日"),
 ]
 
-
-def check_deadline(func, name):
-    print(f"【{name}】")
-    ok = 0
-    for served, answer, note in TESTS_1:
-        got = func(served)
-        ok += got == answer
-        mark = "✓ 對" if got == answer else "✗ 錯"
-        print(f"  {mark}  送達{show(served)} → 程式算{show(got)}，正確{show(answer)}（{note}）")
-    print(f"  結果：{ok}/{len(TESTS_1)} 題正確\n")
-
-
-print("========== 練習一：上訴期間 ==========")
-check_deadline(deadline_v1, "第一版")
-check_deadline(deadline_v2, "第二版")
-served = ask_date("請輸入送達日", date(2026, 3, 2))
-print("第一版：", show(deadline_v1(served)))
-print("第二版：", show(deadline_v2(served)), "← 已處理末日順延\n")
+print("========== 練習一：刑事上訴期間 ==========")
+print("規則：送達隔天開始算，第20天是期限；")
+print("　　　第20天如果是週六、週日或休息日，順延到下一個上班日。")
+print("第一版程式：只會「加20天」。")
+print("第二版程式：多了「遇到休息日就順延」。")
+print()
+print("先用4個已經知道答案的案例，考考兩個版本：")
+score1 = score2 = 0
+for i, (served, answer, note) in enumerate(TESTS_1, 1):
+    a, b = deadline_v1(served), deadline_v2(served)
+    score1 += a == answer
+    score2 += b == answer
+    print()
+    print(f"案例{i}：{note}")
+    print(f"  送達日　　{show(served)}")
+    print(f"  正確期限　{show(answer)}")
+    print(f"  第一版答　{show(a)}　{mark(a == answer)}")
+    print(f"  第二版答　{show(b)}　{mark(b == answer)}")
+print()
+print(f"成績：第一版 {score1}/{len(TESTS_1)}，第二版 {score2}/{len(TESTS_1)}")
+print("→ 第一版只要第20天碰到週末就會錯；補一句需求的第二版全對。")
+print()
+print("換你試：輸入一個送達日，看看兩版答案一不一樣。")
+served = ask_date("送達日", date(2026, 3, 2))
+day20, v2 = deadline_v1(served), deadline_v2(served)
+print(f"  送達日　　{show(served)}")
+print(f"  第20天　　{show(day20)}")
+if day20 == v2:
+    print(f"  第20天是上班日，不用順延。兩版答案都是 {show(v2)}。")
+else:
+    print(f"  第20天是休息日，要順延到 {show(v2)}。")
+    print(f"  第一版說 {show(day20)}：錯了。第二版說 {show(v2)}：對了。")
+print()
 
 
 # ============================================================
@@ -178,11 +206,11 @@ def age_v2(birth, act):
 
 def article_18(age):
     if age &lt; 14:
-        return "未滿14歲，不罰（第1項）"
+        return "未滿14歲，不罰（第18條第1項）"
     if age &lt; 18:
-        return "14歲以上未滿18歲，得減輕其刑（第2項）"
+        return "14歲以上未滿18歲，得減輕其刑（第18條第2項）"
     if age &gt;= 80:
-        return "滿80歲，得減輕其刑（第3項）"
+        return "滿80歲，得減輕其刑（第18條第3項）"
     return "不適用第18條的不罰或減輕"
 
 
@@ -190,28 +218,42 @@ TESTS_2 = [
     # (生日, 行為日, 正確年齡, 說明)
     (date(2012, 5, 10), date(2026, 5, 10), 14, "14歲生日當天"),
     (date(2012, 5, 10), date(2026, 5, 9), 13, "14歲生日前一天"),
-    (date(2008, 12, 31), date(2026, 1, 1), 17, "年份差18，其實才17歲"),
+    (date(2008, 12, 31), date(2026, 1, 1), 17, "年份差18，其實還沒過生日"),
 ]
 
 
-def check_age(func, name):
-    print(f"【{name}】")
-    ok = 0
-    for birth, act, answer, note in TESTS_2:
-        got = func(birth, act)
-        ok += got == answer
-        mark = "✓ 對" if got == answer else "✗ 錯"
-        print(f"  {mark}  {birth}出生，{act}行為 → 程式算{got}歲，正確{answer}歲（{note}）")
-    print(f"  結果：{ok}/{len(TESTS_2)} 題正確\n")
+def ymd(d):
+    return f"{d.year}年{d.month}月{d.day}日"
 
 
-print("========== 練習二：刑法第18條 ==========")
-check_age(age_v1, "第一版")
-check_age(age_v2, "第二版")
-birth = ask_date("請輸入出生日", date(2012, 5, 10))
-act = ask_date("請輸入行為日", date(2026, 5, 9))
+print("========== 練習二：刑法第18條，行為時幾歲？ ==========")
+print("規則：未滿14歲不罰；14歲以上未滿18歲、滿80歲，得減輕其刑。")
+print("第一版程式：只用「年份相減」算年齡。")
+print("第二版程式：多了「還沒過生日要少算一歲」。")
+print()
+print("先用3個已經知道答案的案例，考考兩個版本：")
+score1 = score2 = 0
+for i, (birth, act, answer, note) in enumerate(TESTS_2, 1):
+    a, b = age_v1(birth, act), age_v2(birth, act)
+    score1 += a == answer
+    score2 += b == answer
+    print()
+    print(f"案例{i}：{note}")
+    print(f"  出生日　　{ymd(birth)}")
+    print(f"  行為日　　{ymd(act)}")
+    print(f"  正確年齡　{answer}歲")
+    print(f"  第一版答　{a}歲　{mark(a == answer)}")
+    print(f"  第二版答　{b}歲　{mark(b == answer)}")
+print()
+print(f"成績：第一版 {score1}/{len(TESTS_2)}，第二版 {score2}/{len(TESTS_2)}")
+print("→ 差一天，可能就是「不罰」和「得減輕」的差別。")
+print()
+print("換你試：輸入出生日和行為日（兩次都直接按 Enter，就用範例）。")
+birth = ask_date("出生日", date(2012, 5, 10))
+act = ask_date("行為日", date(2026, 5, 9))
 a = age_v2(birth, act)
-print(f"行為時{a}歲：{article_18(a)}\n")
+print(f"  行為時 {a} 歲：{article_18(a)}")
+print()
 
 
 # ============================================================
@@ -236,6 +278,7 @@ PROMPTS = """
 """
 
 print("========== 練習三：換你對 AI 說 ==========")
+print("複製下面任一段，貼給 ChatGPT、Gemini 或 Claude：")
 print(PROMPTS)
 print("AI 寫出來的程式不一定對：用你自己知道答案的案例驗收它！")
 </textarea></div>

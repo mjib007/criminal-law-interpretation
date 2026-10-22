@@ -28,7 +28,7 @@ ol.steps{padding-left:22px}ol.steps li{margin:6px 0}.next-links a{display:block;
 
 <section id="test"><h2>05　驗收練習：先猜，再看答案</h2><p>像改擬答一樣，自己先算出期限，再對照。每題的送達日都是假設。</p><div class="card" id="quiz"></div><p id="quizScore" class="muted">尚未作答。</p></section>
 
-<section id="colab"><h2>06　換你動手：在Google Colab執行</h2><ol class="steps"><li>打開 <a href="https://colab.research.google.com" target="_blank" rel="noopener">colab.research.google.com</a>，按「新增筆記本」（需要Google帳號）。</li><li>按範例下方的「複製程式」，貼到一個程式格，按左邊的播放鍵（或Shift＋Enter）。</li><li>每個範例各用一個程式格：做完範例一，按「＋程式碼」新增一格，再貼範例二。</li></ol>
+<section id="colab"><h2>06　換你動手：在Google Colab執行</h2><ol class="steps"><li>打開 <a href="https://colab.research.google.com" target="_blank" rel="noopener">colab.research.google.com</a>，按「新增筆記本」（需要Google帳號）。</li><li>按範例下方的「複製程式」，貼到一個程式格，按左邊的播放鍵（或Shift＋Enter）。</li><li>每個範例各用一個程式格：做完一個，按「＋程式碼」新增一格，再貼下一個。</li></ol>
 <div class="card"><h3>範例一：選出最大的數字（暖身）</h3><p>程式隨機出三個數字，你按下最大的那一個，程式會告訴你對不對。每按一次播放鍵，就換一組新數字。</p><div class="buttons"><button id="copyBtn0">複製程式</button><a id="dl0" download="colab_範例一_選最大數字.py">下載程式檔</a></div><p id="copyMsg0" class="small"></p><textarea id="code0" readonly aria-label="範例一程式" style="height:260px">import random
 import ipywidgets as widgets
 from IPython.display import display, clear_output
@@ -63,8 +63,8 @@ for button in buttons:
 button_box = widgets.HBox(buttons)
 display(question_label, button_box, output)
 </textarea><p class="small">試試看：請AI把它改成「選最小的數字」，或改成五個數字。改完再自己按幾次，驗收它對不對。</p></div>
-<div class="card"><h3>範例二：法律小程式練習</h3><p>練習一是影片裡的上訴期間計算器（第一版1/4、第二版4/4）；練習二是刑法第18條年齡；練習三是三個可以丟給AI的題目。程式會請你輸入日期，直接按Enter就用範例日期。</p><div class="buttons"><button id="copyBtn">複製程式</button><a id="dl" download="colab_法律小程式練習.py">下載程式檔</a></div><p id="copyMsg" class="small"></p><textarea id="code" readonly aria-label="範例二程式"># ============================================================
-# 法律人的 Vibe Coding｜課堂練習（Google Colab）
+<div class="card"><h3>範例二：刑事上訴期間計算器</h3><p>影片裡的計算器：程式先用4個已知答案的案例考兩個版本（第一版1/4、第二版4/4），再請你輸入一個送達日，用一句話說明兩版差在哪。直接按Enter就用範例日期。</p><div class="buttons"><button id="copyBtn">複製程式</button><a id="dl" download="colab_法律小程式練習.py">下載程式檔</a></div><p id="copyMsg" class="small"></p><textarea id="code" readonly aria-label="範例二程式"># ============================================================
+# 法律人的 Vibe Coding｜範例二：刑事上訴期間計算器（Google Colab）
 #
 # 使用方法：
 #   1. 打開 https://colab.research.google.com ，按「新增筆記本」。
@@ -73,9 +73,7 @@ display(question_label, button_box, output)
 #   4. 出現輸入框時，輸入日期（例如 2026-03-02）再按 Enter；
 #      什麼都不打、直接按 Enter，就用範例日期。
 #
-# 練習一：刑事上訴期間計算器
-# 練習二：刑法第18條，行為時幾歲？
-# 練習三：換你對 AI 說（最下面有可以直接複製的說法）
+# 內容：刑事上訴期間計算器（第一版、第二版比較）
 #
 # 本檔是教學示範，案例都是假設，實際案件請自己核算。
 # ============================================================
@@ -108,7 +106,7 @@ def mark(ok):
 
 
 # ============================================================
-# 練習一：刑事上訴期間計算器
+# 刑事上訴期間計算器
 #   刑事訴訟法第349條：上訴期間為二十日，自送達判決後起算。
 #   刑事訴訟法第65條：期間之計算，依民法之規定。
 #   民法第120條第2項：以日定期間者，其始日不算入。
@@ -149,7 +147,7 @@ TESTS_1 = [
     (date(2026, 3, 30), date(2026, 4, 21), "第20天是週日，隔天又是假設的休息日"),
 ]
 
-print("========== 練習一：刑事上訴期間 ==========")
+print("========== 刑事上訴期間計算器 ==========")
 print("規則：送達隔天開始算，第20天是期限；")
 print("　　　第20天如果是週六、週日或休息日，順延到下一個上班日。")
 print("第一版程式：只會「加20天」。")
@@ -182,108 +180,84 @@ else:
     print(f"  第20天是休息日，要順延到 {show(v2)}。")
     print(f"  第一版說 {show(day20)}：錯了。第二版說 {show(v2)}：對了。")
 print()
-
-
-# ============================================================
-# 練習二：刑法第18條，行為時幾歲？
-#   未滿十四歲人之行為，不罰。
-#   十四歲以上未滿十八歲人之行為，得減輕其刑。
-#   滿八十歲人之行為，得減輕其刑。
-#   民法第124條第1項：年齡自出生之日起算。
-# ============================================================
-
-# 第一版：只對 AI 說「用年份相減算年齡」
-def age_v1(birth, act):
-    return act.year - birth.year
-
-
-# 第二版：補一句「還沒過生日要少算一歲」
-def age_v2(birth, act):
-    age = act.year - birth.year
-    if (act.month, act.day) &lt; (birth.month, birth.day):
-        age -= 1
-    return age
-
-
-def article_18(age):
-    if age &lt; 14:
-        return "未滿14歲，不罰（第18條第1項）"
-    if age &lt; 18:
-        return "14歲以上未滿18歲，得減輕其刑（第18條第2項）"
-    if age &gt;= 80:
-        return "滿80歲，得減輕其刑（第18條第3項）"
-    return "不適用第18條的不罰或減輕"
-
-
-TESTS_2 = [
-    # (生日, 行為日, 正確年齡, 說明)
-    (date(2012, 5, 10), date(2026, 5, 10), 14, "14歲生日當天"),
-    (date(2012, 5, 10), date(2026, 5, 9), 13, "14歲生日前一天"),
-    (date(2008, 12, 31), date(2026, 1, 1), 17, "年份差18，其實還沒過生日"),
-]
-
-
-def ymd(d):
-    return f"{d.year}年{d.month}月{d.day}日"
-
-
-print("========== 練習二：刑法第18條，行為時幾歲？ ==========")
-print("規則：未滿14歲不罰；14歲以上未滿18歲、滿80歲，得減輕其刑。")
-print("第一版程式：只用「年份相減」算年齡。")
-print("第二版程式：多了「還沒過生日要少算一歲」。")
-print()
-print("先用3個已經知道答案的案例，考考兩個版本：")
-score1 = score2 = 0
-for i, (birth, act, answer, note) in enumerate(TESTS_2, 1):
-    a, b = age_v1(birth, act), age_v2(birth, act)
-    score1 += a == answer
-    score2 += b == answer
-    print()
-    print(f"案例{i}：{note}")
-    print(f"  出生日　　{ymd(birth)}")
-    print(f"  行為日　　{ymd(act)}")
-    print(f"  正確年齡　{answer}歲")
-    print(f"  第一版答　{a}歲　{mark(a == answer)}")
-    print(f"  第二版答　{b}歲　{mark(b == answer)}")
-print()
-print(f"成績：第一版 {score1}/{len(TESTS_2)}，第二版 {score2}/{len(TESTS_2)}")
-print("→ 差一天，可能就是「不罰」和「得減輕」的差別。")
-print()
-print("換你試：輸入出生日和行為日（兩次都直接按 Enter，就用範例）。")
-birth = ask_date("出生日", date(2012, 5, 10))
-act = ask_date("行為日", date(2026, 5, 9))
-a = age_v2(birth, act)
-print(f"  行為時 {a} 歲：{article_18(a)}")
-print()
-
-
-# ============================================================
-# 練習三：換你對 AI 說
-#   打開 ChatGPT、Gemini 或 Claude，複製下面任一段需求貼上，
-#   把 AI 給的程式貼到 Colab 新的程式格執行。
-#   記得：先想好幾個你知道答案的案例，用來驗收。
-# ============================================================
-
-PROMPTS = """
-（一）請用 Python 寫一個程式，可以在 Google Colab 執行。
-     輸入告訴人知悉犯人的日期與提出告訴的日期，判斷告訴乃論之罪
-     是否已超過六個月告訴期間（刑事訴訟法第237條第1項）。請附上三個測試案例。
-
-（二）請用 Python 寫一個程式，可以在 Google Colab 執行。
-     輸入一串判決字號，例如「114年度台上字第1852號」，
-     把年度、字別、號數拆成表格，並依年度排序。
-
-（三）請用 Python 寫一個程式，可以在 Google Colab 執行。
-     輸入有期徒刑的最高度與最低度，依刑法第66條、第67條，
-     計算減輕到二分之一時的最高度與最低度，用「年、月」表示。請附上三個測試案例。
-"""
-
-print("========== 練習三：換你對 AI 說 ==========")
-print("複製下面任一段，貼給 ChatGPT、Gemini 或 Claude：")
-print(PROMPTS)
-print("AI 寫出來的程式不一定對：用你自己知道答案的案例驗收它！")
 </textarea></div>
-<details class="card"><summary>練習三的題目（直接複製給ChatGPT、Gemini或Claude）</summary><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入告訴人知悉犯人的日期與提出告訴的日期，判斷告訴乃論之罪是否已超過六個月告訴期間（刑事訴訟法第237條第1項）。請附上三個測試案例。</div><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入一串判決字號，例如「114年度台上字第1852號」，把年度、字別、號數拆成表格，並依年度排序。</div><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入有期徒刑的最高度與最低度，依刑法第66條、第67條，計算減輕到二分之一時的最高度與最低度，用「年、月」表示。請附上三個測試案例。</div><p class="small">AI寫的程式不一定對：先想好幾個你知道答案的案例，再用它們驗收。</p></details>
+<div class="card"><h3>範例三：法定遲延利息計算器</h3><p>輸入本金、起算日、計算日，按「計算利息」，程式依<span class="key">本金 × 年利率 × 天數 ÷ 365</span>算出利息，四捨五入到元。結果可以拿計算機手算驗收。</p><div class="buttons"><button id="copyBtn3">複製程式</button><a id="dl3" download="colab_範例三_法定遲延利息.py">下載程式檔</a></div><p id="copyMsg3" class="small"></p><textarea id="code3" readonly aria-label="範例三程式"># 匯入日期模組，用來處理日期相減
+from datetime import date
+# 匯入精確小數模組，用來做「四捨五入」（Python 內建 round 不是傳統四捨五入）
+from decimal import Decimal, ROUND_HALF_UP
+# 匯入互動元件套件，取別名 widgets
+import ipywidgets as widgets
+# display：顯示元件；clear_output：清除舊結果
+from IPython.display import display, clear_output
+
+# ===== 1. 建立輸入元件 =====
+# 標題
+title = widgets.HTML(value="&lt;h3&gt;法定遲延利息計算器（民法第203條，年息5%）&lt;/h3&gt;")
+# 本金輸入框（整數），預設 100000
+principal_input = widgets.IntText(value=100000, description="本金（元）：")
+# 起算日選擇器
+start_input = widgets.DatePicker(description="起算日：")
+# 計算日（止日）選擇器
+end_input = widgets.DatePicker(description="計算日：")
+# 年利率輸入框（小數），預設 5，保留可改的彈性（例如約定利率）
+rate_input = widgets.FloatText(value=5.0, description="年利率（%）：")
+# 計算按鈕
+calc_button = widgets.Button(description="計算利息", button_style="primary")
+# 顯示結果的輸出區
+output = widgets.Output()
+
+# ===== 2. 定義計算邏輯 =====
+# 按下按鈕時執行此函式，b 是被點的按鈕
+def on_calc_clicked(b):
+    # 結果都印在 output 區
+    with output:
+        # 清除上一次的結果
+        clear_output()
+
+        # 讀取使用者輸入的值
+        principal = principal_input.value
+        start = start_input.value
+        end = end_input.value
+        rate = rate_input.value
+
+        # 檢查：日期是否都有選
+        if start is None or end is None:
+            print("⚠️ 請選擇起算日與計算日。")
+            return
+        # 檢查：本金必須大於 0
+        if principal &lt;= 0:
+            print("⚠️ 本金必須大於 0。")
+            return
+        # 檢查：計算日不可早於起算日
+        if end &lt; start:
+            print("⚠️ 計算日不可早於起算日。")
+            return
+
+        # 日期相減得到天數；+1 代表起算日與計算日兩端都算入（判決常見「自某日起至清償日止」）
+        days = (end - start).days + 1
+
+        # 公式：本金 × 年利率 × 天數 ÷ 365
+        # 全部轉成 Decimal 計算，避免浮點數誤差
+        interest = Decimal(principal) * Decimal(str(rate)) / Decimal(100) * Decimal(days) / Decimal(365)
+        # 四捨五入到整數元
+        interest_rounded = interest.quantize(Decimal("1"), rounding=ROUND_HALF_UP)
+
+        # 印出結果
+        print(f"本金：{principal:,} 元")
+        print(f"期間：{start} 至 {end}，共 {days} 天")
+        print(f"年利率：{rate}%")
+        print(f"計算式：{principal:,} × {rate}% × {days} ÷ 365")
+        print(f"利息：{interest_rounded:,} 元（未四捨五入：{interest:.4f}）")
+        print(f"本利和：{principal + int(interest_rounded):,} 元")
+
+# 綁定按鈕點擊事件（只傳函式名稱，不加括號）
+calc_button.on_click(on_calc_clicked)
+
+# ===== 3. 組合並顯示畫面 =====
+# 由上而下垂直排列所有元件（VBox = Vertical Box）
+display(widgets.VBox([title, principal_input, start_input, end_input, rate_input, calc_button, output]))
+</textarea><div class="notice"><strong>先自己算一題再按：</strong>本金100,000元，起算日2026-01-01，計算日2026-12-31，共365天，利息應是5,000元。<br>法律依據：金錢債務遲延，債權人得請求依法定利率計算之遲延利息（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=233">民法第233條第1項</a>）；利率未約定、亦無法律可據者，週年利率5%（<a href="https://law.moj.gov.tw/LawClass/LawSingle.aspx?pcode=B0000001&flno=203">民法第203條</a>）。<br>程式把起算日和計算日兩天都算進去。判決常寫「自起訴狀繕本送達翌日起至清償日止」，起算日就要選那個「翌日」。</div><p class="small">試試看：請AI加上「閏年用366天」或「分段利率」，再用你手算過的案例驗收。</p></div>
+<details class="card"><summary>延伸：三個可以丟給AI的題目（直接複製給ChatGPT、Gemini或Claude）</summary><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入告訴人知悉犯人的日期與提出告訴的日期，判斷告訴乃論之罪是否已超過六個月告訴期間（刑事訴訟法第237條第1項）。請附上三個測試案例。</div><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入一串判決字號，例如「114年度台上字第1852號」，把年度、字別、號數拆成表格，並依年度排序。</div><div class="prompt">請用 Python 寫一個程式，可以在 Google Colab 執行。輸入有期徒刑的最高度與最低度，依刑法第66條、第67條，計算減輕到二分之一時的最高度與最低度，用「年、月」表示。請附上三個測試案例。</div><p class="small">AI寫的程式不一定對：先想好幾個你知道答案的案例，再用它們驗收。</p></details>
 <div class="next-links"><a href="../index.html">回到刑法教材總覽 →</a></div></section>
 
 <footer>作者：錢世傑<br>中正大學高階法律碩士在職專班、中原大學法律系、輔仁大學法律系、高雄空中大學法律系、中央大學資管系，講授AI、AI Agent等課程。<p><a href="mailto:mjib007@gmail.com">mjib007@gmail.com</a>｜<a href="https://www.facebook.com/mjib007">Facebook</a></p><p>教學用整理；案例為假設情境，不構成個案法律意見。</p></footer></main>
@@ -323,7 +297,7 @@ const qa=Array(QZ.length).fill(null);
 QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='q';d.innerHTML='<strong>第'+(i+1)+'題</strong>　假設'+showL(q.s)+'送達判決，上訴期限是哪一天？<div class="opts"></div><div class="fb"></div>';
  q.opts.forEach(o=>{const b=document.createElement('button');b.textContent=o;b.onclick=()=>{qa[i]=o;[...d.querySelectorAll('.opts button')].forEach(x=>x.setAttribute('aria-pressed',x===b));const ok=o===q.ans;d.querySelector('.fb').innerHTML=(ok?'<span class="ok">正確。</span>':'<span class="bad">再算一次。</span>')+'第20日是'+showL(q.raw)+(show(q.raw)===q.ans?'，是上班日，不必順延。':'，順延到'+q.ans+'。');const n=qa.filter((x,j)=>x===QZ[j].ans).length,done=qa.filter(x=>x!==null).length;$('quizScore').textContent='已作答'+done+'／'+QZ.length+'題，答對'+n+'題。'};d.querySelector('.opts').append(b)});$('quiz').append(d)});
 // 06 複製、下載
-[['code0','dl0','copyBtn0','copyMsg0'],['code','dl','copyBtn','copyMsg']].forEach(([c,d,b,m])=>{const code=$(c).value;
+[['code0','dl0','copyBtn0','copyMsg0'],['code','dl','copyBtn','copyMsg'],['code3','dl3','copyBtn3','copyMsg3']].forEach(([c,d,b,m])=>{const code=$(c).value;
  $(d).href=URL.createObjectURL(new Blob([code],{type:'text/x-python'}));
  $(b).onclick=async()=>{try{await navigator.clipboard.writeText(code);$(m).textContent='已複製，到Colab貼上即可。'}catch(e){$(c).select();$(m).textContent='請按Ctrl＋C複製已選取的程式。'}}});
 </script></body></html>

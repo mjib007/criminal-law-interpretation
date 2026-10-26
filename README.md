@@ -7,7 +7,7 @@
 ![AI](https://img.shields.io/badge/AI-Claude%20(Anthropic)-blueviolet)
 ![Platform](https://img.shields.io/badge/Platform-claude.ai-orange)
 ![Language](https://img.shields.io/badge/Language-繁體中文-red)
-[![License](https://img.shields.io/badge/License-CC%20BY--NC%204.0-lightgrey)](LICENSE.md)
+[![教材授權](https://img.shields.io/badge/License-Permission%20Required-2c4a76)](LICENSE.md)
 ![Status](https://img.shields.io/badge/status-active-success)
 [![總覽頁](https://img.shields.io/badge/總覽頁-GitHub%20Pages-1a3a5c)](https://mjib007.github.io/criminal-law-interpretation/)
 
@@ -96,7 +96,7 @@ criminal-law-interpretation/
 │
 ├── README.md        # 你現在看的這份說明文件
 ├── SKILL.md          # 完整 Skill 內容，依 Claude Skill 格式安裝即可使用
-├── LICENSE.md         # CC BY-NC 4.0 授權條款（中英對照）
+├── LICENSE.md         # 教材授權與系所合作條款
 ├── index.html         # 講義總覽頁（分類覆蓋地圖＋搜尋篩選），GitHub Pages 入口
 └── lectures/           # 各講義 HTML 檔案存放處（資料夾與檔名一律英文，如 privacy-intrusion-315-1.html）
 ```
@@ -105,8 +105,15 @@ criminal-law-interpretation/
 
 ## 授權
 
-本專案以 [CC BY-NC 4.0](./LICENSE.md) 授權公開，僅限非商業用途，
-歡迎自由使用、修改與分享，請保留原作者資訊。
+歡迎個人透過原網站閱讀、觀看與操作教材，並分享原始連結。
+
+**教材重製、改編、平台整合或系所採用，請先洽書面授權。**
+
+歡迎法律系所洽談課程共備、教材導入、客製化互動與教師工作坊。請提供單位、課程、教材範圍、使用方式與期間。
+
+- [教材授權與系所合作](https://mjib007.github.io/criminal-law-interpretation/licensing.html)
+- [完整授權條款](./LICENSE.md)
+- 聯絡：[mjib007@gmail.com](mailto:mjib007@gmail.com)
 
 ---
 

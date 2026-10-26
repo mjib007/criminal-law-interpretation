@@ -13,7 +13,7 @@ table{border-collapse:collapse;width:100%;font-size:17px}td,th{border-bottom:1px
 textarea{width:100%;height:340px;font:14px/1.5 Consolas,monospace;border:1px solid var(--line);border-radius:10px;padding:12px;background:#fbfbf8;color:var(--ink)}
 ol.steps{padding-left:22px}ol.steps li{margin:6px 0}.next-links a{display:block;margin:10px 0}footer{font-size:15px;border-top:1px solid var(--line);padding-top:24px}
 @media(max-width:650px){body{font-size:17px}.hero{padding:23px 20px}main{padding:20px 14px 55px}nav .links{grid-template-columns:repeat(3,1fr)}nav a{font-size:13px;padding:7px 2px}.grid,.out{grid-template-columns:1fr}.req{grid-template-columns:1fr 1fr}h2{font-size:24px}.card{padding:18px}table{font-size:14px}td,th{padding:7px 3px}}
-</style></head><body>
+.teaching-license{box-sizing:border-box;max-width:1000px;margin:28px auto;padding:20px 24px;border:1px solid #d6dde3;border-left:5px solid #37658f;border-radius:12px;background:#fffdf8;color:#243347;font:15px/1.8 system-ui,"Microsoft JhengHei",sans-serif;overflow-wrap:anywhere;text-align:left}.teaching-license strong{display:block;font-size:18px;color:#243347}.teaching-license p{margin:8px 0}.teaching-license a{color:#315f87;text-decoration:underline;text-underline-offset:3px}.teaching-license .license-actions{display:flex;flex-wrap:wrap;gap:8px 20px}@media(max-width:650px){.teaching-license{margin:22px 14px;padding:17px 18px}}</style></head><body>
 <nav aria-label="講義章節"><div class="links"><a href="#video">影片</a><a href="#what">是什麼</a><a href="#spec">寫需求</a><a href="#calc">計算器</a><a href="#test">驗收練習</a><a href="#colab">換你動手</a></div></nav>
 <main>
 <header class="hero"><div class="eyebrow">法律人的AI工具・課堂練習</div><h1>用說的寫程式：<br>法律人的Vibe Coding</h1><p>不會寫程式也沒關係。把需求說清楚、用案例驗收，就能請AI做出處理法律問題的小工具。</p><div class="tags"><span class="tag">寫需求＝寫條文</span><span class="tag">驗收＝改擬答</span><span class="tag">Google Colab實作</span></div><p class="meta">v1.1｜建立2026-10-22・更新2026-10-23｜作者：錢世傑</p><a href="../index.html#vibe">← 回到Vibe Coding分頁</a></header>
@@ -300,4 +300,5 @@ QZ.forEach((q,i)=>{const d=document.createElement('div');d.className='q';d.inner
 [['code0','dl0','copyBtn0','copyMsg0'],['code','dl','copyBtn','copyMsg'],['code3','dl3','copyBtn3','copyMsg3']].forEach(([c,d,b,m])=>{const code=$(c).value;
  $(d).href=URL.createObjectURL(new Blob([code],{type:'text/x-python'}));
  $(b).onclick=async()=>{try{await navigator.clipboard.writeText(code);$(m).textContent='已複製，到Colab貼上即可。'}catch(e){$(c).select();$(m).textContent='請按Ctrl＋C複製已選取的程式。'}}});
-</script></body></html>
+</script><aside class="teaching-license" aria-label="教材授權與系所合作"><strong>教材授權與系所合作</strong><p>歡迎個人閱覽、觀看及分享原始連結。教材重製、改編、平台整合或系所採用，請先洽書面授權。</p><div class="license-actions"><a href="../licensing.html">授權方式與合作洽詢 →</a><a href="mailto:mjib007@gmail.com?subject=%E6%95%99%E6%9D%90%E6%8E%88%E6%AC%8A%E8%88%87%E7%B3%BB%E6%89%80%E5%90%88%E4%BD%9C">聯絡錢世傑</a></div></aside>
+</body></html>

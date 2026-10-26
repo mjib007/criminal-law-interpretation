@@ -1,64 +1,44 @@
-Creative Commons Attribution-NonCommercial 4.0 International (CC BY-NC 4.0)
-創用CC 姓名標示－非商業性 4.0 國際 授權條款
+# 教材授權與系所合作條款
 
-Copyright (c) mjib007 (錢世傑 Jackie Chien)
+Copyright © 錢世傑（Jackie Chien／mjib007）。
 
-────────────────────────────────────
-📌 白話重點（僅供快速理解，非正式法律文字）
-📌 Plain-Language Summary (for quick reference only, not a substitute for the legal text)
-────────────────────────────────────
+版本：2026-10-26｜公開閱覽・教材採用個別授權
 
-繁體中文：
-本作品採用 **CC BY-NC 4.0（姓名標示－非商業性）** 授權，任何人使用、修改、散布本作品或其衍生作品，都必須遵守以下兩項條件：
+## 1. 適用範圍
 
-1. **姓名標示（出處標示）**：使用者**必須在明顯可見的位置**標明原作者（mjib007／錢世傑）與原始來源連結，不得將出處資訊隱藏在極小字、附註、或不易察覺的角落。
-2. **非商業性**：**禁止將本作品用於任何商業目的**，包括但不限於付費銷售、營利課程教材、商業服務等用途。
+本條款適用於本專案由錢世傑享有著作權或有權授權的教材內容、圖文編排、互動講義、程式及影音創作。授權範圍以實際享有的權利為限；依法得利用或另有合法授權依據者，依其規定辦理。第三方素材及平台服務，依其各自適用條款辦理。
 
-English:
-This work is licensed under **CC BY-NC 4.0 (Attribution-NonCommercial)**. Anyone who uses, modifies, or distributes this work — or any derivative of it — must comply with the following two conditions:
+## 2. 歡迎個人閱覽與分享連結
 
-1. **Attribution (Source Notice)**: Users **must clearly display**, in a prominent and easily noticeable location, the name of the original author (mjib007 / Jackie Chien) and a link to the original source. Attribution must not be hidden in fine print, footnotes, or obscure locations.
-2. **NonCommercial**: **This work may not be used for any commercial purpose**, including but not limited to paid sales, for-profit course materials, or commercial services.
+歡迎個人透過原網站閱讀、觀看及操作公開教材，供自行學習，也歡迎分享原網站及原影片連結。此項許可不等於授權重製、改編、重新上傳、散布教材檔案，或以其他機構名義提供本教材。
 
-────────────────────────────────────
-繁體中文完整條款
-────────────────────────────────────
+## 3. 教材採用與再利用須事先書面授權
 
-本作品採用「創用CC 姓名標示－非商業性 4.0 國際 授權條款」授權。
+法律系所、學校、教師、教育機構、出版單位及其他使用者，如欲進行下列利用，請事先洽詢並取得錢世傑的書面授權：
 
-您可以自由地：
-　共享 — 以任何媒介或格式重製及散布本素材
-　修改 — 重混、轉換本素材、及依本素材建立新素材
+- 重製、印製、下載後散布教材檔案，或重新上傳至網站及教學平台。
+- 改編、翻譯、剪輯、改作教材，或將教材整合至課程講義、教材包、出版品及其他產品。
+- 以系所或機構名義提供、共同開發或推廣本教材。
+- 用於補習班、付費課程、出版、銷售或其他商業用途。
 
-惟需遵照下列條件：
-　**姓名標示** — 您必須給予適當表彰、提供指向本授權條款的連結，並指出（本作品的原始版本）是否已由您變更。**表彰位置須明顯可見，不得以極小字或不易察覺的方式呈現。**
-　**非商業性** — 您不得將本素材用於商業目的。
+教育或非營利目的，不當然等於本專案已另行授權。單純分享原網站連結，仍依第2節辦理；本節適用須以第1節範圍為前提。
 
-沒有附加限制 — 您不得增加或使用任何法律條款或科技措施，來限制別人依本授權條款所允許的作為。
+## 4. 合作方式與書面確認
 
-────────────────────────────────────
-Full English Legal Terms
-────────────────────────────────────
+歡迎法律系所洽談課程共備、教材導入、客製化互動、教師工作坊及教材持續更新。授權可依個案約定為有償或無償，並以書面載明授權單位、課程、期間、使用方式、可否修改、署名及費用等事項。書面方式包括由錢世傑明確同意授權內容的電子郵件；僅提出申請不代表已獲授權。
 
-This work is licensed under the Creative Commons Attribution-NonCommercial 4.0 International License.
+未經明確同意，不得宣稱為授權合作系所，或暗示作者推薦、認可或與該單位具有合作關係。公開存取本倉庫不代表取得一般性的再利用許可；GitHub平台本身賦予的瀏覽、fork等功能權限依平台條款處理。
 
-You are free to:
-　Share — copy and redistribute the material in any medium or format
-　Adapt — remix, transform, and build upon the material
+## 5. 署名與教材維護
 
-Under the following terms:
-　**Attribution** — You must give appropriate credit, provide a link to the license, and indicate if changes were made. **Attribution must be displayed in a clearly visible location, not in fine print or an easily overlooked place.**
-　**NonCommercial** — You may not use the material for commercial purposes.
+經授權使用時，請依書面約定標示作者、教材名稱及原始來源；修改部分應清楚區分，避免將使用者自行增修的內容誤認為作者原文。不得移除應保留的作者與來源資訊。
 
-No additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.
+## 6. 教學參考與責任範圍
 
-────────────────────────────────────
-完整授權條款全文 Full Legal Code
-────────────────────────────────────
+教材供研讀與教學參考，不構成個案法律意見。使用者應依教學需要核對現行法規、裁判及資料日期。授權採用不表示對任何個案結論、課程成果或系統運作提供保證。
 
-繁體中文：https://creativecommons.org/licenses/by-nc/4.0/legalcode.zh-Hant
-English: https://creativecommons.org/licenses/by-nc/4.0/legalcode
+## 7. 聯絡
 
-授權條款摘要（非法律文件，僅供參考）License Deed (not a substitute for the license):
-繁體中文：https://creativecommons.org/licenses/by-nc/4.0/deed.zh-Hant
-English: https://creativecommons.org/licenses/by-nc/4.0/deed.en
+教材授權及系所合作：[mjib007@gmail.com](mailto:mjib007@gmail.com)
+
+洽詢時請提供單位／系所、聯絡人、課程名稱、預計採用的教材、使用方式與期間，以便討論合適的合作方案。

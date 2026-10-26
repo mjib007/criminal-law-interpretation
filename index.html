@@ -392,7 +392,7 @@
 .vibe-panel{max-width:1000px;margin:24px auto 8px;padding:0 24px}.vibe-intro{background:var(--paper-panel);border:1px solid var(--line);border-left:7px solid var(--indigo);border-radius:16px;padding:22px 26px;margin-bottom:22px}.vibe-intro h2{margin:0 0 8px;font-size:1.3rem;color:var(--indigo)}.vibe-intro p{margin:6px 0;line-height:1.8}.vibe-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}.vibe-card{display:block;background:var(--paper-panel);border:1px solid var(--line);border-radius:12px;padding:18px 20px;color:var(--indigo);text-decoration:none}.vibe-card:hover{background:#fff8e7}.vibe-card small{display:block;color:var(--ink-45);font-size:.8rem;margin-bottom:4px}.vibe-card strong{display:block;font-size:1.02rem;line-height:1.6}.vibe-card span{display:block;margin-top:6px;font-size:.85rem;color:var(--ink-70);line-height:1.7}
 
 .vibe-route{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;margin:0 0 22px}.vibe-route a{min-width:0;display:block;padding:18px;background:var(--paper-panel);border:1px solid var(--line);border-top:4px solid var(--indigo);border-radius:10px;color:var(--indigo);text-decoration:none}.vibe-route small{display:block;font-size:.8rem;color:var(--ink-45)}.vibe-route strong{display:block;margin:6px 0;font-size:1rem;line-height:1.6}.vibe-route span{display:block;font-size:.85rem;line-height:1.7;color:var(--ink-70)}.vibe-route a:hover{background:#fff8e7}.vibe-route a:focus-visible,.vibe-card:focus-visible{outline:3px solid var(--brass);outline-offset:4px}.vibe-new{border-left:5px solid var(--brass)}@media(max-width:650px){.vibe-route{grid-template-columns:1fr}.vibe-panel{padding:0 16px}.vibe-intro{padding:20px 18px}.vibe-list{grid-template-columns:minmax(0,1fr)}}
-.teaching-license{box-sizing:border-box;max-width:1000px;margin:28px auto;padding:20px 24px;border:1px solid #d6dde3;border-left:5px solid #37658f;border-radius:12px;background:#fffdf8;color:#243347;font:15px/1.8 system-ui,"Microsoft JhengHei",sans-serif;overflow-wrap:anywhere;text-align:left}.teaching-license strong{display:block;font-size:18px;color:#243347}.teaching-license p{margin:8px 0}.teaching-license a{color:#315f87;text-decoration:underline;text-underline-offset:3px}.teaching-license .license-actions{display:flex;flex-wrap:wrap;gap:8px 20px}@media(max-width:650px){.teaching-license{margin:22px 14px;padding:17px 18px}}</style>
+.teaching-license{box-sizing:border-box;max-width:1000px;margin:28px auto;padding:20px 24px;border:1px solid #d6dde3;border-left:5px solid #37658f;border-radius:12px;background:#fffdf8;color:#243347;font:15px/1.8 system-ui,"Microsoft JhengHei",sans-serif;overflow-wrap:anywhere;text-align:left}.teaching-license strong{display:block;font-size:18px;color:#243347}.teaching-license p{margin:8px 0}.teaching-license a{color:#315f87;text-decoration:underline;text-underline-offset:3px}.teaching-license .license-actions{display:flex;flex-wrap:wrap;gap:8px 20px}@media(max-width:650px){.teaching-license{margin:22px 14px;padding:17px 18px}}.card .title .topic{font-weight:800;color:var(--ink)}</style>
 </head>
 <body>
 
@@ -526,7 +526,8 @@ const CHAPTERS = [
 /* ============================================================
    講義清單：每完成一份講義，新增一筆物件即可
    - articles: 條號（顯示用）
-   - title: 主題
+   - title: 題目與說明
+   - topics: 卡片中要加粗的主題詞（須與title文字相同）
    - date: 完成日期 YYYY-MM-DD
    - chapterKey: 對應 CHAPTERS 的 key（單一主分類，以主要條文所在章為準）
    - file: 講義相對路徑
@@ -535,6 +536,7 @@ const LECTURES = [
   {
     articles: "第15條",
     title: "沒有出手，也要負責嗎？不作為犯（四問流程、六題判斷與三題自測）",
+    topics: ["不作為犯"],
     date: "2026-10-26",
     chapterKey: "1-2",
     file: "lectures/omission.html"
@@ -542,6 +544,7 @@ const LECTURES = [
   {
     articles: "第19條",
     title: "喝醉就能免責嗎？責任能力與原因自由行為（三步流程、資料卡與自我檢查）",
+    topics: ["責任能力", "原因自由行為"],
     date: "2026-10-26",
     chapterKey: "1-2",
     file: "lectures/responsibility-capacity.html"
@@ -549,6 +552,7 @@ const LECTURES = [
   {
     articles: "第17條、第277條",
     title: "只想傷人，為什麼要對死亡負責？加重結果犯（結果分流、證據接線與逐人責任）",
+    topics: ["加重結果犯"],
     date: "2026-10-16",
     chapterKey: "1-2",
     file: "lectures/aggravated-result.html"
@@ -556,6 +560,7 @@ const LECTURES = [
   {
     articles: "第12條、第13條、第14條",
     title: "知道有風險，就算故意嗎？故意與過失（證據探索、一念之差實驗與分類挑戰）",
+    topics: ["故意與過失"],
     date: "2026-10-14",
     chapterKey: "1-2",
     file: "lectures/intent-negligence.html"
@@ -563,6 +568,7 @@ const LECTURES = [
   {
     articles: "第315條之1",
     title: "妨害秘密罪——無故窺視、竊聽、竊錄他人非公開活動",
+    topics: ["妨害秘密罪"],
     date: "2026-08-29",
     chapterKey: "2-28",
     file: "lectures/privacy-intrusion-315-1.html"
@@ -570,6 +576,7 @@ const LECTURES = [
   {
     articles: "第23條、第16條",
     title: "誤想防衛：6個常見誤解（3分鐘教學影片）",
+    topics: ["誤想防衛"],
     date: "2026-10-07",
     chapterKey: "1-2",
     file: "https://youtu.be/k6MpSO8Vh3g"
@@ -577,6 +584,7 @@ const LECTURES = [
   {
     articles: "第23條",
     title: "正當防衛要過哪幾關？四道關卡與防衛過當（3分鐘教學影片）",
+    topics: ["正當防衛", "防衛過當"],
     date: "2026-10-08",
     chapterKey: "1-2",
     file: "https://youtu.be/n876eWuO81w"
@@ -584,6 +592,7 @@ const LECTURES = [
   {
     articles: "第13條、第55條",
     title: "看錯人和打偏了，判得一樣嗎？客體錯誤與打擊錯誤（4分鐘教學影片）",
+    topics: ["客體錯誤", "打擊錯誤"],
     date: "2026-10-08",
     chapterKey: "1-2",
     file: "https://youtu.be/s7zDGMHvs2Y"
@@ -591,6 +600,7 @@ const LECTURES = [
   {
     articles: "第16條",
     title: "以為合法就不罰嗎？禁止錯誤與刑法第16條（5分鐘教學影片）",
+    topics: ["禁止錯誤"],
     date: "2026-10-08",
     chapterKey: "1-2",
     file: "https://youtu.be/8J4uybMpDHg"
@@ -598,6 +608,7 @@ const LECTURES = [
   {
     articles: "第29條、第271條",
     title: "國考實戰：113高考三級司法行政刑法第一題擬答——認錯人的帳算誰的？（含教學影片）",
+    topics: ["國考實戰", "113高考三級司法行政刑法第一題擬答"],
     date: "2026-10-09",
     chapterKey: "1-4",
     file: "lectures/exam-113-judicial-criminal-q1.html"
@@ -605,6 +616,7 @@ const LECTURES = [
   {
     articles: "第12條至第24條",
     title: "國考實戰・基本功：國考刑法申論怎麼寫？三階層×三段論（4分鐘教學影片）",
+    topics: ["三階層×三段論"],
     date: "2026-10-10",
     chapterKey: "1-2",
     file: "https://youtu.be/o7p3S0i4-M4"
@@ -612,6 +624,7 @@ const LECTURES = [
   {
     articles: "第28條、第29條、第30條",
     title: "一起殺人，罪名卻不一樣？共同正犯、教唆、幫助（共犯系列第1集，教學影片）",
+    topics: ["共同正犯", "教唆", "幫助"],
     date: "2026-10-11",
     chapterKey: "1-4",
     file: "https://youtu.be/Z3IuW82dpZc"
@@ -619,6 +632,7 @@ const LECTURES = [
   {
     articles: "第1條、第2條",
     title: "做之前沒規定，事後可以罰嗎？罪刑法定主義與刑法第1條（3分鐘教學影片）",
+    topics: ["罪刑法定主義"],
     date: "2026-10-12",
     chapterKey: "1-1",
     file: "https://youtu.be/YacEP7FatPY"
@@ -626,6 +640,7 @@ const LECTURES = [
   {
     articles: "第25條、第321條",
     title: "進門看一看，算偷了嗎？著手與未遂（教學影片＋互動時間軸與自我測驗）",
+    topics: ["著手與未遂"],
     date: "2026-10-13",
     chapterKey: "1-3",
     file: "lectures/attempt-commencement.html"
@@ -633,6 +648,7 @@ const LECTURES = [
   {
     articles: "第26條、第27條",
     title: "都沒偷到，處罰一樣嗎？不能未遂與中止犯（教學影片＋判斷流程圖與分類練習）",
+    topics: ["不能未遂", "中止犯"],
     date: "2026-10-14",
     chapterKey: "1-3",
     file: "lectures/impossible-abandon.html"
@@ -727,6 +743,18 @@ function markEmbeddedVideo(url, titleEl){
   }).catch(() => { embedCache[url] = false; });
 }
 
+function formatCardTitle(item){
+  const escape = value => value.replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const ranges = (item.topics || []).map(topic => ({start:item.title.indexOf(topic), text:topic})).filter(part => part.start >= 0).sort((a,b) => a.start-b.start);
+  let result = '', cursor = 0;
+  ranges.forEach(part => {
+    if (part.start < cursor) return;
+    result += escape(item.title.slice(cursor, part.start)) + '<strong class="topic">' + escape(part.text) + '</strong>';
+    cursor = part.start + part.text.length;
+  });
+  return result + escape(item.title.slice(cursor));
+}
+
 function render(){
   const keyword = document.getElementById('searchInput').value.trim().toLowerCase();
   const categorySelectEl = document.getElementById('categorySelect');
@@ -760,7 +788,7 @@ function render(){
       a.rel = 'noopener';
       a.innerHTML = `
         <div class="articles">${item.articles}</div>
-        <div class="title"><span class="icon">${isVideo(item.file) ? '🎬 ' : '📖 '}</span>${item.title}</div>
+        <div class="title"><span class="icon">${isVideo(item.file) ? '🎬 ' : '📖 '}</span>${formatCardTitle(item)}</div>
         <div class="meta">
           <span class="tag">${chapterMap[item.chapterKey] || item.chapterKey}</span>
         </div>

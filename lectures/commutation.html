@@ -35,11 +35,11 @@ const qs=[{id:'q1',q:'甲犯竊盜罪（最重5年），判拘役50日。可以�
 {id:'q4',q:'甲判拘役50日，沒聲請易科，改做社會勞動。要做幾小時、多久內做完？',o:[['300小時，1年內。',null],['50小時，2年內。','hours']],a:0,why:'50 × 6 ＝ 300小時；第41條第5項履行期間不得逾1年。2年是第42條之1罰金改社會勞動的期間。'},
 {id:'q5',q:'乙的社會勞動期滿沒做完。可以改繳錢易科罰金嗎？',o:[['可以，跟甲一樣。','result6'],['不行，第3項的人應執行原宣告刑。',null]],a:1,why:'第6項：第2項的人可執行原宣告刑或易科罰金；第3項的人只能執行原宣告刑。'},
 {id:'q6',q:'丙判有期徒刑4個月，易科罰金繳完。3年後故意再犯竊盜，判有期徒刑。要檢查什麼？',o:[['第44條以已執行論，前案徒刑執行完畢，要檢查第47條累犯。',null],['繳錢就是沒坐牢，不可能是累犯。','art44']],a:0,why:'易科罰金執行完畢者以已執行論；第47條要求受徒刑之執行完畢、5年內故意再犯有期徒刑以上之罪。前提是前案為有期徒刑，不是拘役。'}];
-const PRE=['q2','q1'],KEY='diag-commutation-v1';
+const PRE=['q1','q2'],KEY='diag-commutation-v1';
 let st={pre:{},post:{}};try{const s=JSON.parse(localStorage.getItem(KEY)||'null');if(s&&s.pre&&s.post)st=s}catch(e){}
 function save(){try{localStorage.setItem(KEY,JSON.stringify(st))}catch(e){}}
 const byId=id=>qs.find(q=>q.id===id);
-function block(q,host,mode){const div=document.createElement('div');div.className=mode==='pre'?'diagq':'quiz';const h=document.createElement('h3');h.textContent=mode==='pre'?'前測':'第'+(qs.indexOf(q)+1)+'題';const p=document.createElement('p');p.textContent=q.q;div.append(h,p);
+function block(q,host,mode){const div=document.createElement('div');div.className=mode==='pre'?'diagq':'quiz';const h=document.createElement('h3');h.textContent=mode==='pre'?'前測'+(PRE.indexOf(q.id)+1)+(PRE.indexOf(q.id)?'（乙）':'（甲）'):'第'+(qs.indexOf(q)+1)+'題';const p=document.createElement('p');p.textContent=q.q;div.append(h,p);
 const opts=q.o.map((o,k)=>{const b=document.createElement('button');b.className='btn opt';b.textContent=o[0];b.onclick=()=>{const r=st[mode][q.id]||{};r.c=k;delete r.f;st[mode][q.id]=r;save();paint();renderDiag()};div.append(b);return b});
 const conf=document.createElement('div');conf.className='conf';[['有把握',1],['用猜的',0]].forEach(([s,v])=>{const b=document.createElement('button');b.className='btn';b.textContent=s;b.dataset.v=v;b.onclick=()=>{st[mode][q.id].f=v;save();paint();renderDiag()};conf.append(b)});
 const fb=document.createElement('div');fb.className='feedback';fb.setAttribute('role','status');div.append(conf,fb);host.append(div);
@@ -58,7 +58,7 @@ if(g.gray.length)h+='<p class="lv yel">🟡 還沒學到：答錯，也不確定
 if(g.yel.length)h+='<p class="lv yel">⚠️ 答對但不確定，建議再讀一次：'+g.yel.map(no).join('、')+'</p>';
 if(g.ok.length)h+='<p class="lv ok">✅ 已經會了：'+g.ok.map(no).join('、')+'</p>';
 const preDone=PRE.every(id=>st.pre[id]&&st.pre[id].f!==undefined);
-if(preDone){const pr=PRE.filter(id=>st.pre[id].c===byId(id).a).length,po=PRE.filter(id=>st.post[id].c===byId(id).a).length;h+='<p class="prepost">看影片前後（同樣2題：第1、2題）：前測 '+pr+'／2 → 練習 '+po+'／2</p>'}else h+='<p class="small">開頭的前測沒有做完，這次不顯示前後比較。</p>';
+if(preDone){const pr=PRE.filter(id=>st.pre[id].c===byId(id).a).length,po=PRE.filter(id=>st.post[id].c===byId(id).a).length;const dv=po-pr,msg=dv>0?'進步'+dv+'題':dv===0?'維持不變':'答對變少，建議回頭看影片';h+='<p class="prepost">開頭的前測（甲、乙兩題，就是練習第1、2題）：看影片前答對'+pr+'題，看完後答對'+po+'題，'+msg+'。</p>'}else h+='<p class="small">開頭的前測沒有做完，這次不顯示前後比較。</p>';
 h+='<p class="small">紀錄只存在這台裝置的瀏覽器，老師與網站都看不到。</p>';d.innerHTML=h}
 $('reset').onclick=()=>{st={pre:{},post:{}};save();painters.forEach(f=>f());renderDiag()};renderDiag();
 function updateNav(){let current='start';document.querySelectorAll('section[id]').forEach(s=>{if(s.getBoundingClientRect().top<125)current=s.id});document.querySelectorAll('nav a').forEach(a=>{const on=a.hash==='#'+current;a.classList.toggle('active',on);if(on)a.setAttribute('aria-current','location');else a.removeAttribute('aria-current')})}addEventListener('scroll',updateNav,{passive:true});addEventListener('resize',updateNav);updateNav();

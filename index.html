@@ -401,7 +401,7 @@
   <h1>蒸餾skill／自動共享／協力共筆</h1>
   <p class="sub">刑法．第一編總則＋第二編分則（§1–363）</p>
   <div class="cover-meta">
-    <span class="ver-badge">v1.4</span>
+    <span class="ver-badge">v1.5</span>
     <span class="meta-date">2026-10-16</span>
     <img src="https://visitor-badge.laobi.icu/badge?page_id=mjib007.criminal-law-interpretation.index" alt="Visitors" style="opacity:0.85;vertical-align:middle;">
   </div>
@@ -872,7 +872,7 @@ function render(){
       const a = document.createElement('a');
       a.className = 'card';
       a.href = item.file;
-      a.target = '_blank';
+      a.target = item.file.startsWith('lectures/') ? '_self' : '_blank';
       a.rel = 'noopener';
       a.innerHTML = `
         <div class="articles">${item.articles}</div>

@@ -254,7 +254,7 @@
   try { const s = localStorage.getItem(KEY); if (s !== null) showGuess(Number(s)); } catch(e) {}
 
   // ===== 互動時間軸 =====
-  const STEPS = ['起意','進門','用眼睛找','接近財物','翻找物色','伸手拿取','帶走'];
+  const STEPS = ['起意','進門','用眼睛找','接近財物','翻找物色','伸手拿取','放進口袋'];
   const THEORIES = [
     {name:'形式客觀說', at:5, note:'學說（教學示意）：要開始實行嚴格意義的構成要件行為，竊盜要有竊取行為才算。'},
     {name:'實質客觀說', at:3, note:'學說（教學示意）：與構成要件行為密切相關、不需要中間步驟、對財物形成直接危險時，就算著手。'},
@@ -277,7 +277,8 @@
       d.style.opacity = i <= p ? 1 : .45;
     });
     let v;
-    if (p === 6) v = '<span class="bad">既遂：成立竊盜罪</span>';
+    if (p === 6) v = '<span class="bad">既遂：財物已移入自己實力支配，成立竊盜罪</span>（不必帶離現場，最高法院112年度台上字第5347號）';
+    else if (p === 5 && p >= th.at) v = '<span class="mid">已著手；拿在手上是否已建立自己的持有，要看手法、財物大小與現場情形個案判斷（最高法院112年度台上字第3930號）</span>';
     else if (p >= th.at) v = '<span class="mid">已著手：沒偷成就是竊盜未遂（罰，得減輕）</span>';
     else v = '<span class="ok">還沒著手：竊盜不罰預備</span>（但可能另成立第306條侵入住宅罪）';
     verdict.innerHTML = '做到「' + STEPS[p] + '」時，依' + th.name + '：' + v;
